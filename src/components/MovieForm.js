@@ -166,4 +166,15 @@ MovieForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
+// MovieForm.defaultProps = {
+//   movie: PropTypes.shape({
+//     title: '',
+//     subtitle: '',
+//     storyline: '',
+//     rating: 0,
+//     imagePath: '',
+//     genre: '',
+//   }),
+// };
+
 export default MovieForm;
