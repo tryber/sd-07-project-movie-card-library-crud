@@ -1,0 +1,19 @@
+body {
+  background-color: #bebebe;
+}
+
+.container-movie {
+  background-color: white;
+  box-sizing: border-box;
+  height: 400px;
+  margin: 20px;
+  width: 350px;
+}
+
+h4, h5, p {
+  padding-left: 2px;
+}
+
+img {
+  width: 350px;
+}
