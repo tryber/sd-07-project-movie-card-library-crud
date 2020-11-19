@@ -15,26 +15,24 @@ class MovieList extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   fetchMovie() {
     this.setState(
       {
         loading: true,
       },
       () => {
-        movieAPI
-          .getMovies()
-          .then((response) => {
-            this.setState({
-              loading: false,
-              movies: response,
-            });
+        movieAPI.getMovies().then((response) => {
+          this.setState({
+            loading: false,
+            movies: response,
           });
+        });
       },
     );
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
   }
 
   render() {
