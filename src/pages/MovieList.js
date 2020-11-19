@@ -5,8 +5,8 @@ import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movies: [],
@@ -41,7 +41,7 @@ class MovieList extends Component {
 
     return (
       <div>
-        {movies.length === 0 ? <Loading /> : this.renderMovieList()}
+        {(movies.length === 0) ? <Loading /> : this.renderMovieList()}
       </div>
     );
   }
