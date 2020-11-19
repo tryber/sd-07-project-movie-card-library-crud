@@ -4,10 +4,14 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  async get() {
+    const filme = await movieAPI.getMovie(id);
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-
+    const id = this.props.match.params.id
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
 
     return (
