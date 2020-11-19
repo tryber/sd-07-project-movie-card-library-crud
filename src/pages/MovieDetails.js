@@ -15,7 +15,8 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
+    const passar = this.props.match.params;
+    const id = passar.id;
     this.atualizar(id);
   }
 
