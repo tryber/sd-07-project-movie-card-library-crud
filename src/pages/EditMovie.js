@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 
 import { MovieForm, Loading } from '../components/index';
-import { MovieList } from '../pages/index';
 
 import * as movieAPI from '../services/movieAPI';
 
