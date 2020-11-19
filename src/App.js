@@ -16,7 +16,7 @@ function App() {
       <Route exact path="/movies/new" component={NewMovie} />
       <Route path="/movies/:id/edit" component={EditMovie} />
       <Route exact path="/" component={MovieList} />
-      {/* qualquer rota não declarada deve renderizar NotFound */}
+      {/* <Route exact path="" component={() => <h1>NotFound</h1>} /> */}
     </BrowserRouter>
   );
 }
