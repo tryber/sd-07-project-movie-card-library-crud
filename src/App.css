@@ -48,3 +48,14 @@ body {
   font-size: 14px;
   text-align: justify;
 }
+
+.movie-details {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  color: orangered;
+  display: flex;
+  font-size: 14px;
+  justify-content: flex-start;
+  padding: 12px 20px;
+  text-decoration: none;
+}
