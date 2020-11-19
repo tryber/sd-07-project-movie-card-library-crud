@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import '../App.css';
 
 class MovieDetails extends Component {
   constructor() {
     super();
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       movie: [],
       loading: true,
@@ -26,6 +28,11 @@ class MovieDetails extends Component {
     });
   }
 
+  async deleteMovie() {
+    const { id } = this.props.match.params;
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { id } = this.props.match.params;
     if (this.state.loading) return <Loading />;
@@ -39,8 +46,9 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to="/">VOLTAR</Link>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link className="space-between-buttons" to="/">VOLTAR</Link>
+        <Link className="space-between-buttons" to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link className="space-between-buttons" to="/" onClick={this.deleteMovie}>DELETAR</Link>
       </div>
     );
   }
