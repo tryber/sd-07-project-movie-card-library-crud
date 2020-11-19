@@ -27,7 +27,7 @@ class MovieList extends Component {
     const { movies, isloading } = this.state;
 
     return (
-      <div data-testid="movie-list">
+      <div className="movie-list" data-testid="movie-list">
         {isloading ? (
           <div>Carregando...</div>
           ) : (
