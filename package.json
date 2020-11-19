@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "@testing-library/react": "^10.0.4",
+    "@types/react-router-dom": "^5.1.6",
     "react-router-dom": "^5.2.0"
   }
 }
