@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Redirect } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -15,8 +15,8 @@ class MovieDetails extends Component {
       movie: {},
     };
 
-    this.fetchAPI =this.fetchAPI.bind(this);
-    this.deleteMovie = this.deleteMovie.bind(this); 
+    this.fetchAPI = this.fetchAPI.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -29,7 +29,7 @@ class MovieDetails extends Component {
       isFetching: false,
       movie: movieData,
     });
-  } 
+  }
 
   async deleteMovie() {
     await movieAPI.deleteMovie(this.props.match.params.id);
@@ -37,17 +37,19 @@ class MovieDetails extends Component {
       done: true,
     });
   }
+
   render() {
     const { isFetching, done } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    
+
     if (isFetching) return <Loading />;
 
-    if(done) return <Redirect to="/" />;
+    if (done) return <Redirect to="/" />;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <h1>{title}</h1>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
@@ -55,7 +57,6 @@ class MovieDetails extends Component {
         <Link to="" onClick={() => this.deleteMovie()}>DELETAR</Link><br />
         <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link><br />
         <Link to="/" >VOLTAR</Link>
-
       </div>
     );
   }
@@ -70,3 +71,4 @@ MovieDetails.propTypes = {
 };
 
 export default MovieDetails;
+
