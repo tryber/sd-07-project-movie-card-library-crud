@@ -39,7 +39,7 @@ class MovieDetails extends Component {
   }
   render() {
     const { isFetching, done } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state,movie;
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     
     if (isFetching) return <Loading />;
 
