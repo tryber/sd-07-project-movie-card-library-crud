@@ -9,7 +9,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-    }
+    };
   }
 
   render() {
@@ -17,8 +17,11 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
 
+    console.log(movieAPI)
+
     return (
       <div data-testid="movie-list">
+        {movieAPI.createMovie}
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );
