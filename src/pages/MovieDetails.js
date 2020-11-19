@@ -52,4 +52,8 @@ class MovieDetails extends Component {
   }
 }
 
+MovieDetails.propTypes = {
+  match: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
 export default MovieDetails;

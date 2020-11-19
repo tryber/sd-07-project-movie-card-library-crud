@@ -17,7 +17,6 @@ class MovieList extends Component {
   }
 
   componentDidMount(){
-    console.log('didmountlist did mount ')
     movieAPI.getMovies().then((movies)=>this.setState({movies:movies,loaded:true})
     )
   }
