@@ -172,7 +172,7 @@ describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que 
     });
   });
 
-  it.skip('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
+  it('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
     for (const movie of readMovies()) {
       const { container, unmount } = renderPath(`/movies/${movie.id}`);
       await waitFor(() => movieAPI.getMovie(movie.id))
@@ -188,7 +188,7 @@ describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que 
     }
   });
 
-  it.skip('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
+  it('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
@@ -198,7 +198,7 @@ describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que 
     }
   });
 
-  it.skip('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
+  it('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
@@ -316,17 +316,17 @@ describe('6 - NewMovie: Na página inicial, deve haver um link para criar novos 
 })
 
 describe('Bônus: Adicione um link para deletar um cartão em MovieDetails', () => {
-  it.skip('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
+  it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
       const deleteButton = await findByText('DELETAR')
-      expect(deleteButton.href).toBe('http://localhost/');
+      expect(delete Button.href).toBe('http://localhost/');
       unmount();
     }
   })
 
-  it.skip('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
+  it('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
     resetStorage();
     const deletedMovie = readMovies()[2];
     renderPath('/movies/3');

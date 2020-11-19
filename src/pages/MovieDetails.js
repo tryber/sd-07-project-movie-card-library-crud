@@ -12,11 +12,18 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
     };
+
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id).then((movie) => this.setState({ movie }));
+  }
+
+  handleDelete() {
+    const { id } = this.props.match.params;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -53,6 +60,9 @@ class MovieDetails extends Component {
           <span>
             <Link to="/">VOLTAR</Link>
           </span>
+          <Link to="/" onClick={this.handleDelete}>
+            DELETAR
+          </Link>
         </footer>
       </div>
     );
