@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -23,10 +23,9 @@ class MovieDetails extends Component {
     const movie = await movieAPI.getMovie(id);
     this.setState({
       movie: movie,
-      loading: true
+      loading: true,
     });
   }
-  
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -59,6 +58,7 @@ MovieDetails.propTypes = {
     rating: PropTypes.number.isRequired,
     imagePath: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
+    match: PropTypes.arrayOf(PropTypes.object).isRequired,
   }).isRequired,
 };
 

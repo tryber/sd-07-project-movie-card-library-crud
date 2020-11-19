@@ -20,7 +20,7 @@ MovieCard.propTypes = {
     id: PropTypes.number.isRequired,
     title: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
-}).isRequired,
+  }).isRequired,
 };
 
 export default MovieCard;
