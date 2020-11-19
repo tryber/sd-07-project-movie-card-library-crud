@@ -7,18 +7,21 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
+
+    this.fetchMovie = this.fetchMovie.bind(this);
+
     this.state = {
       loaded: false,
       movie: {},
     };
   }
-  fetchMovie = async () => {
+  async fetchMovie() {
     const movie = await movieAPI.getMovie(this.props.match.params.id); // a movieAPI ja  passaa pra int o parametro id
     this.setState({
       loaded: true,
       movie: movie,
     });
-  };
+  }
   componentDidMount() {
     this.setState(
       {
