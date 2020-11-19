@@ -1,27 +1,28 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom'
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
+    this.get = this.get.bind(this);
     this.state = {
       movie: {},
       MovieDetails: false,
-    }
+    };
   }
   componentDidMount() {
     const id = this.props.match.params.id;
     this.get(id);
   }
-  get = async(id) => {
+  async get(id) {
     const fetch = await movieAPI.getMovie(id);
     this.setState({movie: fetch, MovieDetails: true});
   }
 
   render() {
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
     return (
       this.state.MovieDetails ?
@@ -32,6 +33,8 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
       </div> : <Loading />
     );
   }

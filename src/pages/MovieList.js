@@ -6,14 +6,17 @@ import * as movieAPI from '../services/movieAPI';
 class MovieList extends Component {
   constructor() {
     super();
+    this.get = this.get.bind(this);
     this.state = {
       movies: [],
       Movielist: false,
-    }
+    };
+  }
+  componentDidMount() {
     this.get();
   }
 
-  get = async() => {
+  async get() {
     const fetch = await movieAPI.getMovies();
     this.setState({movies: fetch, Movielist: true});
   }
