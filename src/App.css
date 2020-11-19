@@ -65,11 +65,11 @@ body {
 }
 
 .link-movie-card {
+  align-items: center;
   background-color: rgb(75, 75, 75);
   color: #ecb80b;
   font-size: 19px;
   padding: 3px;
-  align-items: center;
   text-decoration: none;
 }
 .loading {
