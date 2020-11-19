@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import {
   MovieList,
   MovieDetails,
@@ -6,7 +7,6 @@ import {
   EditMovie,
   NotFound,
 } from './pages';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 // switch permite selecionar um de cada vez
 // switch serve para renderizar com props
 // {...props} tem que ser passado assim para aceitar os props
