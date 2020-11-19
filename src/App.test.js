@@ -275,7 +275,7 @@ describe('5 - EditMovie: deve realizar uma requisição para buscar o filme que 
 })
 
 describe('6 - NewMovie: Na página inicial, deve haver um link para criar novos cartões.', () => {
-  it.skip('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
+  it('a página inicial deverá conter um link "ADICIONAR CARTÃO". Esse link deve redirecionar para a página de criação de filmes', async () => {
     const { unmount } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     const addMovie = screen.getByText('ADICIONAR CARTÃO');
@@ -283,7 +283,7 @@ describe('6 - NewMovie: Na página inicial, deve haver um link para criar novos 
     expect(addMovie.href).toBe('http://localhost/movies/new');
     unmount();
   })
-  it.skip('"NewMovie" deverá conter um formulário que faz uma requisição para API para criar um novo filme. Após a criação, a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
+  it('"NewMovie" deverá conter um formulário que faz uma requisição para API para criar um novo filme. Após a criação, a pessoa usuária deverá ser redirecionada para a página inicial', async () => {
     await cleanup();
     renderPath('/movies/new')
 

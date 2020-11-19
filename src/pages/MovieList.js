@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { MovieCard, Loading } from '../components';
 
@@ -27,6 +28,7 @@ class MovieList extends Component {
         ) : (
           <Loading />
         )}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
