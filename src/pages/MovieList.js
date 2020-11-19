@@ -14,14 +14,9 @@ class MovieList extends Component {
 
   render() {
     const { movies } = this.state;
-
-    // Render Loading here if the request is still happening
-
-    console.log(movieAPI)
-
     return (
       <div data-testid="movie-list">
-        {movieAPI.createMovie}
+        <p>Renderizou o MovieList</p>
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );
