@@ -16,7 +16,6 @@ class MovieDetails extends Component {
       loading: true,
       movieId: props.match.params.id,
       movie: undefined,
-      shouldRedirect: false,
     };
   }
 
@@ -45,29 +44,17 @@ class MovieDetails extends Component {
   handleClick() {
     const { movieId } = this.state;
 
-    this.setState(
-      {
-        loading: true,
-      },
-      () => {
-        movieAPI.deleteMovie(movieId).then(() => {
-          this.setState({
-            loading: false,
-            shouldRedirect: true,
-          });
-        });
-      },
-    );
+    movieAPI.deleteMovie(movieId).then(() => {
+      this.setState({
+        loading: false,
+      });
+    });
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    const { loading, movie, shouldRedirect } = this.state;
-
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
+    const { loading, movie } = this.state;
 
     if (loading) {
       return <Loading />;
@@ -90,7 +77,9 @@ class MovieDetails extends Component {
           <Link to="/">VOLTAR</Link>
         </div>
         <div>
-          <button onClick={this.handleClick}>DELETAR</button>
+          <Link onClick={this.handleClick} to="/">
+            DELETAR
+          </Link>
         </div>
       </div>
     );
