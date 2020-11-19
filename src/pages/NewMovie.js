@@ -14,7 +14,6 @@ class NewMovie extends Component {
   render() {
     return (
       <div data-testid="new-movie">
-        asdasd
         <MovieForm onSubmit={this.handleSubmit} />
       </div>
     );
