@@ -8,6 +8,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.getMovieFromAPI = this.getMovieFromAPI.bind(this);
+    this.clickRemoveMovie = this.clickRemoveMovie.bind(this);
     this.state = {
       loading: true,
       movie: {
@@ -32,6 +33,11 @@ class MovieDetails extends Component {
     this.setState({ loading: false, movie });
   }
 
+  async clickRemoveMovie() {
+    const { id } = this.props.match.params;
+    await movieAPI.deleteMovie(id);
+  }
+
 
   render() {
     // Change the condition to check the state
@@ -53,6 +59,7 @@ class MovieDetails extends Component {
           <p>{`Rating: ${rating}`}</p>
           <Link to="/">VOLTAR</Link>
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+          <Link to="/" onClick={this.clickRemoveMovie}>DELETAR</Link>
         </div>
         }
       </div>
