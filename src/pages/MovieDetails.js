@@ -42,7 +42,7 @@ class MovieDetails extends Component {
         </header>
         <main>
           <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline} ${Math.random()}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
         </main>
