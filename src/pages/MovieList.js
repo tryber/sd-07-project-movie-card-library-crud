@@ -14,17 +14,16 @@ class MovieList extends Component {
     this.getMovie = this.getMovie.bind(this);
   }
 
+  componentDidMount() {
+    this.getMovie();
+  }
+
   getMovie() {
     this.setState({ loading: true }, async () => {
       const pegamovie = await movieAPI.getMovies();
       this.setState({ loading: false, movies: pegamovie });
     });
   }
-
-  componentDidMount() {
-    this.getMovie();
-  }
-
   render() {
     const { movies } = this.state;
     return (
