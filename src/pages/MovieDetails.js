@@ -21,8 +21,8 @@ class MovieDetails extends Component {
   }
 
   async get(id) {
-    const movie = await movieAPI.getMovie(id);
-    this.setState({ movie: movie, loading: true });
+    const movies = await movieAPI.getMovie(id);
+    this.setState({ movie: movies, loading: true });
   }
 
   render() {
@@ -49,14 +49,7 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  movie: PropTypes.object,
-  id: PropTypes.number.isRequired,
-  title: PropTypes.string.isRequired,
-  subtitle: PropTypes.string.isRequired,
-  storyline: PropTypes.string.isRequired,
-  rating: PropTypes.number.isRequired,
-  imagePath: PropTypes.string.isRequired,
-  genre: PropTypes.string.isRequired,
+  match: PropTypes.element.isRequired,
 };
 
 export default MovieDetails;
