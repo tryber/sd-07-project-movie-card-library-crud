@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { MovieCard, Loading } from '../components/MovieCard';
+import { MovieCard, Loading } from '../components';
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -19,9 +19,9 @@ class MovieList extends Component {
   }
 
   async fetchAPI() {
-    const movieLis = await movieAPI.getMovie();
+    const movieList = await movieAPI.getMovies();
     this.setState({
-      movies: MovieList,
+      movies: movieList,
       isFetching: false,
     })
   }
@@ -30,6 +30,7 @@ class MovieList extends Component {
     const { movies, isFetching } = this.state;
 
     if (isFetching) return <Loading />;
+
     console.log(this.state.movies);
 
     return (

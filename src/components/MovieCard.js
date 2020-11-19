@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-
 class MovieCard extends React.Component {
   render() {
     const {
@@ -10,6 +9,7 @@ class MovieCard extends React.Component {
       storyline,
       title,
     } = this.props.movie;
+
     return (
       <div data-testid="movie-card">
         <h1>{title}</h1>
@@ -27,4 +27,6 @@ MovieCard.propTypes = {
     id: PropTypes.number.isRequired,
   }).isRequired,
 };
+
 export default MovieCard;
+
