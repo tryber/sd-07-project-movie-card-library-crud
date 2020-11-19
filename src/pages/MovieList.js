@@ -1,28 +1,32 @@
-// import React, { Component } from 'react';
-// import MovieCard from '../components/MovieCard';
+import React, { Component } from 'react';
+import MovieCard from '../components/MovieCard';
 
-// import * as movieAPI from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
-// class MovieList extends Component {
-//   constructor() {
-//     super();
+class MovieList extends Component {
+  constructor() {
+    super();
 
-//     this.state = {
-//       movies: [],
-//     }
-//   }
+    this.state = {
+      movies: [],
+    }
+  }
 
-//   render() {
-//     const { movies } = this.state;
+  componentDidMount() {
+    console.log("componentDidMount");
+  }
 
-//     // Render Loading here if the request is still happening
+  render() {
+    const { movies } = this.state;
 
-//     return (
-//       <div data-testid="movie-list">
-//         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-//       </div>
-//     );
-//   }
-// }
+    // Render Loading here if the request is still happening
 
-// export default MovieList;
+    return (
+      <div data-testid="movie-list">
+        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+      </div>
+    );
+  }
+}
+
+export default MovieList;
