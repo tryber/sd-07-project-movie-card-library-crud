@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -11,10 +11,10 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: false,
-    }
+    };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.buildMovie();
   }
 
@@ -25,13 +25,13 @@ class MovieDetails extends Component {
     this.setState({
       movie: actualMovie,
       loading: false,
-    })
+    });
   }
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    if (this.state.loading) return <Loading />
+    if (this.state.loading) return <Loading />;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -46,5 +46,17 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+  params: PropTypes.shape({
+    id: PropTypes.number,
+  }).isRequired,
+  id: PropTypes.number.isRequired,
+};
 
 export default MovieDetails;
