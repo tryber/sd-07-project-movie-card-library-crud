@@ -10,6 +10,7 @@ class MovieDetails extends Component {
     super();
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.HandleDelete = this.HandleDelete.bind(this);
 
     this.state = {
       loaded: false,
@@ -31,6 +32,11 @@ class MovieDetails extends Component {
     });
   }
 
+  async HandleDelete() {
+    const { id } = this.props.match.params;
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -48,6 +54,9 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
+        <Link onClick={this.HandleDelete} to="/">
+          DELETAR
+        </Link>
       </div>
     );
   }
