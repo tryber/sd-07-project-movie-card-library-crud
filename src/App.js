@@ -11,11 +11,13 @@ import {
 function App() {
   return (
     <BrowserRouter>
-      <Route component={MovieList} path="/" />
-      <Route component={MovieDetails} path="/movies/:id" />
-      <Route component={NewMovie} path="/movies/new" />
-      <Route component={EditMovie} path="/movies/:id/edit" />
-      <Route component={NotFound} />
+      <Switch>
+        <Route component={MovieList} exact path="/" />
+        <Route component={NewMovie} exact path="/movies/new" />
+        <Route component={MovieDetails} exact path="/movies/:id" />
+        <Route component={EditMovie} exact path="/movies/:id/edit" />
+        <Route component={NotFound} />
+      </Switch>
     </BrowserRouter>
   );
 }
