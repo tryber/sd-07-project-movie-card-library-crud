@@ -45,7 +45,7 @@ MovieDetails.propTypes = {
   match: propTypes.shape({
     params: propTypes.shape({
       id: propTypes.string,
-    })
+    }),
   }).isRequired,
 };
 
