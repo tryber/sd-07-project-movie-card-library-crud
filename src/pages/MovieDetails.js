@@ -90,7 +90,7 @@ class MovieDetails extends Component {
           <Link to="/">VOLTAR</Link>
         </div>
         <div>
-          <Link onClick={this.handleClick}>DELETAR</Link>
+          <button onClick={this.handleClick}>DELETAR</button>
         </div>
       </div>
     );
