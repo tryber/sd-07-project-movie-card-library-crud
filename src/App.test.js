@@ -133,7 +133,7 @@ describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição 
     await waitFor(() => movieAPI.getMovies())
     unmount();
   })
-  test.skip('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
+  test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
     const { unmount, getAllByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect(getAllByTestId('movie-card').length).toBe(5);
