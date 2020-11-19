@@ -9,15 +9,29 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: false,
     };
+    this.getMovie = this.getMovie.bind(this);
+  }
+
+  getMovie() {
+    this.setState({ loading: true }, async () => {
+      const pegamovie = await movieAPI.getMovies();
+      this.setState({ loading: false, movies: pegamovie });
+    });
+  }
+
+  componentDidMount() {
+    this.getMovie();
   }
 
   render() {
     const { movies } = this.state;
     return (
       <div data-testid="movie-list">
-        <p>Renderizou o MovieList</p>
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        {movies.map((movie) => (
+          <MovieCard key={movie.title} movie={movie} />
+        ))}
       </div>
     );
   }
