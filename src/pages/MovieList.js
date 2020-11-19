@@ -9,22 +9,22 @@ class MovieList extends Component {
     super();
 
     this.state = {
-      movies: [4, 4],
+      movies: [],
     }
   }
 
-  // componentDidMount() {
-  //   async () => {
-  //     const returnedMovies = await movieAPI.getMovies();
-  //     console.log(movies)
-  //     this.setState({ movies: movies });
-  //   }
-  // }
+  componentDidMount() {
+    this.setState({ loading: true });
+    movieAPI.getMovies()
+      .then(res => {
+        this.setState({ movies: res, loading: false });
+      });
+  }
 
   render() {
     const { movies } = this.state;
 
-    if (this.state.movies.length === 0) return <Loading />;
+    if (this.state.loading) return <Loading />;
 
     return (
       <div data-testid="movie-list">
