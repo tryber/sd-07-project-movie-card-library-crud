@@ -28,7 +28,6 @@ class MovieList extends Component {
       movies: moviesList,
       loadingText: false,
     });
-    console.log(moviesList);
   }
 
   render() {
