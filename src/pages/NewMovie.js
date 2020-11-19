@@ -9,7 +9,7 @@ class NewMovie extends Component {
     super();
 
     this.state = {
-      Loading: false,
+      loading: false,
       shoudRedirect: false,
     };
 
@@ -17,9 +17,9 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
-    this.setState({ Loading: true }, async () => {
+    this.setState({ loading: true }, async () => {
       await movieAPI.createMovie(newMovie);
-      this.setState({ Loading: false, shoudRedirect: true });
+      this.setState({ loading: false, shoudRedirect: true });
     });
   }
 
@@ -29,7 +29,7 @@ class NewMovie extends Component {
 
     return (
       <div data-testid="new-movie">
-        {loading ? <loading /> : <MovieForm onSubmit={this.handleSubmit} />}
+        {loading ? <Loading /> : <MovieForm onSubmit={this.handleSubmit} />}
       </div>
     );
   }
