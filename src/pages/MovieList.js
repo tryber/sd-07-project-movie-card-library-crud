@@ -10,7 +10,7 @@ class MovieList extends Component {
     this.func = this.func.bind(this);
     this.state = {
       movies: [],
-      movieList: false
+      movieList: false,
     }
   }
   componentDidMount() {
@@ -19,19 +19,20 @@ class MovieList extends Component {
 
   async func() {
     const fetch = await movieAPI.getMovies();
-    this.setState({movies: fetch, movieList: true});
+    this.setState({
+      movies: fetch,
+      movieList: true,
+    });
   }
-
 
   render() {
     const { movies, movieList } = this.state;
-
-    // Render Loading here if the request is still happening
-
     return (
       <div data-testid="movie-list">
-        
-        {(movieList) ? movies.map((movie) => <MovieCard key={movie.title} movie={movie} />) : < Loading />}
+        {(movieList) 
+          ? movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)
+          : < Loading
+        />}
       </div>
     );
   }
