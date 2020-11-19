@@ -9,7 +9,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-    }
+    };
   }
 
   render() {
