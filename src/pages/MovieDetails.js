@@ -29,7 +29,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = {};
     const { movie, loading } = this.state;
 
     return (
@@ -49,7 +49,7 @@ class MovieDetails extends Component {
           <Link to="/" onClick={() => movieAPI.deleteMovie(id)}>
             DELETAR
           </Link>
-      </div>
+        </div>
       )}
       </div>
     );
