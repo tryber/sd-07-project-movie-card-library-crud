@@ -29,7 +29,7 @@ MovieCard.propTypes = {
     imagePath: PropTypes.string,
     id: PropTypes.number,
     
-  }).isRequired;
+  }).isRequired,
 };
 
 export default MovieCard;

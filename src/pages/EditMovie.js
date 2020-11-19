@@ -14,13 +14,12 @@ class EditMovie extends Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
   
   componentDidMount() {
     this.fetchMovie();
   }
 
-  async fetchMovie(){
+  async fetchMovie() {
     const { match } = this.props;
     const requestMovie = await movieAPI.getMovie(match.params.id);
     this.setState({ movie: requestMovie, status: 'loaded' });
@@ -29,7 +28,7 @@ class EditMovie extends Component {
   async handleSubmit(updateMovie) {
     await movieAPI.updateMovie(updateMovie);
     this.setState({ shouldRedirect: true });
-  } 
+  }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
