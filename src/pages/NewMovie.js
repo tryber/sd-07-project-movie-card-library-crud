@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-
+gi
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -20,7 +20,7 @@ class NewMovie extends Component {
       if (res === 'OK') {
         this.setState({
           shouldRedirect: true,
-        })
+        });
       }
     });
   }
