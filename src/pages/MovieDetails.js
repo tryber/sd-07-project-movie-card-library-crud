@@ -8,7 +8,7 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
-    this.state = { movie: [], load: true, };
+    this.state = { movie: [], load: true };
 
     this.deleteMovie = this.deleteMovie.bind(this);
   }
@@ -20,7 +20,7 @@ class MovieDetails extends Component {
   async fetchAPI() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
-    this.setState({ movie, load: false, });
+    this.setState({ movie, load: false });
   }
 
   async deleteMovie() {
@@ -58,5 +58,3 @@ MovieDetails.propTypes = {
 }.isRequired;
 
 export default MovieDetails;
-
-

@@ -162,7 +162,7 @@ MovieForm.propTypes = {
     imagePath: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-  }).isRequired,
+  }),
 };
 
 export default MovieForm;

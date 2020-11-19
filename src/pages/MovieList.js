@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import {
   Loading,
-  MovieCard
+  MovieCard,
 } from '../components/index';
 
 import * as movieAPI from '../services/movieAPI';

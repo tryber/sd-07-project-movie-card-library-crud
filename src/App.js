@@ -5,7 +5,7 @@ import {
   MovieList,
   NewMovie,
   NotFound,
-  EditMovie
+  EditMovie,
 } from './pages/index';
 
 function App() {
