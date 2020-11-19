@@ -10,3 +10,15 @@
 .movie-details-image {
   width: 100%;
 }
+
+.button-back {
+  align-items: center;
+  background-color: darkgray;
+  border-radius: 8px;
+  color: cornsilk;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  text-decoration: none;
+  width: 150px;
+}

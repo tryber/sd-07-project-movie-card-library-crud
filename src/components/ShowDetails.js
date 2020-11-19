@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import propTypes from 'prop-types';
 import { movieShape } from './MovieCard';
 
@@ -24,6 +25,7 @@ class ShowDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p className="movie-details-rating">{`Rating: ${rating}`}</p>
+        <Link className="button-back" to="/">VOLTAR</Link>
       </div>
     );
   }
