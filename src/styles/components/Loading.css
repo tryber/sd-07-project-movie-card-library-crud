@@ -1,0 +1,10 @@
+body {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.loading-element {
+  font-size: 35px;
+  width: fit-content;
+}

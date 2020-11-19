@@ -1,25 +1,58 @@
 import React, { Component } from 'react';
-
+import propTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
+import { Loading, ShowDetails } from '../components/index';
+import '../styles/pages/MovieDetails.css';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
+    this.state = {
+      movie: {},
+      loading: true,
+    };
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.fetchMovie = this.fetchMovie.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  async fetchMovie() {
+    const { id } = this.props.match.params;
+    this.setState({ loading: true }, async () => {
+      const movie = await movieAPI.getMovie(id);
+      this.setState({
+        movie,
+        loading: false,
+      });
+    });
+  }
+
+  render() {
+    const { movie, loading } = this.state;
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+      <div>
+        {loading ? (
+          <Loading />
+        ) : (
+          <div>
+            <ShowDetails movie={movie} />
+          </div>
+        )}
       </div>
     );
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: propTypes.shape({
+    params: propTypes.shape({
+      id: propTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
