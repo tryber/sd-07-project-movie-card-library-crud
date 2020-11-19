@@ -12,7 +12,7 @@ class MovieDetails extends Component {
     this.state = {
       loading: false,
       movie: '',
-    }
+    };
     this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
   }
 
@@ -49,8 +49,12 @@ class MovieDetails extends Component {
         </div>
       );
     }
-    return <Loading />
+    return <Loading />;
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
