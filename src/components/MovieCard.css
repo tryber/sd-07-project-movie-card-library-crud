@@ -1,0 +1,10 @@
+.ImagemETitulo {
+  position: relative;
+}
+
+.movieTitle {
+  bottom: 8px;
+  color: white;
+  left: 16px;
+  position: absolute;
+}
