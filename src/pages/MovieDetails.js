@@ -63,7 +63,7 @@ MovieDetails.propTypes = {
     rating: PropTypes.number.isRequired,
     imagePath: PropTypes.string.isRequired,
     genre: PropTypes.string.isRequired,
-    match: PropTypes.arrayOf(PropTypes.object).isRequired,
+    match: PropTypes.element.isRequired,
   }).isRequired,
 };
 
