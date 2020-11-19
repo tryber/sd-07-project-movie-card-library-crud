@@ -9,6 +9,8 @@ class MovieDetails extends Component {
     super(props);
 
     this.componentDidMount = this.componentDidMount.bind(this);
+    this.onClickDeleteHandler = this.componentDidMount.bind(this);
+
     this.state = {
       loading: true,
       movie: undefined,
@@ -24,6 +26,12 @@ class MovieDetails extends Component {
       });
     });
   }
+
+  async onClickDeleteHandler() {
+    const { id } = this.props.match.params;
+    await movieAPI.deleteMovie(id);
+  }
+
   render() {
     const { loading, movie } = this.state;
 
@@ -41,6 +49,7 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={this.onClickDeleteHandler}>DELETAR</Link>
       </div>
     );
   }
