@@ -1,29 +1,64 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import { Link } from 'react-router-dom';
+
 
 class MovieDetails extends Component {
-  async get() {
-    const filme = await movieAPI.getMovie(id);
+  constructor() {
+    super();
+    this.state = {
+      movie: {},
+      loading: false,
+    }
+    this.atualizar = this.atualizar.bind(this)
+  }
+
+  async atualizar(id) {
+    // somente um filme nessa funçao
+    const res = await movieAPI.getMovie(id);
+    this.setState({ movie: res, loading: true});
+  }
+
+  componentDidMount() {
+    const id = this.props.match.params.id;
+    this.atualizar(id)
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    const id = this.props.match.params.id;
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
     return (
+      this.state.loading ? 
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-      </div>
+        <Link to="/">VOLTAR</Link>
+        <Link to={`/movies/${this.state.movie.id}/edit`}>EDITAR</Link>
+
+      </div> : < Loading />
     );
   }
 }
+
+MovieDetails.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
+    storyline: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
+    imagePath: PropTypes.string.isRequired,
+    genre: PropTypes.string.isRequired,
+    match: PropTypes.arrayOf(PropTypes.object).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
