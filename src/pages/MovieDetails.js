@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -15,20 +16,19 @@ class MovieDetails extends Component {
       movie: {},
     };
   }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   async fetchMovie() {
-    const movie = await movieAPI.getMovie(this.props.match.params.id); // a movieAPI ja  passaa pra int o parametro id
+    // a movieAPI ja  passaa pra int o parametro id
+    const { id } = this.props.match.params;
+    const movie = await movieAPI.getMovie(id);
     this.setState({
       loaded: true,
-      movie: movie,
+      movie,
     });
-  }
-  componentDidMount() {
-    this.setState(
-      {
-        loaded: false,
-      },
-      this.fetchMovie,
-    );
   }
 
   render() {
@@ -52,5 +52,13 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.any.isRequired,
+    }),
+  }).isRequired,
+};
 
 export default MovieDetails;
