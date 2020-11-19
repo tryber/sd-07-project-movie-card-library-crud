@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 import movies from '../services/movieData';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -12,6 +12,7 @@ class MovieDetails extends Component {
       loaded: false,
       movie: undefined,
     };
+    this.deleteMovie = this.removeMovie.bind(this);
     
   }
   componentDidMount() {
@@ -20,10 +21,16 @@ class MovieDetails extends Component {
       .then((movie) => {
       this.setState({ movie: movie, loaded: true })})
   }
-  deleteMovie(){
-
+  removeMovie(id){
+    console.log('deletemovie.')
+    movieAPI.deleteMovie(id).then(
+      this.setState({shouldRedirect:true})
+    )
   }
   render() {
+    if(this.state.shouldRedirect) {
+      return <Redirect to="/"/>
+    }
     
     if (this.state.loaded) {
       const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
@@ -37,7 +44,7 @@ class MovieDetails extends Component {
           <p>{`Rating: ${rating}`}</p>
           <Link to={`/`}>VOLTAR</Link>
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          <button>DELETAR</button>
+          <Link onClick={()=>this.removeMovie(id)} to="/">DELETAR</Link>
         </div>
       );
     }
