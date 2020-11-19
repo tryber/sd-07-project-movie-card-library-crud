@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, BrowserRouter as Router, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { MovieList, EditMovie, MovieDetails, NewMovie, NotFound } from './pages';
 
@@ -14,8 +14,7 @@ function App() {
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
-    );
-    
+  );
 }
 
 export default App;

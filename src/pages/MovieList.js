@@ -19,8 +19,7 @@ class MovieList extends Component {
 
   func = async () => {
     const fetch = await movieAPI.getMovies();
-    this.setState({movies: fetch, movieList: true})
-    /* return fetch; */
+    this.setState({movies: fetch, movieList: true});
   }
 
 
