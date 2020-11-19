@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
-import movies from '../services/movieData';
 
 class MovieList extends Component {
   constructor() {
@@ -18,11 +17,11 @@ class MovieList extends Component {
   componentDidMount() {
     movieAPI
       .getMovies()
-      .then((movies) => this.setState({ movies: movies, loaded: true }));
+      .then((movies) => this.setState({ movies, loaded: true }));
   }
 
   render() {
-    let { movies } = this.state;
+    const { movies } = this.state;
 
     // Render Loading here if the request is still happening
     if (this.state.loaded) {
