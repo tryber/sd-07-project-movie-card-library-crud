@@ -6,11 +6,11 @@ import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages/
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/" component={MovieList} />
+      <Route exact path="/" component={MovieList} />
       <Route path="/movies/:id" render={(props) => <MovieDetails {...props} id="id" />} />
       <Route path="/movies/new" component={NewMovie} />
       <Route path="/movies/:id/edit" render={(props) => <EditMovie {...props} id="id" />} />
-      <Route path="/" component={NotFound} />
+      <Route path="" component={NotFound} />
     </BrowserRouter>
   );
 }
