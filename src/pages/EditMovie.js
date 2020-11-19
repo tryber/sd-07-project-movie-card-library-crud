@@ -6,7 +6,14 @@ import { MovieForm } from '../components';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      genre: '',
+      rating: 0,
+    };
     // this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -25,7 +32,7 @@ class EditMovie extends Component {
 
     return (
       <div data-testid="edit-movie">
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm movie={movie} onSubmit={() => true} />
       </div>
     );
   }

@@ -5,7 +5,7 @@ import Routes from './Routes';
 function App() {
   return (
     <BrowserRouter>
-      <div>Movie Card Library CRUD</div>
+      <h1>Movie Card Library CRUD</h1>
       <Routes />
     </BrowserRouter>
   );

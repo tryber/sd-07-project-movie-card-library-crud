@@ -17,10 +17,11 @@ class MovieList extends Component {
     this.fetchMovie();
   }
 
-  async fetchMovie() {
-    this.setState({ loading: true });
-    const response = await movieAPI.getMovies();
-    this.setState({ movies: response, loading: false });
+  fetchMovie() {
+    this.setState({ loading: true }, async () => {
+      const response = await movieAPI.getMovies();
+      this.setState({ movies: response, loading: false });
+    });
   }
 
   render() {
