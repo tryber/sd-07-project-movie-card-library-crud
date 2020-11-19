@@ -6,7 +6,7 @@ import NewMovie from './pages/NewMovie';
 import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
-
+//Criando e renderizando rotas
 function App() {
   return (
     <BrowserRouter>
