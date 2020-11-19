@@ -12,7 +12,6 @@ class MovieList extends Component {
       loadingText: false,
     };
     this.gettingMovies = this.gettingMovies.bind(this);
-    this.screenFunction = this.screenFunction.bind(this);
   }
 
   componentDidMount() {
@@ -31,21 +30,15 @@ class MovieList extends Component {
     console.log(moviesList);
   }
 
-  screenFunction(moviesList) {
-    if (!this.state.loadingText) {
-      return moviesList.map((movie) => <MovieCard key={movie.title} movie={movie} />);
-    }
-    return <Loading />;
-  }
-
   render() {
     const { movies } = this.state;
-    // Render Loading here if the request is still happening
-
+    if (this.state.loadingText) {
+      return ( <div><Loading /></div> )
+    }
     return (
-      <div data-testid="movie-list">
-        {this.screenFunction(movies)}
-      </div>
+    <div data-testid="movie-list">
+      {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+    </div>
     );
   }
 }
