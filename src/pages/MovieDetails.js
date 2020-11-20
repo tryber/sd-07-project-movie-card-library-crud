@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
@@ -13,13 +13,13 @@ class MovieDetails extends Component {
       loading: true,
     };
   }
+  componentDidMount() {
+    this.fetchMovie();
+  }
   async fetchMovie() {
     const id = this.props.match.params.id;
     const movie = await movieAPI.getMovie(id);
     this.setState({ movie, loading: false });
-  }
-  componentDidMount() {
-    this.fetchMovie();
   }
   render() {
     const { loading, movie } = this.state;
