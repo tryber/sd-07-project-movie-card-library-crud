@@ -10,24 +10,24 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: true,
-    }
+    };
   }
 
   componentDidMount() {
     this.updateMovieList();
   }
 
-  async  updateMovieList() {
+  async updateMovieList() {
     this.setState(
       { loading: true },
       async () => {
-        const moviesFound = await movieApi.getMovies();
+        const moviesFound = await movieAPI.getMovies();
         this.setState({
           movies: moviesFound,
           loading: false,
-        })
-      }
-    )
+        });
+      },
+    );
   }
 
   render() {
