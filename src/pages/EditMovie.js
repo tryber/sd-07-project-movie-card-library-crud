@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import Loading from '../components/Loading';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
@@ -14,14 +12,10 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount(){
-    const id = this.props.match.params.id;
-  }
-
   async handleSubmit(updatedMovie) {
     //movieAPI.updateMovie(updatedMovie)
-    this.setState({status: '', shouldRedirect: true});
-    console.log(this.props)
+    this.setState({ status: '', shouldRedirect: true });
+    console.log(this.props);
   }
 
   render() {
