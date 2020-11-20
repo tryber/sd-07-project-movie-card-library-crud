@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -7,7 +6,6 @@ class MovieForm extends React.Component {
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.updateMovie = this.updateMovie.bind(this);
-
   }
 
   handleSubmit() {
@@ -17,8 +15,8 @@ class MovieForm extends React.Component {
 
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
-    // essa função vai receber como primeiro parametro o nome 
-    // que ja é passado no callback e o valor que tambem ja é capturado 
+    // essa função vai receber como primeiro parametro o nome
+    // que ja é passado no callback e o valor que tambem ja é capturado
     // com event.target.value
   }
   // aqui dentro todos os campos sao preenchidos e atualizados com a updateMovie
@@ -68,7 +66,9 @@ class MovieForm extends React.Component {
           id="movie_image"
           type="text"
           value={imagePath}
-          onChange={(event) => this.updateMovie('imagePath', event.target.value)}
+          onChange={(event) =>
+            this.updateMovie('imagePath', event.target.value)
+          }
         />
         <label htmlFor="movie_image">Imagem</label>
       </div>
@@ -83,7 +83,9 @@ class MovieForm extends React.Component {
         <textarea
           id="movie_storyline"
           value={storyline}
-          onChange={(event) => this.updateMovie('storyline', event.target.value)}
+          onChange={(event) =>
+            this.updateMovie('storyline', event.target.value)
+          }
         />
         <label htmlFor="movie_storyline">Sinopse</label>
       </div>
@@ -133,10 +135,7 @@ class MovieForm extends React.Component {
   renderSubmitButton() {
     return (
       <div>
-        <button
-          type="button"
-          onClick={this.handleSubmit}
-        >
+        <button type="button" onClick={this.handleSubmit}>
           Submit
         </button>
       </div>
@@ -159,8 +158,3 @@ class MovieForm extends React.Component {
     );
   }
 }
-
-MovieForm.propTypes = {
-  match: PropTypes.element.isRequired,
-};
-export default MovieForm;
