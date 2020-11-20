@@ -13,7 +13,7 @@ class EditMovie extends Component {
   }
 
   async handleSubmit(updatedMovie) {
-    //movieAPI.updateMovie(updatedMovie)
+    // movieAPI.updateMovie(updatedMovie)
     this.setState({ status: '', shouldRedirect: true });
     console.log(this.props);
   }
@@ -21,9 +21,11 @@ class EditMovie extends Component {
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
+      // loading
     }
 
     if (status === 'loading') {
+      // loading
     }
 
     return (
