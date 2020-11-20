@@ -6,7 +6,7 @@ class MovieCard extends React.Component {
   render() {
     const { title, storyline, imagePath, genre, rating, subtitle, id } = this.props.movie;
     return (
-      <div className="movie-card">
+      <div className="movie-card" data-testid="movie-card">
         <img className="movie-card-image" src={imagePath} alt={title} />
         <div className="movie-card-body">
           <h4 className="movie-card-title">{title}</h4>
@@ -15,9 +15,7 @@ class MovieCard extends React.Component {
           <p className="movie-card-storyline">{storyline}</p>
         </div>
         <span className="rating">{rating}</span>
-        <Link to={`/movies/${id}`} >
-          <span className="detailes">VER DETALHES</span>
-        </Link>
+        <Link to={`/movies/${id}`} >VER DETALHES</Link>
       </div>
     );
   }
