@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
@@ -21,26 +22,20 @@ class MovieList extends Component {
     this.setState({ movies: res, movieList: true });
   }
   // se movieList for true retorna map se nao retornaa loading
+  // <Link to="/movies/new">ADICIONAR CARTÃO</Link>
   render() {
     const { movies, movieList } = this.state;
-
-    return (
+    // Render Loading here if the request is still happening
+    return movieList ? (
       <div data-testid="movie-list">
-        {movieList ? (
-          <img
-            className="imagem"
-            src={this.state.movieList}
-            alt="Descricao da imagem"
-          />
-        ) : (
-          <Loading />
-        )}
         {movies.map((movie) => (
           <MovieCard key={movie.title} movie={movie} />
         ))}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
+    ) : (
+      <Loading />
     );
   }
 }
-
 export default MovieList;
