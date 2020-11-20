@@ -26,6 +26,10 @@ class MovieDetails extends Component {
     this.fetchData();
   }
 
+  async deleteMovie(id) {
+    return await movieAPI.deleteMovie(id);
+  }
+
   renderData() {
     const { movieInfos, id } = this.state;
     return (
@@ -38,6 +42,7 @@ class MovieDetails extends Component {
         <p>{`Rating: ${movieInfos.rating}`}</p>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
       </div>
     );
   }
@@ -45,8 +50,6 @@ class MovieDetails extends Component {
   render() {
     const { loading } = this.state;
 
-    // Change the condition to check the state
-    // if (true) return <Loading />;
     return (
       <div data-testid="movie-details">
         {loading ? <Loading /> : this.renderData()}
