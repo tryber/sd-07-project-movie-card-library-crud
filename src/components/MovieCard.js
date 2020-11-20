@@ -5,10 +5,12 @@ import { Link } from 'react-router-dom';
 class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    const { title } = movie;
+    const { title, storyline } = movie;
     return (
       <div data-testid="movie-card">
         {title}
+        {storyline}
+        <Link to="/movies/:id">VER DETALHES</Link>
       </div>
     );
   }
@@ -17,7 +19,7 @@ class MovieCard extends React.Component {
 MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string,
-  }).isRequired
+  }).isRequired,
 };
 
 export default MovieCard;
