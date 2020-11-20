@@ -8,10 +8,17 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.fetch = this.fetch.bind(this);
+    this.delMovie = this.delMovie.bind(this);
     this.state = {
       movies: [],
       loading: true,
+      id: 0,
     };
+  }
+
+  delMovie() {
+    console.log(this.props.match.params.id);
+    movieAPI.deleteMovie(this.props.match.params.id);
   }
 
   componentDidMount() {
@@ -47,6 +54,8 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <div><Link to={edit}>EDITAR</Link></div>
         <div><Link to="/">VOLTAR</Link></div>
+        <div><Link to="/" id={this.props.match.params.id} onClick={ this.delMovie }>DELETAR</Link></div>
+
       </div>
     );
   }
