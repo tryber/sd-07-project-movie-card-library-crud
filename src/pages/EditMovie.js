@@ -17,9 +17,8 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-    const passTo = this.props.match.params;
-    const id = passTo.id;
-    this.update(id);
+    const passTo = this.props.match.params.id;
+    this.update(passTo);
   }
 
   async update(id) {
