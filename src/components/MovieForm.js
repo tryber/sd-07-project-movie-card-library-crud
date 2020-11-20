@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import './MovieForm.css';
+
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
@@ -78,6 +80,8 @@ class MovieForm extends React.Component {
           id="movie_storyline"
           value={storyline}
           onChange={(event) => this.updateMovie('storyline', event.target.value)}
+          rows="10"
+          cols="30"
         />
         <label htmlFor="movie_storyline">Sinopse</label>
       </div>
@@ -89,7 +93,6 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_genre">Gênero</label>
         <select
           id="movie_genre"
           value={genre}
@@ -100,6 +103,7 @@ class MovieForm extends React.Component {
           <option value="thriller">Suspense</option>
           <option value="fantasy">Fantasia</option>
         </select>
+        <label htmlFor="movie_genre">Gênero</label>
       </div>
     );
   }
@@ -140,7 +144,7 @@ class MovieForm extends React.Component {
   render() {
     return (
       <div>
-        <form>
+        <form className="movie-form">
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}
@@ -153,5 +157,17 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default MovieForm;
