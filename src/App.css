@@ -33,6 +33,18 @@ img {
   max-width: 355px;
 }
 
+.loading {
+  color: white;
+}
+
+.link {
+  color: white;
+  font-weight: 700;
+  margin: 2px;
+  text-decoration: none;
+  text-shadow: 1px 3px black;
+}
+
 .movie-card {
   align-items: center;
   background-color: rgb(82, 82, 82);

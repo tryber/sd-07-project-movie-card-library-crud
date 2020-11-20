@@ -9,8 +9,8 @@ function App() {
       <Switch>
         <Route component={MovieList} exact path="/" />
         <Route component={NewMovie} exact path="/movies/new" />
-        <Route component={MovieDetails} exact path="/movies/:id" />
         <Route component={EditMovie} exact path="/movies/:id/edit" />
+        <Route component={MovieDetails} exact path="/movies/:id" />
         <Route component={NotFound} />
       </Switch>
     </BrowserRouter>
