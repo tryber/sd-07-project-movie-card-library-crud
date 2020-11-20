@@ -175,7 +175,7 @@ MovieForm.defaultProps = {
     rating: 0,
     imagePath: '',
     genre: '',
-  }
+  },
 };
 
 export default MovieForm;
