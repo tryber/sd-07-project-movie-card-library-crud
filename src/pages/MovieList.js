@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import { NewMovie, MovieDetails, EditMovie, MovieCard } from './index';
-// import * as movieAPI from '../services/movieAPI';
+import { NewMovie, MovieDetails, EditMovie } from './index';
+import { MovieCard, Loading } from '../components/index';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
@@ -9,14 +10,22 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
+  componentDidMount() { this.fetchMovies(); }
+
+  async fetchMovies() {
+    this.setState({
+      movies: await movieAPI
+        .getMovies().then((element) => element),
+      loading: false,
+    });
+  }
+
   render() {
-    const { movies } = this.state;
-
-      // Render Loading here if the request is still happening
-
+    const { movies, loading } = this.state;
     return (
       <div data-testid="movie-list">
         <Switch>
@@ -24,7 +33,11 @@ class MovieList extends Component {
           <Route path="/movies/:id/edit" component={EditMovie} />
           <Route path="/movies/:id" component={MovieDetails} />
         </Switch>
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        {
+          loading ? <Loading /> : movies.map((movie) =>
+            <MovieCard key={movie.title} movie={movie} />,
+          )
+        }
       </div>
     );
   }
