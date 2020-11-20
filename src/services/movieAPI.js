@@ -1,5 +1,6 @@
 import data from './movieData';
 
+
 localStorage.setItem('movies', JSON.stringify(data));
 
 const readMovies = () => JSON.parse(localStorage.getItem('movies'));
@@ -11,7 +12,7 @@ export const getMovies = () => (
     setTimeout(() => {
       const movies = readMovies();
       resolve(movies);
-    }, 2000);
+    }, 5000);
   })
 );
 

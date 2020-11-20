@@ -23,11 +23,11 @@ class MovieForm extends React.Component {
     return (
       <div>
         <input
-          placeholder="Insira o título"
           id="movie_title"
+          placeholder="Insira o título"
           type="text"
-          className="validate"
           value={title}
+          className="validate"
           onChange={(event) => this.updateMovie('title', event.target.value)}
         />
         <label htmlFor="movie_title">Título</label>
