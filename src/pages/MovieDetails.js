@@ -35,6 +35,7 @@ class MovieDetails extends Component {
 
   render() {
     const { title, storyline, imagePath, genre, rating, subtitle, isLoading } = this.state;
+    const { history } = this.props;
     if (isLoading) {
       return <Loading />;
     }
@@ -47,6 +48,10 @@ class MovieDetails extends Component {
           <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
+          <div className="movie-det-button">
+          <button className="det-button">VOLTAR</button>
+          <button className="det-button">EDITAR</button>
+        </div>
         </div>
       </div>);
   }

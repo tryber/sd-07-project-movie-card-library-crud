@@ -76,3 +76,18 @@ body {
   display: flex;
   justify-content: center;
 }
+.movie-det-button {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 20px;
+}
+.det-button {
+  color: rgb(238, 136, 77);
+  justify-content: flex-start;
+  font-size: 16px;
+  font-weight: 700;
+  margin: 10px;
+  padding: 3px 9px;
+}
