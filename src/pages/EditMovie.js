@@ -11,6 +11,7 @@ class EditMovie extends Component {
       shouldRedirect: false,
       movie: {},
     };
+    this.get = this.get.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
