@@ -3,3 +3,6 @@ body {
   box-sizing: border-box;
 }
 
+.image-movie {
+  width: 300px;
+}
