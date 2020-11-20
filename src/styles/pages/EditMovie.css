@@ -1,0 +1,16 @@
+.form-container {
+  background-color: gainsboro;
+  border-radius: 20px;
+  justify-content: center;
+  margin-top: 50px;
+  padding: 40px;
+}
+
+input, textarea {
+  margin: 3px;
+  width: 80%;
+}
+
+select, label {
+  margin: 3px;
+}

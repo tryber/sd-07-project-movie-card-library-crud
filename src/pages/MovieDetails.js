@@ -3,6 +3,7 @@ import propTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading, ShowDetails } from '../components/index';
 import '../styles/pages/MovieDetails.css';
+import '../App.css';
 
 class MovieDetails extends Component {
   constructor() {
@@ -16,11 +17,11 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    const { id } = this.props.match.params;
+    this.fetchMovie(id);
   }
 
-  async fetchMovie() {
-    const { id } = this.props.match.params;
+  async fetchMovie(id) {
     this.setState({ loading: true }, async () => {
       const movie = await movieAPI.getMovie(id);
       this.setState({
@@ -52,7 +53,7 @@ export default MovieDetails;
 MovieDetails.propTypes = {
   match: propTypes.shape({
     params: propTypes.shape({
-      id: propTypes.number.isRequired,
+      id: propTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
