@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -16,6 +15,10 @@ class MovieDetails extends Component {
       movie: {},
       deleteMovie: '',
     };
+  }
+
+  componentDidMount() {
+    this.fetchMovieRequest();
   }
 
   fetchMovieRequest() {
@@ -38,10 +41,6 @@ class MovieDetails extends Component {
     const { id } = this.props.match.params;
     const response = await movieAPI.deleteMovie(id);
     this.setState({ deleteMovie: response });
-  }
-
-  componentDidMount() {
-    this.fetchMovieRequest();
   }
 
   render() {

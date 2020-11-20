@@ -15,21 +15,23 @@ class MovieList extends Component {
     };
   }
 
-  fetchMoviesRequest() {
-    this.setState({
-      loading: true,
-    },
-    async () => {
-      const response = await movieAPI.getMovies();
-      this.setState((prevState) => ({
-        loading: false,
-        movies: [...prevState.movies, ...response],
-      }));
-    })
-  }
-
   componentDidMount() {
     this.fetchMoviesRequest();
+  }
+
+  fetchMoviesRequest() {
+    this.setState(
+      {
+        loading: true,
+      },
+      async () => {
+        const response = await movieAPI.getMovies();
+        this.setState((prevState) => ({
+          loading: false,
+          movies: [...prevState.movies, ...response],
+        }));
+      },
+    );
   }
 
   render() {
@@ -37,10 +39,12 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
-        {loading
-          ? <Loading />
-          : movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-          <Link to="/movies/new" >ADICIONAR CARTÃO</Link>
+        {loading ? (
+          <Loading />
+        ) : (
+          movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)
+        )}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
