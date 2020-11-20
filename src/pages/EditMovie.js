@@ -22,7 +22,7 @@ class EditMovie extends Component {
   fetchMovie() {
     this.setState({ status: true }, async () => {
       const { id } = this.props.match.params;
-      const data = await movieAPI.getMovie(parseFloat(id.substring(1)));
+      const data = await movieAPI.getMovie(id);
       this.setState({ movie: data, status: false });
     });
   }

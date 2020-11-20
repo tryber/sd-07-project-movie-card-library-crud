@@ -10,7 +10,6 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: false,
-      // movie: {},
     };
   }
 
@@ -22,6 +21,7 @@ class MovieDetails extends Component {
     const { id } = this.props.match.params;
     this.setState({ loading: true }, async () => {
       const data = await movieAPI.getMovie(id);
+      // console.log(data);
       this.setState({ movie: data, loading: false });
     });
   }
@@ -50,8 +50,8 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <div>
           <Link to={editar}>EDITAR</Link><br /><br />
-          <Link onClick={() => (movieAPI.deleteMovie(id))} to="/">DELETAR</Link>
-          <Link to="/">VOLTAR</Link>
+          <Link onClick={() => (movieAPI.deleteMovie(id))} to="/">DELETAR</Link> <br /><br />
+          <Link to="/">VOLTAR</Link><br /><br />
         </div>
       </div>
     );
