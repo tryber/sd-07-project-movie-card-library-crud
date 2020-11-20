@@ -31,10 +31,22 @@ body {
   border-radius: 3px;
   display: flex;
   flex-direction: column;
-  height: 400px;
+  height: 450px;
   margin: 25px;
   overflow: hidden;
-  width: 300px;
+  width: 400px;
+}
+
+.movie-card-details {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  margin: 25px;
+  overflow: hidden;
+  width: 900px;
 }
 
 .movie-card-image {
