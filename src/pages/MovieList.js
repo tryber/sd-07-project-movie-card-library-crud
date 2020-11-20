@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
-import { getMovies } from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
   constructor() {
@@ -17,6 +17,7 @@ class MovieList extends Component {
   }
 
   async fetchAPIMovie() {
+    const { getMovies } = movieAPI;
     this.setState(
       { loading: true },
       async () => {
