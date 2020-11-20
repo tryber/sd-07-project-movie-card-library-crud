@@ -3,3 +3,129 @@ body {
   box-sizing: border-box;
 }
 
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 15px 30px;
+}
+
+.movie-list > a {
+  align-items: center;
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 181, 87);
+  display: flex;
+  height: 25px;
+  margin: 15px 30px;
+  padding: 15px 30px;
+  text-decoration: none;
+  width: 340px;
+}
+
+.movie-card {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 620px;
+  width: 100%;
+}
+
+.movie-list > .movie-card {
+  margin: 15px 30px;
+  max-width: 400px;
+}
+
+.movie-card-header {
+  position: relative;
+}
+
+.movie-card-header img {
+  width: 100%;
+}
+
+.movie-card-header p {
+  bottom: 15px;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  left: 30px;
+  position: absolute;
+}
+
+.movie-card-content {
+  color: rgb(51, 51, 51);
+  flex: 1;
+  padding: 15px 30px;
+}
+
+.movie-card-actions {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  padding: 15px 30px;
+}
+
+.movie-card-actions a {
+  color: rgb(255, 181, 87);
+  font-size: 16px;
+  margin-right: 30px;
+  text-decoration: none;
+}
+
+.form-card {
+  background: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 620px;
+  padding: 15px 30px;
+  width: 100%;
+}
+
+.form-input-block {
+  display: flex;
+  margin-bottom: 30px;
+  position: relative;
+}
+
+.form-input-block input, .form-input-block select, .form-input-block textarea {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  border-radius: 4px;
+  height: 24px;
+  padding: 5px 15px;
+  width: 100%;
+}
+
+.form-input-block textarea {
+  height: 128px;
+  padding: 15px;
+  resize: none;
+}
+
+.form-input-block select {
+  height: 42px;
+}
+
+.form-input-block label {
+  background: white;
+  color: rgb(51, 51, 51);
+  font-size: 12px;
+  left: 15px;
+  padding: 0 5px;
+  position: absolute;
+  top: -6px;
+}
+
+.form-card button {
+  background: none;
+  border: 0;
+  color: rgb(255, 181, 87);
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
+  text-transform: uppercase;
+}

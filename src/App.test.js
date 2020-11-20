@@ -321,7 +321,7 @@ describe('Bônus: Adicione um link para deletar um cartão em MovieDetails', () 
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
       const deleteButton = await findByText('DELETAR')
-      expect(deleteButton.href).toBe('http://localhost/');
+      expect(delete Button.href).toBe('http://localhost/');
       unmount();
     }
   })
