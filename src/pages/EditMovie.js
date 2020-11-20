@@ -14,6 +14,7 @@ class EditMovie extends Component {
       status: '',
       shouldRedirect: false,
       movie: {},
+      updateMovie: '',
     };
   }
 
@@ -36,10 +37,11 @@ class EditMovie extends Component {
       status: 'loading',
     },
     async () => {
-      await movieAPI.updateMovie(updatedMovie);
+      const response = await movieAPI.updateMovie(updatedMovie);
       this.setState({
         status: 'loading',
         shouldRedirect: true,
+        updateMovie: response,
       })
     })
   }
