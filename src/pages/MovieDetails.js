@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
+import { Link } from 'react-router-dom';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -22,14 +24,14 @@ class MovieDetails extends Component {
     this.setState({ loading: true }, async () => {
       const pegamovie = await movieAPI.getMovies();
       const id = this.props.match.params.id;
-      const movie = pegamovie.find((movie) => movie.id === parseInt(id));
-      this.setState({ loading: false, movies: pegamovie, movie: movie });
+      const aMovie = pegamovie.find((getAMovie) => getAMovie.id === parseInt(id, 10));
+      this.setState({ loading: false, movies: pegamovie, movie: aMovie });
     });
   }
 
   render() {
     const { loading, movie } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
         {loading ? (
@@ -42,11 +44,24 @@ class MovieDetails extends Component {
             <p>{`Storyline: ${storyline}`}</p>
             <p>{`Genre: ${genre}`}</p>
             <p>{`Rating: ${rating}`}</p>
+            <div>
+              <Link className="link-movie-card" to={`/movies/${id}/edit`}>
+                EDITAR
+              </Link>
+              <Link className="link-movie-card" to="/">
+                VOLTAR
+              </Link>
+              <button className="link-movie-card" onClick={movieAPI.deleteMovie}>DELETAR</button>
+            </div>
           </div>
         )}
       </div>
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.array.isRequired,
+};
 
 export default MovieDetails;
