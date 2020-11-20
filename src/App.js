@@ -7,8 +7,8 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route pach="/movies/new" component={NewMovie} />
-        <Route pach="/movies/:id/edit" render={(props) => <EditMovie {...props} />} />
-        <Route pach="/movies/:id" render={(props) => <MovieDetails {...props} />} />
+        <Route pach="/movies/:id/edit" component={EditMovie} />
+        <Route pach="/movies/:id" component={MovieDetails} />
         <Route exact pach="/" component={MovieList} />
         <Route component={NotFound} />
       </Switch>

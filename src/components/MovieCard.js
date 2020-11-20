@@ -4,12 +4,31 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie: { id } } = this.props;
+    const {
+      id,
+      title,
+      subtitle,
+      storyline,
+      rating,
+      imagePath,
+      genre,
+    } = this.props.movie;
     return (
       <div data-testid="movie-card">
-        <p>{this.props.movie.title}</p>
-        <p>{this.props.movie.storyline}</p>
-        <Link to={`/movies/${id}`}>VER DETALHES</Link>
+        <div>
+          <img src={imagePath} alt={title} />
+        </div>
+        <div>
+          <h1>{title}</h1>
+          <h2>{subtitle}</h2>
+          <p>{storyline}</p>
+        </div>
+        <div>
+          <p>
+            {genre} <span>Rating: {rating}</span>
+          </p>
+        </div>
+        <Link to={`movies/${id}`}> VER DETALHES </Link>
       </div>
     );
   }

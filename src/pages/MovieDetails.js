@@ -1,39 +1,46 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
+
     this.state = {
-      movie: [],
       loading: true,
+      movie: '',
     };
+    this.renderMovie = this.renderMovie.bind(this);
+    this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchMovie();
+    this.fetchMovieDetails();
   }
 
-  async fetchMovie() {
-    const { id } = this.props.match.params;
-    const movie = await movieAPI.getMovie(id);
-    this.setState({
-      movie,
-      loading: false,
+  fetchMovieDetails() {
+    this.setState({ loading: true }, async () => {
+      const { id } = this.props.match.params;
+      const movie = await movieAPI.getMovie(id);
+      this.setState(() => ({
+        movie,
+        loading: false,
+      }));
     });
   }
 
-  render() {
+  deleteMovie() {
     const { id } = this.props.match.params;
-    if (this.state.loading) return <Loading />;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    movieAPI.deleteMovie(id);
+  }
 
+  renderMovie({ id, title, storyline, imagePath, genre, rating, subtitle }) {
     return (
-      <div data-testid="movie-details">
+      <div>
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
@@ -42,17 +49,24 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/" onClick={this.deleteMovie}>DELETAR</Link>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading, movie } = this.state;
+
+    return (
+      <div data-testid="movie-details">
+        <div>{loading ? <Loading /> : this.renderMovie(movie)}</div>
       </div>
     );
   }
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.number,
-    }),
-  }),
-}.isRequired;
+  match: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default MovieDetails;

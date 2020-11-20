@@ -1,18 +1,20 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.fetchMovie = this.fetchMovie.bind(this);
     this.state = {
       movie: {},
       loading: true,
       shouldRedirect: false,
     };
+    this.handleSubmit = this.handleSubmit.bind(this);
+
+    this.fetchMovie = this.fetchMovie.bind(this);
   }
 
   componentDidMount() {
@@ -20,30 +22,29 @@ class EditMovie extends Component {
   }
 
   async fetchMovie() {
-    const { id } = this.props.match.params;
-    const movie = await movieAPI.getMovie(id);
-    this.setState({
+    const movieId = this.props.match.params.id;
+    const movie = await movieAPI.getMovie(movieId);
+    this.setState(() => ({
       movie,
-      loading: false,
-    });
+      status: '',
+    }));
   }
 
   async handleSubmit(updatedMovie) {
-    const updateMovie = await movieAPI.updateMovie(updatedMovie);
-    if (updateMovie === 'OK') {
-      this.setState({
-        shouldRedirect: true,
-      });
-    }
+    movieAPI
+      .updateMovie(updatedMovie)
+      .then(() => this.setState({ shouldRedirect: true }));
   }
 
   render() {
-    console.log(this.state.movies);
+    const { status, shouldRedirect, movie } = this.state;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
 
-    const { loading, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect to="/" />;
-
-    if (loading) return <Loading />;
+    if (status === 'loading') {
+      return <Loading />;
+    }
 
     return (
       <div data-testid="edit-movie">
@@ -52,5 +53,9 @@ class EditMovie extends Component {
     );
   }
 }
+
+EditMovie.propTypes = {
+  match: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default EditMovie;
