@@ -1,6 +1,6 @@
 import { Switch, Route } from 'react-router-dom';
 import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from '../pages/index';
-import { Component } from 'react';
+import React, { Component } from 'react';
 
 class Content extends Component {
   render() {
