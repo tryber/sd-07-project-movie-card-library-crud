@@ -16,12 +16,12 @@ class EditMovie extends Component {
     // this.fetchMovie = this.fetchMovie.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
   async fetchMovie() {
     const requestMovie = await movieAPI.getMovie(this.props.match.params.id);
     if (requestMovie) this.setState({ movie: requestMovie, status: '' });
-  }
-  componentDidMount() {
-    this.fetchMovie();
   }
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie);
@@ -51,5 +51,5 @@ EditMovie.propTypes = {
       id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
-}
+};
 export default EditMovie;
