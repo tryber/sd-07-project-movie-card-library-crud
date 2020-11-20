@@ -57,3 +57,22 @@ body {
   justify-content: flex-end;
   padding: 12px 20px;
 }
+
+.movie-details {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 55%;
+  margin: 5px;
+  margin-top: 5%;
+  overflow: hidden;
+  width: 40%;
+}
+
+.movie-det {
+  align-items: flex-end;
+  display: flex;
+  justify-content: center;
+}
