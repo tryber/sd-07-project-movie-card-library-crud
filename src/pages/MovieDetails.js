@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -54,17 +53,5 @@ class MovieDetails extends Component {
     );
   }
 }
-
-MovieDetails.propTypes = {
-  movies: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    imagePath: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
-    genre: PropTypes.string.isRequired,
-  }).isRequired,
-  loading: PropTypes.bool.isRequired,
-};
 
 export default MovieDetails;
