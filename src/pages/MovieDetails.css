@@ -1,7 +1,7 @@
 .movie-card-details {
   background-color: white;
-  border-radius: 10px;
   border: 1px solid rgb(221, 218, 218);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   margin: 20px 30% 0;
@@ -9,8 +9,8 @@
 }
 
 .movie-card-details-image {
-  border-radius: 10px;
   border: 1px solid rgb(221, 218, 218);
+  border-radius: 10px;
 }
 
 .movie-card-details-body {
@@ -23,7 +23,7 @@
 }
 
 .movie-card-details-subtitle {
-  color: rgb(128, 128, 128);
+  color: gray;
   font-weight: 700;
 }
 

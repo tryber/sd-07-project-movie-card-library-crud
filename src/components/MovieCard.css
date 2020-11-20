@@ -46,8 +46,7 @@
   display: flex;
   font-weight: 700;
   justify-content: center;
-  margin-bottom: 5px;
-  margin: auto;
+  margin: 5px auto;
   padding: 15px 20px;
   text-decoration: none;
 }
