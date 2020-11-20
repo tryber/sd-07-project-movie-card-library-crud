@@ -3,3 +3,6 @@ body {
   box-sizing: border-box;
 }
 
+.space-between-buttons {
+  margin-right: 10px;
+}
