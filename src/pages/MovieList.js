@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 
@@ -31,10 +32,14 @@ class MovieList extends Component {
     // Render Loading here if the request is still happening
     if (loading) return <Loading />;
     return (
-      <div data-testid="movie-list">
+      <div data-testid="movie-list" className="movie-list">
         {movies.map((movie) => (
           <MovieCard key={movie.title} movie={movie} />
         ))}
+
+        <div className="div-link">
+          <Link to="/movies/new" className="movie-list-link" >ADICIONAR CARTÃO</Link>
+        </div>
       </div>
     );
   }

@@ -7,10 +7,13 @@ import {
   NewMovie,
   NotFound,
 } from './pages/index';
+import './App.css';
+import { Header } from './components/index';
 
 function App() {
   return (
     <BrowserRouter>
+      <Header />
       <Switch>
         <Route exact path="/" component={MovieList} />
         <Route path="/movies/:id/edit" component={EditMovie} />
