@@ -35,7 +35,7 @@ MovieCard.PropTypes = {
     genre: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     imagePath: PropTypes.string.isRequired,
-  })
-}
+  }),
+};
 
 export default MovieCard;
