@@ -12,13 +12,15 @@ class MovieDetails extends Component {
       loading: true,
     };
   }
-
   componentDidMount() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id).then((result) => {
       const movie = { ...result };
       this.setState({ movie, loading: false });
     });
+  }
+  deleteMovie() {
+    movieAPI.deleteMovie(this.props.match.params.id);
   }
   render() {
     // Change the condition to check the state
@@ -42,6 +44,9 @@ class MovieDetails extends Component {
         </Link>
         <Link to="/">
           VOLTAR
+        </Link>
+        <Link to="/" onClick={() => this.deleteMovie()}>
+          DELETAR
         </Link>
       </div>
     );
