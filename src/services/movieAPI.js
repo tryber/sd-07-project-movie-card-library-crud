@@ -24,7 +24,6 @@ export const getMovie = (movieId) => {
     }, 2000);
   });
 };
-console.log(getMovie(1))
 
 export const updateMovie = (updatedMovie) => {
   const movies = readMovies().map((movie) => {
