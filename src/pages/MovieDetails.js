@@ -13,17 +13,17 @@ class MovieDetails extends Component {
     };
   }
 
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const fetchedMovie = await movieAPI.getMovie(id);
+    this.updateState(fetchedMovie);
+  }
+
   updateState(movie) {
     this.setState({
       movie,
       loading: false,
     });
-  }
-
-  async componentDidMount() {
-    const { id } = this.props.match.params;
-    const fetchedMovie = await movieAPI.getMovie(id);
-    this.updateState(fetchedMovie);
   }
 
   render() {
@@ -42,6 +42,14 @@ class MovieDetails extends Component {
         </div>
     );
   }
+}
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number.isRequired
+    })
+  }),
 }
 
 export default MovieDetails;
