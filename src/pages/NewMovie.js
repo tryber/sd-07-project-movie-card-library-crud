@@ -9,22 +9,22 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       redirect: false,
-    }
+    };
   }
 
   async handleSubmit(newMovie) {
     await movieAPI.createMovie(newMovie);
-    this.setState({redirect: true});
-    return <Redirect to="/" />
+    this.setState({ redirect: true });
+    return <Redirect to="/" />;
   }
 
   render() {
     return (
       (this.state.redirect)
         ? <Redirect to="/" />
-        :<div data-testid="new-movie">
+        : <div data-testid="new-movie">
           <MovieForm onSubmit={this.handleSubmit} />
-         </div>
+        </div>
     );
   }
 }
