@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import * as movieAPI from '../services/movieAPI';
 import { Link } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -26,7 +26,7 @@ class MovieDetails extends Component {
       const id = this.props.match.params.id;
       const aMovie = pegamovie.find((getAMovie) => getAMovie.id === parseInt(id, 10));
       this.setState({ loading: false, movies: pegamovie, movie: aMovie });
-    });
+    });g
   }
 
   render() {
