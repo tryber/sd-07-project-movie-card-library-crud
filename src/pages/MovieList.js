@@ -24,6 +24,7 @@ class MovieList extends Component {
   }
   render() {
     const { movies, loading } = this.state;
+
     let option;
     if (loading) {
       option = <p>Carregando...</p>;

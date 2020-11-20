@@ -7,7 +7,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-      movie: {},
+      movie: { title: "", id: 0, storyline: "", imagePath: "", genre: "", rating: 0, subtitle: "" },
       loading: false,
     };
   }
@@ -39,8 +39,11 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={editar}>Editar</Link><br />
-        <Link to="/">VOLTAR</Link>
+        <div>
+          <Link to={editar}>Editar</Link><br /><br />
+          <Link to="/">VOLTAR</Link>
+        </div>
+
       </div>
     );
   }
