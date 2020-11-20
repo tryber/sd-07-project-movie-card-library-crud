@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { getMovie } from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -35,7 +35,7 @@ class MovieDetails extends Component {
 
   render() {
     const { title, storyline, imagePath, genre, rating, subtitle, isLoading } = this.state;
-    const { history } = this.props;
+    const { id } = this.props.match.params;
     if (isLoading) {
       return <Loading />;
     }
@@ -49,9 +49,9 @@ class MovieDetails extends Component {
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
           <div className="movie-det-button">
-          <button className="det-button">VOLTAR</button>
-          <button className="det-button">EDITAR</button>
-        </div>
+            <Link className="det-button" to="/">VOLTAR</Link>
+            <Link className="det-button" to={`/movies/${id}/edit`}>EDITAR</Link>
+          </div>
         </div>
       </div>);
   }
