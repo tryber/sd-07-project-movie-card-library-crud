@@ -2,9 +2,11 @@ import React from 'react';
 
 class MovieCard extends React.Component {
   render() {
+    const { movie } = this.props;
+    const { title } = movie;
     return (
       <div data-testid="movie-card">
-        Movie Card
+        {title}
       </div>
     );
   }
