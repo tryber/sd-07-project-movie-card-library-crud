@@ -14,7 +14,6 @@ class MovieDetails extends Component {
     this.state = {
       loading: true,
       movie: {},
-      deleteMovie: '',
     };
   }
 
@@ -40,8 +39,7 @@ class MovieDetails extends Component {
 
   async fetchDeleteMovie() {
     const { id } = this.props.match.params;
-    const response = await movieAPI.deleteMovie(id);
-    this.setState({ deleteMovie: response });
+    await movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -78,7 +76,7 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }).isRequired,
   }).isRequired,
 };
@@ -86,7 +84,7 @@ MovieDetails.propTypes = {
 MovieDetails.defaultProps = {
   match: {
     params: {
-      id: 0,
+      id: "",
     },
   },
 };
