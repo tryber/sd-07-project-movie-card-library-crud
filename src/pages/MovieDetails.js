@@ -36,7 +36,7 @@ class MovieDetails extends Component {
 
   deleteMovie() {
     const { id } = this.props.match.params;
-    movieAPI.deleteMovie(id)
+    movieAPI.deleteMovie(id);
   }
 
   render() {
