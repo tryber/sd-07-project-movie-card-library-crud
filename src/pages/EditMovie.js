@@ -11,7 +11,7 @@ class EditMovie extends Component {
       status: 'done',
       shouldRedirect: false,
       movie: '',
-      id: this.props.match.params.id
+      id: this.props.match.params.id,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
