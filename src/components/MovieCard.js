@@ -16,7 +16,7 @@ class MovieCard extends React.Component {
           <h5 className="movie-card-subtitle">{subtitle}</h5>
           <p className="movie-card-storyline">{storyline}</p>
         </div>
-        <Link className="link-movie-card" to="/movies/:id">VER DETALHES</Link>
+        <Link className="link-movie-card" to={`/movies/${title}`}> VER DETALHES</Link>
       </div>
     );
   }
