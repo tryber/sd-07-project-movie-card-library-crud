@@ -3,3 +3,213 @@ body {
   box-sizing: border-box;
 }
 
+.loading {
+  align-items: center;
+  background-color: rgb(190, 187, 177);
+  display: flex;
+  flex-direction: column;
+  font-family: Franklin Gothic Medium , Arial Narrow , Arial , sans-serif;
+  font-size: 35px;
+  height: 470px;
+  justify-content: center;
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 48px 30px;
+}
+
+.movie-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  margin: 5px;
+  overflow: hidden;
+  width: 300px;
+}
+
+.movie-card-image {
+  width: 100%;
+}
+
+.movie-card-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.movie-card-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.movie-card-subtitle {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.movie-card-storyline {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.movie-card-genre {
+  font-size: 18px;
+  text-align: justify;
+}
+
+.movie-card-rating {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  font-size: 20px;
+  padding: 12px 20px;
+  text-align: end;
+}
+
+.movie-card-header {
+  align-items: center;
+  background-color: #343a40;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.page-title {
+  color: #f8f9fa;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.movie-card-link {
+  text-decoration: none;
+}
+
+.movie-card-link:hover {
+  color: rgb(45, 51, 51);
+}
+
+.movie-card-link:visited {
+  color: rgb(78, 82, 82);
+}
+
+.movie-list-link {
+  background: rgb(39, 122, 39);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  font-size: 1.5em;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0.2em 0.6em;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.movie-list-link:hover {
+  background: rgb(16, 85, 39);
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+
+.div-link {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+}
+
+.movie-details {
+  background-color: rgb(230, 217, 217);
+  border: 1px solid rgba(63, 39, 39, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  height: 600px;
+  margin: 5px;
+  overflow: hidden;
+  padding: 20px;
+  width: 400px;
+}
+
+.links-movie-details {
+  display: flex;
+  justify-content: space-around;
+}
+
+.link-deletar {
+  background: rgb(184, 41, 41);
+}
+
+.link-deletar:hover {
+  background-color: rgb(133, 7, 7);
+}
+
+.link-voltar {
+  background: rgb(14, 68, 65);
+}
+
+.link-voltar:hover {
+  background-color: rgb(27, 116, 96);
+}
+
+.form {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.form button {
+  background: rgba(207, 189, 28, 0.952);
+  border: 0;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  color: white;
+  cursor: pointer;
+  font-size: 1.5em;
+  justify-content: center;
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 0.2em 0.6em;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+.form button:hover {
+  background: rgb(189, 165, 29);
+  box-shadow: inset 2px 2px 2px rgba(0, 0, 0, 0.2);
+  text-shadow: none;
+}
+
+.form label {
+  color: #666;
+  display: block;
+  left: 19px;
+  margin-bottom: 0.2em;
+  margin-right: 5px;
+  padding: 5px;
+  width: 200px;
+}
+
+.form input, textarea {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+  display: block;
+  padding: 0.2em;
+  width: 300px;
+}
+
+.form textarea {
+  height: 100px;
+}
+
+.link-header {
+  text-decoration: none;
+}
