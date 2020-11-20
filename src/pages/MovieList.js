@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
 import { Link } from 'react-router-dom';
 
+import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
 
@@ -17,18 +17,18 @@ class MovieList extends Component {
     }
   }
 
+  componentDidMount() {
+    this.callAPI();
+  }
+
   callAPI() {
     this.setState({ loading: true }, async () => {
       const movies = await movieAPI.getMovies();
-      this.setState(( previousState ) => ({
+      this.setState((previousState) => ({
         loading: false,
         movies: [...previousState.movies, ...movies],
       }));
     });
-  }
-
-  componentDidMount() {
-    this.callAPI();
   }
 
   render() {

@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
@@ -14,6 +14,10 @@ class MovieDetails extends Component {
       loading: true,
       movie: {},
     };
+  }
+
+  componentDidMount() {
+    this.callAPI();
   }
 
   callAPI() {
@@ -28,17 +32,11 @@ class MovieDetails extends Component {
     });
   }
 
-  componentDidMount() {
-    this.callAPI();
-  }
-
-
   render() {
-    
     const { loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
-    if (loading) return <Loading />
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
