@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import propTypes from 'prop-types';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
-import { Loading, ShowDetails } from '../components/index';
+import { Loading } from '../components/index';
 import '../styles/pages/MovieDetails.css';
 import '../App.css';
 
@@ -11,14 +12,24 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
+      shouldRedirect: false,
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
     this.fetchMovie(id);
+  }
+
+
+  async handleDelete() {
+    const { id } = this.props.match.params;
+    this.setState({ loading: true });
+    await movieAPI.deleteMovie(id);
+    this.setState({ loading: false, shouldRedirect: true });
   }
 
   async fetchMovie(id) {
@@ -32,17 +43,52 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading } = this.state;
+    const {
+      id,
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+    } = this.state.movie;
+
+    const { shouldRedirect, loading } = this.state;
+    if (loading) {
+      return (
+        <div>
+          <Loading />
+        </div>
+      );
+    }
+
+    if (shouldRedirect) return <Redirect to="/" />;
 
     return (
-      <div>
-        {loading ? (
-          <Loading />
-        ) : (
-          <div>
-            <ShowDetails movie={movie} />
-          </div>
-        )}
+      <div className="div-details-container" data-testid="movie-details">
+        <div className="image-container">
+          <img
+            className="movie-details-image"
+            alt="Movie Cover"
+            src={`../${imagePath}`}
+          />
+        </div>
+        <h2>{`Title: ${title}`}</h2>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p className="movie-details-rating">{`Rating: ${rating}`}</p>
+        <div className="button-links-container">
+          <Link className="button-link" to="/">
+            VOLTAR
+          </Link>
+          <Link className="button-link" to={`${id}/edit`}>
+            EDITAR
+          </Link>
+          <Link className="button-link" to="/" onClick={this.handleDelete}>
+            DELETAR
+          </Link>
+        </div>
       </div>
     );
   }
