@@ -18,10 +18,10 @@ class MovieList extends Component {
 
   callAPI() {
     this.setState({ loading: true }, async () => {
-      const movie = await movieAPI.getMovies()
+      const movies = await movieAPI.getMovies();
       this.setState(( previousState ) => ({
         loading: false,
-        movies: [...previousState.movies, ...movie]
+        movies: [...previousState.movies, ...movies],
       }));
     });
   }
