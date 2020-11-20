@@ -25,9 +25,10 @@ class MovieForm extends React.Component {
         <input
           placeholder="Insira o título"
           id="movie_title"
+          name="title"
           type="text"
-          className="validate"
           value={title}
+          className="validate"
           onChange={(event) => this.updateMovie('title', event.target.value)}
         />
         <label htmlFor="movie_title">Título</label>
@@ -43,6 +44,7 @@ class MovieForm extends React.Component {
         <input
           placeholder="Insira o subtítulo"
           id="movie_subtitle"
+          name="subtitle"
           type="text"
           value={subtitle}
           onChange={(event) => this.updateMovie('subtitle', event.target.value)}
@@ -60,6 +62,7 @@ class MovieForm extends React.Component {
         <input
           placeholder="Insira o caminho da imagem"
           id="movie_image"
+          name="imagePath"
           type="text"
           value={imagePath}
           onChange={(event) => this.updateMovie('imagePath', event.target.value)}
@@ -76,6 +79,7 @@ class MovieForm extends React.Component {
       <div>
         <textarea
           id="movie_storyline"
+          name="storyline"
           value={storyline}
           onChange={(event) => this.updateMovie('storyline', event.target.value)}
         />
@@ -92,6 +96,7 @@ class MovieForm extends React.Component {
         <label htmlFor="movie_genre">Gênero</label>
         <select
           id="movie_genre"
+          name="genre"
           value={genre}
           onChange={(event) => this.updateMovie('genre', event.target.value)}
         >
@@ -112,6 +117,7 @@ class MovieForm extends React.Component {
         <input
           placeholder="Dê a avaliação do filme"
           id="movie_rating"
+          name="rating"
           type="number"
           step={0.1}
           min={0}
@@ -155,3 +161,27 @@ class MovieForm extends React.Component {
 }
 
 export default MovieForm;
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+  }),
+  onSubmit: PropTypes.func.isRequired,
+};
+
+
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    subtitle: '',
+    storyline: '',
+    rating: 0,
+    imagePath: '',
+    genre: '',
+  },
+};
