@@ -10,6 +10,17 @@ body {
   color: coral;
   font-size: 14px;
   font-weight: 700;
+  text-align: center;
+}
+
+.button-edit {
+  background-color: white;
+  border: none;
+  color: coral;
+  font-size: 14px;
+  font-weight: 700;
+  margin: 5px;
+  text-align: center;
 }
 
 .button-showDetails:hover {

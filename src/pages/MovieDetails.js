@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor(props) {
-    super(props); 
+    super(props);
 
     this.movieById = this.movieById.bind(this);
     this.showMovie = this.showMovie.bind(this);
@@ -33,16 +35,24 @@ class MovieDetails extends Component {
   }
 
   showMovie() {
-    const movie = this.state.movie 
-    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const movie = this.state.movie;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <h2>{`Title: ${title}`}</h2>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+        <div>
+          <img alt="Movie Cover" src={`../${imagePath}`} />
+          <h2>{`Title: ${title}`}</h2>
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
+        </div>
+        <Link className="button-edit" to={`/movies/${id}/edit`}>
+          EDIT
+        </Link>
+        <Link className="button-edit" to="/">
+          DELETE
+        </Link>
       </div>
     );
   }
@@ -51,5 +61,13 @@ class MovieDetails extends Component {
     return (this.state.loading ? <Loading /> : this.showMovie());
   }
 }
+
+MovieDetails.propTypes = {
+  match: Proptypes.shape({
+    params: Proptypes.shape({
+      id: Proptypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
