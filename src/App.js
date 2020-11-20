@@ -18,7 +18,7 @@ function App() {
         <Route exact path="/" component={MovieList} />
         <Route component={NotFound} />
       </Switch>
-      <Link to="/movies/new">ADICIONAR CARTAO</Link>
+      <Link to="/movies/new">ADICIONAR CARTÃO</Link>
     </BrowserRouter>
   );
 }

@@ -8,8 +8,10 @@ class MovieCard extends React.Component {
     return (
       <div data-testid="movie-card">
         Movie Card
-        <p>Título: {this.props.movie.title}</p>
-        <p>Sinopse: {this.props.movie.storyline}</p>
+        <h2>TÍTULO:</h2>
+        <p>{this.props.movie.title}</p>
+        <h2>Sinopse:</h2>
+        <p>{this.props.movie.storyline}</p>
         <Link to={link}>VER DETALHES</Link>
       </div>
     );

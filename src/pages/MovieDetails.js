@@ -8,7 +8,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-      movie: { title: '', id: 0, storyline: '', imagePath: '', genre: '', rating: 0, subtitle: '' },
+      movie: {},
       loading: false,
       // movie: {},
     };
@@ -39,7 +39,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     const { title, id, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
-    const editar = `/movies/:${id}/edit`;
+    const editar = `/movies/${id}/edit`;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
