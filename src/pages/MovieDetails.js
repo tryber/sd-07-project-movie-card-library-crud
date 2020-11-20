@@ -72,12 +72,4 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.propTypes = {
-  id: PropTypes.string.isRequired,
-}
-
-MovieDetails.defaultProps = {
-  id: "",
-}
-
 export default MovieDetails;

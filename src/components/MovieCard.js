@@ -30,7 +30,7 @@ MovieCard.propTypes = {
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
   }).isRequired,
 };
 
@@ -41,7 +41,7 @@ MovieCard.defaultProps = {
     subtitle: "",
     storyline: "",
     rating: 0,
-    id: "",
+    id: 0,
   },
 };
 
