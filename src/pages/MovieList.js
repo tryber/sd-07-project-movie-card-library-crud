@@ -15,17 +15,16 @@ class MovieList extends Component {
     }
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   fetchMovie() {
     this.setState({ loading: true }, async () => {
       const data = await getMovies();
       this.setState({ movies: data, loading: false })
     })
   }
-
-  componentDidMount() {
-    this.fetchMovie();
-  }
-
   render() {
     const { movies, loading } = this.state;
     // Render Loading here if the request is still happening
