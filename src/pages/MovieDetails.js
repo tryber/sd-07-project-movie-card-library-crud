@@ -37,7 +37,7 @@ class MovieDetails extends Component {
       rating,
       subtitle,
     } = this.state.movie;
-    //<Link to={`/movies/${this.state.movie.id}/edit`}>EDITAR</Link>
+    // <Link to={`/movies/${this.state.movie.id}/edit`}>EDITAR</Link>
     // aqui vai ser direcionado para o MovirForm
 
     return this.state.loading ? (

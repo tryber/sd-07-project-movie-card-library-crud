@@ -18,7 +18,7 @@ class EditMovie extends Component {
     // essa pagina redireciona os dados direto para o forms
     // os dados seroa  do filme capturado pelo id
 
-    //é renderizado primeiro o loading depois o DiMount
+    // é renderizado primeiro o loading depois o DiMount
     // ai eu capturo o id que foi carregado do MovieDetails
     // Jogo o id na getMovie , capturo o filme
     // renderizo o forms e depois de preenchido e submetido eu chamo a handleSubmit
