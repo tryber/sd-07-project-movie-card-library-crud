@@ -1,25 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
+
+import { Wrapper } from '../styles/MovieList';
 import Button from '../styles/Button';
-
-const Wrapper = styled.div`
-  align-items: center;
-  background-color: #55efc4;
-  display: flex;
-  flex-direction: column;
-  height: 100vh;
-  padding: 20px;
-
-  & ${Button} {
-    align-self: flex-end;
-  }
-`;
 
 class MovieList extends Component {
   constructor() {

@@ -1,16 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import styled from 'styled-components';
 
 import Button from '../styles/Button';
 
-const MovieCardWrapper = styled.div`
-  background-color: #74b9ff;
-  border-radius: 8px;
-  padding: 8px 0;
-  margin: 15px 0;
-`;
+import { MovieCardWrapper } from '../styles/MovieCard';
 
 class MovieCard extends React.Component {
   render() {

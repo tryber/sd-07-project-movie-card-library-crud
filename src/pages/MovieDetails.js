@@ -1,36 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 import Button from '../styles/Button';
+import { MovieDetailsWrapper, MovieInfoWrapper } from '../styles/MovieDetails';
 
-const MovieDetailsWrapper = styled.div`
-  align-items: center;
-  background-color: #55efc4;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-
-  & ${'img'} {
-    border-radius: 12px;
-  }
-`;
-
-const MovieInfoWrapper = styled.div`
-  background-color: #0984e3;
-  border-radius: 8px;
-  margin: 15px 0;
-  padding: 8px 0;
-
-  & ${'h1'} {
-    color: white;
-    font-size: 18px;
-  }
-`;
 class MovieDetails extends Component {
   constructor() {
     super();

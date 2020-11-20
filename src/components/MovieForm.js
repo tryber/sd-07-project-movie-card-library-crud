@@ -1,53 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 
 import Button from '../styles/Button';
+import { MovieFormWrapper, FormWrapper, FormLine } from '../styles/MovieForm';
 
-const MovieFormWrapper = styled.div`
-  align-items: flex-start;
-  background-color: #55efc4;
-  display: flex;
-  height: 100vh;
-  justify-content: center;
-  padding-top: 30px;
-
-  & ${Button} {
-    align-self: center;
-    background-color: #55efc4;
-    font-family: Ubuntu, sans-serif;
-    font-size: 18px;
-  }
-`;
-
-const FormWrapper = styled.form`
-  background-color: #0984e3;
-  border-radius: 8px;
-  padding: 20px;
-  width: 70vw;
-`;
-
-const FormLine = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 10px 0;
-  
-  & ${'label'} {
-    color: white;
-    font-size: 18px;
-    margin: 5px 0;
-  }
-
-  & ${'input, textarea, select'} {
-    border-style: none;
-    border-radius: 5px;
-    font-size: 16px;
-    font-family: Ubuntu, sans-serif;
-    outline-color: #55efc4;
-    outline-width: 3px;
-    padding: 8px;
-  }
-`;
 class MovieForm extends React.Component {
   constructor(props) {
     super(props);
@@ -200,6 +156,8 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.defaultProps = { movie: PropTypes.object };
 
 MovieForm.propTypes = {
   movie: PropTypes.shape({
