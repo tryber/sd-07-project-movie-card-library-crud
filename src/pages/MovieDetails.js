@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
@@ -9,6 +9,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.get = this.get.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       movie: {},
       loading: false,
@@ -25,7 +26,7 @@ class MovieDetails extends Component {
     this.setState({ movie: movies, loading: true });
   }
 
-  async deleteMovie(movieId){
+  async deleteMovie(movieId) {
     await movieAPI.deleteMovie(movieId);
   }
 
