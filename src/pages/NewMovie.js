@@ -8,8 +8,8 @@ class NewMovie extends Component {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
-      criando: true
-    }
+      criando: true,
+    };
   }
 
   async handleSubmit(newMovie) {
@@ -22,7 +22,7 @@ class NewMovie extends Component {
       this.state.criando ?
         <div data-testid="new-movie">
           <MovieForm onSubmit={this.handleSubmit} />
-      </div> : <Redirect to="/" />
+        </div> : <Redirect to="/" />
     );
   }
 }
