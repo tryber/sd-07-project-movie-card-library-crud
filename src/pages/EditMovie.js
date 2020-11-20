@@ -11,7 +11,7 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  _isMounted;
+  _isMounted
 
   componentDidMount() {
     this._isMounted = true;
