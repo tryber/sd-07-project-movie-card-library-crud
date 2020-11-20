@@ -5,13 +5,13 @@ import { MovieForm, Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
+  _isMounted = false;
+  
   constructor(props) {
     super(props);
     this.state = { load: true, redirected: false, movie: {} };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  _isMounted
 
   componentDidMount() {
     this._isMounted = true;
