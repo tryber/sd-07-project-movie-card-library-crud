@@ -72,6 +72,5 @@ class MovieDetails extends Component {
       </div>
     )
 }}
-      //teste
 
 export default MovieDetails;
