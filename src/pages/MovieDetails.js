@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -19,7 +20,7 @@ class MovieDetails extends Component {
   async fetchMovie() {
     this.setState({ loading: true },
       async () => {
-        const movies = await movieAPI.getMovie();
+        const movies = await movieAPI.getMovie(this.props.match.params.id);
         this.setState({
           movies,
           loading: false,
@@ -28,7 +29,7 @@ class MovieDetails extends Component {
   }
   render() {
     // Change the condition to check the state
-    if (this.props.loading) return <Loading />;
+    if (this.state.loading) return <Loading />;
 
     const { title,
             storyline,
@@ -36,16 +37,19 @@ class MovieDetails extends Component {
             genre,
             rating,
             subtitle,
-          } = this.props.movies;
+            id,
+          } = this.state.movies;
 
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Subtitle: ${title}`}</p>
+      <div className="movie-card" data-testid="movie-details">
+        <img className="movie-card-image" alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to="/"><button>VOLTAR</button></Link>
+        <Link to={`/movies/${id}/edit`}><button>EDITAR</button></Link>
       </div>
     );
   }
