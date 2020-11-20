@@ -6,7 +6,7 @@ class NotFound extends Component {
   render() {
     return (
       <div>
-        <img className='notFoundImage' src={notFound} alt="Página não encontrada" />
+        <img className="notFoundImage" src={notFound} alt="Página não encontrada" />
         <div data-testid="404-error">Página não encontrada</div>
       </div>
     );
