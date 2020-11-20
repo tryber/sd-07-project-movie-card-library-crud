@@ -8,18 +8,23 @@ class MovieList extends Component {
   constructor() {
     super();
 
+    this.updateState = this.updateState.bind(this);
     this.state = {
       movies: [],
       loading: true,
     };
   }
 
-  async componentDidMount() {
-    const fetchedMovieList = await movieAPI.getMovies();
+  updateState(movies) {
     this.setState({
-      movies: fetchedMovieList,
+      movies,
       loading: false,
     });
+  }
+
+  async componentDidMount() {
+    const fetchedMovieList = await movieAPI.getMovies();
+    this.updateState(fetchedMovieList);
   }
 
   render() {
@@ -29,7 +34,7 @@ class MovieList extends Component {
       <div data-testid="movie-list" className="movie-list">
         {(loading)
           ? <Loading />
-          :movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+          : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );
   }
