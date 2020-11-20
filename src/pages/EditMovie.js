@@ -18,6 +18,10 @@ class EditMovie extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchRequestMovie();
+  }
+
   fetchRequestMovie() {
     this.setState(
       {
@@ -48,10 +52,6 @@ class EditMovie extends Component {
         });
       },
     );
-  }
-
-  componentDidMount() {
-    this.fetchRequestMovie();
   }
 
   render() {
