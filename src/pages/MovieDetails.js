@@ -8,7 +8,6 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-
     this.state = {
       loading: true,
       movie: '',
@@ -17,11 +16,9 @@ class MovieDetails extends Component {
     this.fetchMovieDetails = this.fetchMovieDetails.bind(this);
     this.deleteMovie = this.deleteMovie.bind(this);
   }
-
   componentDidMount() {
     this.fetchMovieDetails();
   }
-
   fetchMovieDetails() {
     this.setState({ loading: true }, async () => {
       const { id } = this.props.match.params;
@@ -53,10 +50,8 @@ class MovieDetails extends Component {
       </div>
     );
   }
-
   render() {
     const { loading, movie } = this.state;
-
     return (
       <div data-testid="movie-details">
         <div>{loading ? <Loading /> : this.renderMovie(movie)}</div>
@@ -64,9 +59,7 @@ class MovieDetails extends Component {
     );
   }
 }
-
 MovieDetails.propTypes = {
   match: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
-
 export default MovieDetails;
