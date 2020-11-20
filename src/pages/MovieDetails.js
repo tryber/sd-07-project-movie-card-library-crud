@@ -14,16 +14,11 @@ class MovieDetails extends Component {
       loading: false,
     };
     this.getMovie = this.getMovie.bind(this);
-    // this.deletMovie = this.deletMovie.bind(this);
   }
 
   componentDidMount() {
     this.getMovie();
   }
-  // componentWillUnmount() {
-  //   this.deletMovie();
-  // }
-
 
   getMovie() {
     this.setState({ loading: true }, async () => {
@@ -33,13 +28,6 @@ class MovieDetails extends Component {
       this.setState({ loading: false, movies: pegamovie, movie: aMovie });
     });
   }
-
-  // deletMovie(idDelete) {
-  //   this.setState({ loading: true }, async () => {
-  //     const pegamovie = await movieAPI.deleteMovie(idDelete);
-  //     this.setState({ loading: false, movie: aMovie });
-  //   });
-  // }
 
   render() {
     const { loading, movie } = this.state;
