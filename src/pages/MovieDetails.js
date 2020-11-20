@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -15,6 +15,7 @@ class MovieDetails extends Component {
     };
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
@@ -26,6 +27,14 @@ class MovieDetails extends Component {
     const response = await movieAPI.getMovie(id);
     this.setState({
       movie: response,
+      loadingMsg: false,
+    });
+  }
+
+  async deleteMovie(id) {
+    this.setState({ loadingMsg: true });
+    await movieAPI.deleteMovie(id);
+    this.setState({
       loadingMsg: false,
     });
   }
@@ -43,22 +52,23 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <hr />
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
   }
 }
 
-MovieDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.object,
-  }),
-};
+// MovieDetails.propTypes = {
+//   match: PropTypes.shape({
+//     params: PropTypes.object,
+//   }),
+// };
 
-MovieDetails.defaultProps = {
-  match: PropTypes.shape({
-    params: {},
-  }),
-};
+// MovieDetails.defaultProps = {
+//   match: PropTypes.shape({
+//     params: {},
+//   }),
+// };
 
 export default MovieDetails;
