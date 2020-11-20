@@ -15,8 +15,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    movieAPI.getMovie(id).then((result) => {
+    movieAPI.getMovies().then((result) => {
       const movies = [...result];
       this.setState({ movies, loading: false });
     });
