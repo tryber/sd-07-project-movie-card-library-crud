@@ -32,7 +32,7 @@ class EditMovie extends Component {
     const movieUpdate = await movieAPI.updateMovie(updatedMovie);
     this.setState({
       movie: movieUpdate,
-      shouldRedirect: true
+      shouldRedirect: true,
     });
   }
 
