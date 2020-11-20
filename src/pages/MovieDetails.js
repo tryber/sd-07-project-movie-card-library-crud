@@ -50,9 +50,9 @@ class MovieDetails extends Component {
         <Link className="button-edit" to={`/movies/${id}/edit`}>
           EDITAR
         </Link>
-        <Redirect className="button-edit" to="/">
+        <Link className="button-edit" to="/">
           VOLTAR
-        </Redirect>
+        </Link>
         <Link className="button-edit" to="/">
           DELETE
         </Link>
