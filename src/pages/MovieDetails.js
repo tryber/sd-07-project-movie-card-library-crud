@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
-// import { Loading } from '../components';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -22,12 +22,20 @@ class MovieDetails extends Component {
     const { id } = this.props.match.params;
     this.setState({ loading: true }, async () => {
       const data = await movieAPI.getMovie(id);
-      console.log(data);
       this.setState({ movie: data, loading: false });
     });
   }
+  movieDelete(id) {
+    movieAPI.deleteMovie(id);
+  }
 
   render() {
+    const { loading } = this.state;
+    if (loading) {
+      return (
+        <Loading />
+      );
+    }
     // Change the condition to check the state
     const { title, id, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
@@ -41,7 +49,8 @@ class MovieDetails extends Component {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
         <div>
-          <Link to={editar}>Editar</Link><br /><br />
+          <Link to={editar}>EDITAR</Link><br /><br />
+          <Link onClick={() => (movieAPI.deleteMovie(id))} to="/">DELETAR</Link>
           <Link to="/">VOLTAR</Link>
         </div>
       </div>

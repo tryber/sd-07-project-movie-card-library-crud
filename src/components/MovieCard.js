@@ -22,9 +22,9 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     subtitle: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
-    rating: PropTypes.number.isRequired,
+    rating: PropTypes.string.isRequired,
     imagePath: PropTypes.string.isRequired,
-    bookmarked: PropTypes.bool.isRequired,
+    bookmarked: PropTypes.bool,
     genre: PropTypes.string.isRequired,
   }).isRequired,
 };
