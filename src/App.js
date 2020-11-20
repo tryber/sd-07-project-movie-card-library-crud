@@ -18,3 +18,5 @@ function App() {
 }
 
 export default App;
+
+// todo projeto baseado no plantão do Thay do dia 19/11/20 ás 13h
