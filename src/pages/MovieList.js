@@ -15,15 +15,15 @@ class MovieList extends Component {
     this.renderMovieList = this.renderMovieList.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovies();
+  }
+
   async fetchMovies() {
     const requestMovie = await movieAPI.getMovies();
     this.setState({
       movies: requestMovie,
     });
-  }
-
-  componentDidMount() {
-    this.fetchMovies();
   }
 
   renderMovieList() {
