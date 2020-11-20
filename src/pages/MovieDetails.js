@@ -46,9 +46,8 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     //console.log(movies);
-
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     const { loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
     return (
       <div data-testid="movie-details">
@@ -60,12 +59,9 @@ class MovieDetails extends Component {
           <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
-            <Link to="/"> 
-            VOLTAR |</Link>
-            <Link to={`/movies/${this.props.match.params.id}/edit`}> EDITAR | </Link>
-            <Link onClick={this.HandleDelete} to="/">
-              DELETAR
-            </Link>
+          <Link to={`/movies/${this.props.match.params.id}/edit`}>       EDITAR</Link>
+            <Link to="/" >VOLTAR</Link>
+            <Link onClick={this.HandleDelete} to="/">DELETAR</Link>
         </div>
         )
         }
