@@ -173,7 +173,7 @@ MovieForm.defaultProps = {
     imagePath: '',
     storyline: '',
     rating: 0,
-  }
-}
+  },
+};
 
 export default MovieForm;

@@ -19,7 +19,9 @@ class NewMovie extends Component {
   render() {
     const { redirected } = this.state;
 
-    if (redirected) return (<Redirect to="/" />);
+    if (redirected) {
+      return (<Redirect to="/" />);
+    }
 
     return (
       <div data-testid="new-movie">
