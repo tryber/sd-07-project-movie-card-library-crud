@@ -1,7 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 
-class MovieForm extends React.Component {
+class MovieForm extends Component {
   constructor(props) {
     super(props);
     this.state = { ...props.movie };
