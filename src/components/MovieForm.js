@@ -6,6 +6,8 @@ class MovieForm extends React.Component {
     super(props);
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateMovie = this.updateMovie.bind(this);
+
   }
 
   handleSubmit() {
@@ -15,8 +17,12 @@ class MovieForm extends React.Component {
 
   updateMovie(field, newValue) {
     this.setState({ [field]: newValue });
+    // essa função vai receber como primeiro parametro o nome 
+    // que ja é passado no callback e o valor que tambem ja é capturado 
+    // com event.target.value
   }
-
+  // aqui dentro todos os campos sao preenchidos e atualizados com a updateMovie
+  // depois  passados como props handleSubmit
   renderTitleInput() {
     const { title } = this.state;
 
@@ -154,4 +160,7 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  match: PropTypes.element.isRequired,
+};
 export default MovieForm;
