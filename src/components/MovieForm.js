@@ -21,7 +21,7 @@ class MovieForm extends React.Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div className="form-input-block">
         <input
           placeholder="Insira o título"
           id="movie_title"
@@ -39,7 +39,7 @@ class MovieForm extends React.Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div className="form-input-block">
         <input
           placeholder="Insira o subtítulo"
           id="movie_subtitle"
@@ -56,7 +56,7 @@ class MovieForm extends React.Component {
     const { imagePath } = this.state;
 
     return (
-      <div className="row">
+      <div className="form-input-block">
         <input
           placeholder="Insira o caminho da imagem"
           id="movie_image"
@@ -75,7 +75,7 @@ class MovieForm extends React.Component {
     const { storyline } = this.state;
 
     return (
-      <div>
+      <div className="form-input-block">
         <textarea
           id="movie_storyline"
           value={storyline}
@@ -92,7 +92,7 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
 
     return (
-      <div>
+      <div className="form-input-block">
         <label htmlFor="movie_genre">Gênero</label>
         <select
           id="movie_genre"
@@ -112,7 +112,7 @@ class MovieForm extends React.Component {
     const { rating } = this.state;
 
     return (
-      <div>
+      <div className="form-input-block">
         <input
           placeholder="Dê a avaliação do filme"
           id="movie_rating"
@@ -130,7 +130,7 @@ class MovieForm extends React.Component {
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="form-input-block">
         <button type="button" onClick={this.handleSubmit}>
           Submit
         </button>
@@ -140,7 +140,7 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-card">
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}

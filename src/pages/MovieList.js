@@ -21,13 +21,13 @@ class MovieList extends Component {
   render() {
     const { movies } = this.state;
 
+    if (movies.length === 0) {
+      return <Loading />;
+    }
+
     return (
-      <div data-testid="movie-list">
-        {movies.length ? (
-          movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)
-        ) : (
-          <Loading />
-        )}
+      <div data-testid="movie-list" className="movie-list">
+        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );

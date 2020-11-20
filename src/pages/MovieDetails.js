@@ -42,24 +42,20 @@ class MovieDetails extends Component {
     } = this.state.movie;
 
     return (
-      <div data-testid="movie-details">
-        <header>
+      <div data-testid="movie-details" className="movie-card">
+        <header className="movie-card-header">
           <img alt="Movie Cover" src={`../${imagePath}`} />
           <p>{title}</p>
         </header>
-        <main>
+        <main className="movie-card-content">
           <p>{`Subtitle: ${subtitle}`}</p>
           <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
         </main>
-        <footer>
-          <span>
-            <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          </span>
-          <span>
-            <Link to="/">VOLTAR</Link>
-          </span>
+        <footer className="movie-card-actions">
+          <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+          <Link to="/">VOLTAR</Link>
           <Link to="/" onClick={this.handleDelete}>
             DELETAR
           </Link>
