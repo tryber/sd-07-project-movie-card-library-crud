@@ -9,22 +9,30 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
+      loading: true,
     };
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((result) => this.setState({ movies: result }));
+    movieAPI.getMovie().then((result) => {
+      const movies = [...result];
+      this.setState({ movies, loading: false });
+    });
+  }
+
+  componentDidUpdate() {
+
   }
 
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
     // Render Loading here if the request is still happening
 
     return (
       <div data-testid="movie-list">
-        {movies.lenght > 0 ? movies.map((movie) =>
-          <MovieCard key={movie.title} movie={movie} />) : <Loading /> }
+        {loading ? <Loading /> : movies.map((movie) =>
+          <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );
   }
