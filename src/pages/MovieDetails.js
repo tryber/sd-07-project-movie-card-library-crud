@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -19,7 +19,7 @@ class MovieDetails extends Component {
     this.func(id);
   }
 
-    async func(id) {
+  async func(id) {
     const movies = await movieAPI.getMovie(id);
     this.setState({
       movie: movies,
