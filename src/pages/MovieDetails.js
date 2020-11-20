@@ -44,7 +44,6 @@ class MovieDetails extends Component {
           <Link to={editar}>Editar</Link><br /><br />
           <Link to="/">VOLTAR</Link>
         </div>
-
       </div>
     );
   }
