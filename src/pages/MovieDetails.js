@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-// import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+
+import './MovieDetails.css';
 
 class MovieDetails extends Component {
   constructor() {
@@ -25,15 +26,13 @@ class MovieDetails extends Component {
 
   async loadingMovie() {
     const { id } = this.props.match.params;
-    this.setState({ loading: true },
-      async () => {
-        const { getMovie } = movieAPI;
-        const movie = await getMovie(id);
-        this.setState({
-          movie,
-          loading: false,
-        });
-      });
+    const { getMovie } = movieAPI;
+    const movie = await getMovie(id);
+    
+    this.setState({
+      movie,
+      loading: false,
+    });
   }
 
   deleteMovie(id) {
@@ -46,8 +45,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
     if (this.state.loading) return <Loading />;
@@ -55,17 +52,20 @@ class MovieDetails extends Component {
     if (this.state.shouldRedirect) return <Redirect to="/" />;
 
     return (
-      <div data-testid="movie-details">
-        <h3>{`Title: ${title}`}</h3>
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <div>
-          <Link to={`/movies/${id}/edit`} >EDITAR</Link>
-          <Link to="/" >VOLTAR</Link>
+      <div data-testid="movie-details" className="movie-card-details">
+        <img className="movie-card-details-image" alt="Movie Cover" src={`../${imagePath}`} />
+        <h2 className="movie-card-details-title">{`${title}`}</h2>
+        <div className="movie-card-details-body">
+          <h3 className="movie-card-details-subtitle">{`${subtitle}`}</h3>
+          <p className="movie-card-details-storyline">{`${storyline}`}</p>
+          <p className="movie-card-details-genre">{`Genre: ${genre}`}</p>
+          <p className="movie-card-details-rating">{`Rating: ${rating}`}&#9733;</p>
+        </div>
+        <div className="movie-card-details-buttons">
+          <Link className="movie-card-details-button" to="/" >VOLTAR</Link>
+          <Link className="movie-card-details-button" to={`/movies/${id}/edit`} >EDITAR</Link>
           <Link
+            className="movie-card-details-button delete"
             to=""
             onClick={(event) => {
               event.preventDefault();
@@ -79,9 +79,5 @@ class MovieDetails extends Component {
     );
   }
 }
-
-// MovieDetails.propTypes = {
-//   match: PropTypes.object
-// };
 
 export default MovieDetails;

@@ -3,3 +3,23 @@ body {
   box-sizing: border-box;
 }
 
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 48px 30px;
+}
+
+.add-card {
+  align-items: center;
+  background-color: rgb(52, 199, 140);
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  font-weight: 700;
+  justify-content: center;
+  margin: 10px auto;
+  padding: 15px 20px;
+  text-decoration: none;
+  width: fit-content;
+}
