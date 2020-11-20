@@ -24,7 +24,6 @@ class EditMovie extends Component {
       console.log(parseFloat(id.substring(1)))
       console.log(this.props.match.params);
       const data = await movieAPI.getMovie(parseFloat(id.substring(1)));
-      const address = "/"
       this.setState({ movie: data, status: false });
     });
   }
@@ -34,9 +33,7 @@ class EditMovie extends Component {
       shouldRedirect: true,
     })
   }
-  // Ao ser montada, a página de edição do filme deve fazer uma requisição pra buscar o 
-  // filme que será editado e deve, ao ter seu formulário submetido, atualizar o filme e 
-  // redirecionar a página pra rota raíz.
+
   render() {
     const { status, shouldRedirect, movie } = this.state;
     console.log(this.state)
@@ -49,7 +46,7 @@ class EditMovie extends Component {
     if (status) {
       return (
         <Loading />
-      )// Loading()  
+      )
     }
 
     return (
