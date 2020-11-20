@@ -42,20 +42,20 @@ class MovieDetails extends Component {
           <Loading />
         ) : (
           <div>
-          <img alt="Movie Cover" src={`../${imagePath}`} />
-          <p>{`Title: ${title}`}</p>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
-          <Link className="edit-link" to={`/movies/${id}/edit`}>
-                EDITAR
-          </Link>
-          <Link className="back-link" to="/">
-                VOLTAR
-          </Link>
-          <Link onClick={() => movieAPI.deleteMovie(id)} to="/">DELETAR</Link>
-        </div>
+            <img alt="Movie Cover" src={`../${imagePath}`} />
+            <p>{`Title: ${title}`}</p>
+            <p>{`Subtitle: ${subtitle}`}</p>
+            <p>{`Storyline: ${storyline}`}</p>
+            <p>{`Genre: ${genre}`}</p>
+            <p>{`Rating: ${rating}`}</p>
+            <Link className="edit-link" to={`/movies/${id}/edit`}>
+                  EDITAR
+            </Link>
+            <Link className="back-link" to="/">
+                  VOLTAR
+            </Link>
+            <Link onClick={() => movieAPI.deleteMovie(id)} to="/">DELETAR</Link>
+          </div>
         )}
       </div>
     );
