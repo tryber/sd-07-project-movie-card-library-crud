@@ -3,3 +3,24 @@ body {
   box-sizing: border-box;
 }
 
+.movie-card {
+  border: solid 1px black;
+  margin: 5%;
+  width: 300px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+.movie-details {
+  border: solid 1px black;
+  margin: 5%;
+  width: 80%;
+}
+
+.links {
+  margin-left: 1%;
+  margin-right: 2%;
+}
