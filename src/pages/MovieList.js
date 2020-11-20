@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-
 import * as movieAPI from '../services/movieAPI';
+import Loading from '../components/Loading';
 
 class MovieList extends Component {
   constructor() {
@@ -9,7 +9,11 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-    }
+    };
+  }
+
+  componentDidMount() {
+    movieAPI.getMovies().then((result) => this.setState({ movies: result }));
   }
 
   render() {
@@ -19,7 +23,8 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        {movies.lenght > 0 ? movies.map((movie) =>
+          <MovieCard key={movie.title} movie={movie} />) : <Loading /> }
       </div>
     );
   }
