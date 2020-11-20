@@ -11,14 +11,23 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  _isMounted = false;
+
   componentDidMount() {
+    this._isMounted = true;
     this.fetchAPI();
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   async fetchAPI() {
     const { id } = this.props.match.params;
     const response = await movieAPI.getMovie(id);
-    this.setState({ movie: response, load: false });
+    if (this._isMounted) {
+      this.setState({ movie: response, load: false });
+    }
   }
 
   async handleSubmit(updatedMovie) {

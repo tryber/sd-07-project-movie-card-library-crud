@@ -30,13 +30,15 @@ class MovieDetails extends Component {
 
   render() {
     const { movie, load } = this.state;
-    if (load) return <Loading />;
+
+    if (load) return (<Loading />);
+    
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
+        <p>{`title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
@@ -52,9 +54,9 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }),
-  }),
-}.isRequired;
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
