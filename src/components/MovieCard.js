@@ -1,11 +1,11 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    const { title, subtitle, storyline, rating, imagePath } = movie;
-    console.log(this.props);
+    const { id, title, subtitle, storyline, rating, imagePath } = movie;
     return (
       <div className="movie-card" data-testid="movie-card">
         <img alt="Movie Cover" className="movie-card-image" src={imagePath} />
@@ -14,15 +14,14 @@ class MovieCard extends React.Component {
           <h5 className="movie-card-subtitle">{subtitle}</h5>
           <p className="movie-card-storyline">{storyline}</p>
         </div>
-        <button
-          className="button-showDetails"
-          onClick={() => this.props.history.push("/movies/:id")}
-        >
-          VER DETALHES
-        </button>
+        <Link to={`/movies/${id}`}>
+          <button className="button-showDetails">VER DETALHES</button>
+        </Link>
       </div>
     );
   }
 }
+
+MovieCard.propTypes = { movie: Proptypes.arrayOf(Proptypes.object).isRequired };
 
 export default MovieCard;
