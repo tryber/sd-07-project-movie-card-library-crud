@@ -8,30 +8,30 @@ class MovieDetails extends Component {
     super(props);
 
     this.state = {
-      id: this.props.match.params.id,
       movieInfos: {},
       loading: true,
     };
-  }
-
-  fetchData() {
-    const { id } = this.state;
-    this.setState({ loading: true }, async () => {
-      const requestMovie = await movieAPI.getMovie(id);
-      this.setState({ movieInfos: requestMovie, loading: false });
-    });
   }
 
   componentDidMount() {
     this.fetchData();
   }
 
-  async deleteMovie(id) {
-    return await movieAPI.deleteMovie(id);
+  fetchData() {
+    this.setState({ loading: true }, async () => {
+      const { match: { params: { id } } } = this.props;
+      const requestMovie = await movieAPI.getMovie(id);
+      this.setState({ movieInfos: requestMovie, loading: false, id });
+    });
+  }
+
+  deleteMovie(id) {
+    return movieAPI.deleteMovie(id);
   }
 
   renderData() {
     const { movieInfos, id } = this.state;
+
     return (
       <div>
         <img alt="Movie Cover" src={`../${movieInfos.imagePath}`} />

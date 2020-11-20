@@ -6,14 +6,23 @@ import * as movieAPI from '../services/movieAPI';
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       status: 'loading',
       shouldRedirect: false,
       movie: {},
-      id: this.props.match.params.id,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.getMovie();
+  }
+
+  async getMovie() {
+    const { match: { params: { id } } } = this.props;
+    const request = await movieAPI.getMovie(id);
+    this.setState({ movie: request, status: 'loaded' });
   }
 
   async handleSubmit(updatedMovie) {
@@ -21,18 +30,9 @@ class EditMovie extends Component {
     this.setState({ shouldRedirect: true });
   }
 
-  async getMovie() {
-    const request = await movieAPI.getMovie(this.state.id);
-    this.setState({ movie: request, status: 'loaded' });
-  }
-
-  componentDidMount() {
-    this.getMovie();
-  }
-
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    if (shouldRedirect) return <Redirect to="/"/>
+    if (shouldRedirect) return <Redirect to="/" />;
 
     if (status === 'loading') return <Loading />;
 
