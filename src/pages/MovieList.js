@@ -10,7 +10,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      loading: true,
+      loading: false,
     };
   }
 

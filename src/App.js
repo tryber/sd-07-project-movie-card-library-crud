@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import { EditMovie, MovieDetails, MovieList, NewMovie, NotFound } from './pages';
 
@@ -8,25 +8,19 @@ class App extends React.Component {
     super();
 
     this.state = {
-      movies: '',
+      title: '',
     };
   }
   render() {
     return (
       <BrowserRouter>
-        <div>
-          <Route
-            path="/movies/:id"
-            render={(props) => <MovieDetails {...props} movies={this.state.title} />}
-          />
-          <Route
-            path="/movies/:id/edit"
-            render={(props) => <EditMovie {...props} movies={this.state.movie} />}
-          />
+        <Switch>
+          <Route path="/movies/:id/edit" component={EditMovie} />
           <Route path="/movies/new" component={NewMovie} />
-          <Route path="/" component={MovieList} />
+          <Route path="/movies/:id" component={MovieDetails} />
+          <Route exact path="/" component={MovieList} />
           <Route component={NotFound} />
-        </div>
+        </Switch>
       </BrowserRouter>
     );
   }

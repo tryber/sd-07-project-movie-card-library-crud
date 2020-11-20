@@ -7,40 +7,38 @@ import { Loading } from '../components';
 
 
 class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
-
-    this.get = this.get.bind(this);
+  constructor() {
+    super();
 
     this.state = {
       movie: {},
-      loading: false,
+      loading: true,
     };
+
+    this.requestMovie = this.requestMovie.bind(this);
   }
 
   componentDidMount() {
-    const id = this.props.match.params.id;
-    this.get(id);
+    this.requestMovie();
   }
 
-  async get(id) {
-    this.setState(
-      { loading: true },
-      async () => {
-        const requestMovie = await movieAPI.getMovie(id);
-        this.setState({
-          loading: false,
-          movie: requestMovie,
-        });
-      },
-    );
+  requestMovie() {
+    const { id } = this.props.match.params;
+    this.setState({ loading: true }, async () => {
+      const requestMovie = await movieAPI.getMovie(id);
+      this.setState({
+        loading: false,
+        movie: requestMovie,
+      });
+    });
   }
 
   render() {
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
+    const { loading, movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     return (
-      this.state.loading ? <Loading /> : <div data-testid="movie-details">
+      loading ? <Loading /> : <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
