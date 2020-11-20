@@ -19,8 +19,10 @@ class MovieDetails extends Component {
   }
 
   async get(id) {
-    const movies = await movieAPI.getMovie(id);
-    this.setState({ movie: movies, loading: true });
+    this.setState({ loading: true }, async () => {
+      const movies = await movieAPI.getMovie(id);
+      this.setState({ movie: movies, loading: false });
+    });
   }
   render() {
     const {
@@ -34,6 +36,8 @@ class MovieDetails extends Component {
     } = this.state.movie;
 
     return this.state.loading ? (
+      <Loading />
+    ) : (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <p>{`Title: ${title}`}</p>
@@ -44,14 +48,10 @@ class MovieDetails extends Component {
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
-    ) : (
-      <Loading />
     );
   }
 }
 
-MovieDetails.propTypes = {
-  match: PropTypes.element.isRequired,
-};
+MovieDetails.propTypes = {};
 
 export default MovieDetails;
