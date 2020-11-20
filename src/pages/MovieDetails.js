@@ -21,10 +21,10 @@ class MovieDetails extends Component {
 
     this.setState({ loading: true }, async () => {
       const movie = await movieAPI.getMovie(id);
-      this.setState(() => ({
+      this.setState({
         loading: false,
-        movie: movie,
-      }));
+        movie,
+      });
     });
   }
 
