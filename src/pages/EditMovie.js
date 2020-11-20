@@ -30,7 +30,10 @@ class EditMovie extends Component {
 
   async handleSubmit(updatedMovie) {
     const movieUpdate = await movieAPI.updateMovie(updatedMovie);
-    this.setState({movie: movieUpdate, shouldRedirect: true});
+    this.setState({
+      movie: movieUpdate,
+      shouldRedirect: true
+    });
   }
 
   render() {
