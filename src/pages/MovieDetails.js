@@ -5,8 +5,8 @@ import PropTypes from 'prop-types';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-import Button from '../styles/Button';
 import { MovieDetailsWrapper, MovieInfoWrapper } from '../styles/MovieDetails';
+import Button from '../styles/Button';
 
 class MovieDetails extends Component {
   constructor() {

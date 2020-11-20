@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import Button from '../styles/Button';
 import { MovieFormWrapper, FormWrapper, FormLine } from '../styles/MovieForm';
+import Button from '../styles/Button';
 
 class MovieForm extends React.Component {
   constructor(props) {
