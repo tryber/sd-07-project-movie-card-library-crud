@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Proptypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -48,8 +48,11 @@ class MovieDetails extends Component {
           <p>{`Rating: ${rating}`}</p>
         </div>
         <Link className="button-edit" to={`/movies/${id}/edit`}>
-          EDIT
+          EDITAR
         </Link>
+        <Redirect className="button-edit" to="/">
+          VOLTAR
+        </Redirect>
         <Link className="button-edit" to="/">
           DELETE
         </Link>
