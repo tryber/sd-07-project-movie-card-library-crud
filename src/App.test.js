@@ -127,13 +127,13 @@ describe('1 - Rotas: O componente App deve renderizar BrowserRouter', () => {
 });
 
 describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição para buscar a lista de filmes a ser renderizada', () => {
-  test.skip('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+  test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     const { container, unmount, getByText } = renderPath('/');
     expect(getByText('Carregando...'));
     await waitFor(() => movieAPI.getMovies())
     unmount();
   })
-  test.skip('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
+  test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
     const { unmount, getAllByTestId } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
     expect(getAllByTestId('movie-card').length).toBe(5);
