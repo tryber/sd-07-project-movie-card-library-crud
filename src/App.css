@@ -1,5 +1,133 @@
-body {
-  background-color: whitesmoke;
-  box-sizing: border-box;
+.mainDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
+.movie-list {
+  background-color: rgb(86, 73, 76);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.add-card-container {
+  background-color: rgb(132, 126, 137);
+  display: flex;
+  justify-content: center;
+  padding: 50px;
+}
+
+.movie-card {
+  background-color: rgb(132, 126, 137);
+  border-color: rgb(159, 165, 169);
+  border-radius: 5%;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+  width: 35%;
+}
+
+.movie-card-image {
+  border-radius: 5% 5% 0 0;
+  width: 100%;
+}
+
+.link {
+  align-self: center;
+  background-color: rgb(194, 211, 205);
+  border-radius: 5%;
+  box-shadow: 5px 5px black;
+  display: flex;
+  margin-bottom: 7px;
+  padding: 8px 20px;
+}
+
+.movie-card-title {
+  margin-left: 20px;
+}
+
+.movie-card-storyline {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.loadImage {
+  align-self: center;
+  width: 300px;
+}
+
+.loadContainer {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%;
+}
+
+.loadingText {
+  font-size: xx-large;
+}
+
+.movie-details-container {
+  background-color: rgb(86, 73, 76);
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.movie-details {
+  background-color: rgb(132, 126, 137);
+  border-color: rgb(159, 165, 169);
+  border-radius: 5%;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  width: 50%;
+}
+
+.links-div {
+  display: flex;
+  justify-content: space-around;
+}
+
+.details-movie-text {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.edit-movie {
+  display: flex;
+}
+
+.container-form {
+  background-color: rgb(194, 211, 205);
+  border-radius: 1%;
+  display: flex;
+  margin-top: 20px;
+}
+
+.field-form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.font-size {
+  font-size: x-large;
+}
+
+.submit-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.submit-button {
+  font-size: x-large;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  padding: 5px 20px;
+}

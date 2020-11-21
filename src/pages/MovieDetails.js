@@ -39,17 +39,20 @@ class MovieDetails extends Component {
     if (this.state.loadingMsg === true) return <Loading />;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <hr />
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        <Link to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
-        <Link to="/">VOLTAR</Link>
+      <div className="movie-details-container">
+        <div data-testid="movie-details" className="movie-details">
+          <img className="movie-card-image" alt="Movie Cover" src={`../${imagePath}`} />
+          <p className="details-movie-text">{`Title: ${title}`}</p>
+          <p className="details-movie-text">{`Subtitle: ${subtitle}`}</p>
+          <p className="details-movie-text">{`Storyline: ${storyline}`}</p>
+          <p className="details-movie-text">{`Genre: ${genre}`}</p>
+          <p className="details-movie-text">{`Rating: ${rating}`}</p>
+          <div className="links-div">
+            <Link className="link" to={`/movies/${id}/edit`}>EDITAR</Link>
+            <Link className="link" to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
+            <Link className="link" to="/">VOLTAR</Link>
+          </div>
+        </div>
       </div>
     );
   }
