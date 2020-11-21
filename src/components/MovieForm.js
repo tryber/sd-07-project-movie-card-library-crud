@@ -155,3 +155,5 @@ class MovieForm extends React.Component {
 }
 
 export default MovieForm;
+
+MovieForm.propTypes = { movies: PropTypes.arrayOf(PropTypes.object).isRequired };
