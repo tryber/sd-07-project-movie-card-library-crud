@@ -48,23 +48,23 @@ class MovieDetails extends Component {
     return (
       <div>
         <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+          <img alt="Movie Cover" src={`../${imagePath}`} />
+          <p>{`Title: ${title}`}</p>
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
         </div>
-      <div>
-        <Link to={`/movies/${this.state.id}/edit`}>EDITAR</Link>
-        <Link to={'/'}>VOLTAR</Link>
-      </div>
+        <div>
+          <Link to={`/movies/${this.state.id}/edit`}>EDITAR</Link>
+          <Link to={'/'}>VOLTAR</Link>
+        </div>
         <button href="http://localhost/" onClick={this.deleteMovie}>DELETAR</button>
       </div>
     );
   }
 }
 
-MovieDetails.propTypes = { id: PropTypes.func.isRequired };
+MovieDetails.propTypes = { match: PropTypes.func.isRequired };
 
 export default MovieDetails;

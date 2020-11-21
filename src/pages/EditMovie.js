@@ -55,6 +55,6 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = { id: PropTypes.func.isRequired };
+EditMovie.propTypes = { match: PropTypes.func.isRequired };
 
 export default EditMovie;
