@@ -84,7 +84,7 @@ MovieDetails.propTypes = {
 MovieDetails.defaultProps = {
   match: {
     params: {
-      id: "",
+      id: '',
     },
   },
 };
