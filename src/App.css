@@ -1,5 +1,66 @@
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
+.button-link {
+  align-items: center;
+  background-color: darkgray;
+  border-radius: 8px;
+  color: cornsilk;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  transition: 500ms;
+  width: 130px;
+}
+
+.button-links-container {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.button-link:hover {
+  background-color: coral;
+}
+
+.button-link:visited {
+  color: cornsilk;
+}
+
+.button-add-movie-link {
+  align-items: center;
+  background-color: darkgray;
+  border-radius: 8px;
+  color: cyan;
+  display: flex;
+  font-size: 14px;
+  height: 40px;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+  transition: 500ms;
+  width: 130px;
+}
+
+.button-add-movie-link-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.button-add-movie-link:hover {
+  background-color: rgb(150, 255, 80);
+}
+
+.button-add-movie-link:visited {
+  color: cornsilk;
+}

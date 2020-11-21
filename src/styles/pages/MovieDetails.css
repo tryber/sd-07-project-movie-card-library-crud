@@ -1,0 +1,27 @@
+.div-details-container {
+  background-color: gainsboro;
+  border-radius: 25px;
+  padding: 30px;
+}
+
+.image-container {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-rating {
+  background-color: #007bff;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px 9px;
+  width: fit-content;
+}
+
+.movie-details-image {
+  border-radius: 20px;
+  margin: auto;
+  width: 80%;
+}
