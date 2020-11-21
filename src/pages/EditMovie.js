@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { MovieForm } from '../components';
 import { Loading } from '../components/index';
 import * as movieAPI from '../services/movieAPI';
@@ -55,6 +55,6 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = { match: PropTypes.func.isRequired };
+// EditMovie.propTypes = { match: PropTypes.func.isRequired };
 
 export default EditMovie;
