@@ -23,6 +23,15 @@ class NewMovie extends Component {
   }
 
   render() {
+    const movie = {
+      title: '',
+      subtitle: '',
+      imagePath: '',
+      storyline: '',
+      genre: 'action',
+      rating: 0,
+    };
+
     const { shouldRedirect } = this.state;
     if (shouldRedirect) {
       return <Redirect to="/" />;
@@ -30,7 +39,7 @@ class NewMovie extends Component {
 
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={this.handleSubmit} />
+        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
       </div>
     );
   }

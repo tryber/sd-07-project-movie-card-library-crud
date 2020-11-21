@@ -14,7 +14,13 @@ class MovieForm extends React.Component {
   }
 
   updateMovie(field, newValue) {
-    this.setState({ [field]: newValue });
+    let value = newValue;
+    if (field === 'rating' && newValue !== '') {
+      value = parseFloat(newValue);
+    } else if (field === 'rating' && newValue === '') {
+      value = 0;
+    }
+    this.setState({ [field]: value });
   }
 
   renderTitleInput() {
@@ -154,32 +160,27 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    subtitle: '',
+    imagePath: '',
+    storyline: '',
+    genre: '',
+    rating: 0,
+  },
+  onSubmit: '',
+};
 MovieForm.propTypes = {
   movie: PropTypes.shape({
-    bookmarked: PropTypes.bool,
-    genre: PropTypes.string,
-    id: PropTypes.number,
-    imagePath: PropTypes.string,
-    rating: PropTypes.number,
-    storyline: PropTypes.string,
-    subtitle: PropTypes.string,
     title: PropTypes.string,
-  }),
+    subtitle: PropTypes.string,
+    imagePath: PropTypes.string,
+    storyline: PropTypes.string,
+    genre: PropTypes.string,
+    rating: PropTypes.number,
+  }).isRequired,
   onSubmit: PropTypes.func,
-};
-
-MovieForm.defaultProps = {
-  movie: PropTypes.shape({
-    bookmarked: false,
-    genre: '',
-    id: 0,
-    imagePath: '',
-    rating: 0,
-    storyline: '',
-    subtitle: '',
-    title: '',
-  }),
-  onSubmit: '',
 };
 
 export default MovieForm;

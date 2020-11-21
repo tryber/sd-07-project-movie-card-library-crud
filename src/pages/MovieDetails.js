@@ -33,9 +33,6 @@ class MovieDetails extends Component {
   async deleteMovie(id) {
     this.setState({ loadingMsg: true });
     await movieAPI.deleteMovie(id);
-    this.setState({
-      loadingMsg: false,
-    });
   }
 
   render() {
