@@ -1,19 +1,19 @@
 import React, { Component } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
-import movies from '../services/movieData';
 
 class MovieList extends Component {
   constructor() {
     super();
-    this.fetchMovies = this.fetchMovies.bind(this);
-
     this.state = {
       movies: [],
       loading: true,
+      shouldRedirect: false,
     };
+    this.fetchMovies = this.fetchMovies.bind(this);
   }
 
   componentDidMount() {
@@ -32,12 +32,23 @@ class MovieList extends Component {
       });
   }
 
-  render() {
-    const { loading } = this.state;
+  async deleteMovie(movieId) {
+    if (await movieAPI.updateMovie(movieId) === 'OK') {
+      this.setState({
+        shouldRedirect: true,
+      });
+    }
+  }
 
+  render() {
+    const { movies, loading, shouldRedirect } = this.state;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
         <p>{loading ? <Loading /> : this.fetchMovies}</p>
       </div>
     );

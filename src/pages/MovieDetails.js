@@ -1,23 +1,25 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.fetchMovies = this.fetchMovies.bind(this);
 
     this.state = {
       movie: [],
       loading: true,
+      shouldRedirect: false,
     };
   }
 
   componentDidMount() {
-    this.fetchMovies();
+    const { id } = this.props.match.params;
+    this.fetchMovies(id);
   }
 
   async fetchMovies() {
@@ -34,15 +36,25 @@ class MovieDetails extends Component {
     );
   }
 
-  render() {
-    const { loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+  async deleteMovie() {
     const { id } = this.props.match.params;
+    if (await movieAPI.deleteMovie(id) === 'OK') {
+      this.setState({
+        shouldRedirect: true,
+      });
+    }
+  }
 
+  render() {
+    const { loading, shouldRedirect } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
+    if (shouldRedirect) {
+      return <Redirect to="/" />;
+    }
     return (
       <div data-testid="movie-details">
-        <p>{`Title: ${title}`}</p>
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
@@ -50,8 +62,7 @@ class MovieDetails extends Component {
         <p>{loading ? <Loading /> : this.fetchMovies}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        {/* <button onClick={() =>this.props.history.push('/')}>VOLTAR</button>
-        <button onClick={() =>this.props.history.push(`/movies/${id}/edit`)}>EDITAR</button>*/}
+        <Link onClick={() => this.deleteMovie()} to="/">DELETAR</Link>
       </div>
     );
   }
