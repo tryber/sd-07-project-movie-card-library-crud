@@ -2,23 +2,62 @@ import React, { Component } from 'react';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor() {
+    super();
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.fetchMovie = this.fetchMovie.bind(this);
+
+    this.state = {
+      movie: {},
+      loading: false,
+    }
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  fetchMovie() {
+    this.setState(
+      { loading: true},
+      async () => {
+      const { id } = this.props.match.params;
+      const allMovies = await movieAPI.getMovie(id)
+      this.setState(() => ({
+        loading: false,
+        movie: allMovies,
+      }))
+    })
+  }
+
+  movieDetail() {
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
       </div>
     );
+  }
+
+
+  render() {
+    const { loading } = this.state;
+    return (
+      <div>
+        {loading ? <Loading /> : this.movieDetail()}
+      </div>
+    )
   }
 }
 
