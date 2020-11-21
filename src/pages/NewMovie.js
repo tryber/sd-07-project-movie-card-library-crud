@@ -9,20 +9,20 @@ class NewMovie extends Component {
     super(props);
     this.state = {
       status: false,
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie);
     this.setState({
-      status: true
+      status: true,
     });
   }
 
   render() {
-    if(this.state.status) {
-      return <Redirect to="/" />
+    if (this.state.status) {
+      return <Redirect to="/" />;
     }
     return (
       <div data-testid="new-movie">
