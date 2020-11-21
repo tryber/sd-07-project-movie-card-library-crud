@@ -21,7 +21,7 @@ class MovieForm extends React.Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div className="form" >
         <input
           placeholder="Insira o título"
           id="movie_title"
@@ -39,7 +39,7 @@ class MovieForm extends React.Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div className="form" >
         <input
           placeholder="Insira o subtítulo"
           id="movie_subtitle"
@@ -56,7 +56,7 @@ class MovieForm extends React.Component {
     const { imagePath } = this.state;
 
     return (
-      <div className="row">
+      <div className="form">
         <input
           placeholder="Insira o caminho da imagem"
           id="movie_image"
@@ -73,7 +73,7 @@ class MovieForm extends React.Component {
     const { storyline } = this.state;
 
     return (
-      <div>
+      <div className="form" >
         <textarea
           id="movie_storyline"
           value={storyline}
@@ -88,7 +88,7 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
 
     return (
-      <div>
+      <div className="form" >
         <label htmlFor="movie_genre">Gênero</label>
         <select
           id="movie_genre"
@@ -108,7 +108,7 @@ class MovieForm extends React.Component {
     const { rating } = this.state;
 
     return (
-      <div>
+      <div className="form" >
         <input
           placeholder="Dê a avaliação do filme"
           id="movie_rating"
@@ -126,7 +126,7 @@ class MovieForm extends React.Component {
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="form" >
         <button
           type="button"
           onClick={this.handleSubmit}
@@ -139,7 +139,7 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="form-content" >
         <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
@@ -155,3 +155,15 @@ class MovieForm extends React.Component {
 }
 
 export default MovieForm;
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    imagePath: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    genre: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};

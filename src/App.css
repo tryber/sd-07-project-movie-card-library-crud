@@ -3,3 +3,86 @@ body {
   box-sizing: border-box;
 }
 
+.image-movie {
+  border-radius: 10px;
+  margin-top: 10px;
+  width: 300px;
+}
+
+.movieList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.movie-card {
+  align-items: center;
+  background-color: grey;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 20px;
+  text-align: center;
+  width: 320px;
+}
+
+.movie-card:hover {
+  background-color: brown;
+  cursor: grab;
+  transition: 1s;
+  width: 340px;
+}
+
+.link {
+  background-color: aquamarine;
+  border-radius: 5px;
+  color: black;
+  margin: 10px;
+  text-align: center;
+  text-decoration: none;
+  width: 120px;
+}
+
+.link:hover {
+  color: rgb(48, 48, 167);
+  font-size: 17px;
+  transition: 0.5s;
+  width: 130px;
+}
+
+.movie-details {
+  align-items: center;
+  background-color: brown;
+  border-radius: 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.image-details {
+  border-radius: 10px;
+  margin-top: 10px;
+}
+
+h1 {
+  background-color: grey;
+  height: 70px;
+  margin: auto;
+  text-align: center;
+}
+
+.form {
+  padding: 10px;
+}
+
+button {
+  background: rgb(8, 97, 38);
+  border-radius: 10px;
+  box-shadow: black 2px 2px 2px;
+  cursor: pointer;
+  font-size: 20px;
+  width: 100px;
+}
+
+button:hover {
+  background: rgb(92, 173, 92);
+  transition: 1s;
+}
