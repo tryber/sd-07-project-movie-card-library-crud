@@ -25,11 +25,12 @@ class EditMovie extends Component {
       this.setState({ status: 'isOn', movie });
     });
   }
-
+  // API atualiza o status e o valor de movie;
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie).then(() =>
     this.setState({ shouldRedirect: true }));
   }
+  // ao clique do botão, a página redireciona para /home;
   render() {
     const { status, shouldRedirect, movie } = this.state;
 
