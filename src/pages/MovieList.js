@@ -10,6 +10,7 @@ class MovieList extends Component {
       movies: [],
       loading: true,
     };
+    this.fetchHere = this.fetchHere.bind(this);
   }
 
   componentDidMount() {
@@ -33,7 +34,7 @@ class MovieList extends Component {
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
-    );
+    ); // está mandando o array para o MovieCard
   }
 }
 
