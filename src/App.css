@@ -1,5 +1,164 @@
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
+.movie-card-header {
+  align-items: center;
+  background-color: #343a40;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.page-title {
+  color: #f8f9fa;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  padding: 20px 30px;
+}
+
+.movie-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: 5px;
+  margin-left: 100px;
+  overflow: hidden;
+  width: 400px;
+}
+
+
+.movie-card-image {
+  width: 100%;
+}
+
+.movie-card-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.movie-card-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.movie-card-subtitle {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.movie-card-storyline {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.rating {
+  background-color: #007bff;
+  border-radius: 25px;
+  color: white;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px 9px;
+}
+
+.movie-card-rating {
+  background-color: rgba(0, 0, 0, 0.03);
+  border-top: 1px solid rgba(0, 0, 0, 0.125);
+  display: flex;
+  justify-content: space-around;
+  padding: 12px 20px;
+}
+
+.movie-card-link {
+  color: darkorange;
+  text-decoration: none;
+}
+
+.add-movie-link {
+  background-color: #343a40;
+  border-radius: 20px;
+  color: rgb(205, 243, 243);
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 30px;
+  margin-top: 30px;
+  padding: 10px 11px;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.loading {
+  align-items: center;
+  background: #9eb4cc;
+  color: #343b42;
+  display: flex;
+  flex-direction: row;
+  font-size: 20pt;
+  font-weight: 700;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+}
+
+input {
+  display: flex;
+  height: 35px;
+  margin-left: 35px;
+  width: 800px;
+}
+
+select {
+  display: flex;
+  height: 35px;
+  margin-left: 35px;
+  width: 800px;
+}
+
+label {
+  font-size: 13pt;
+  margin-left: 35px;
+  margin-top: 10px;
+}
+
+textarea {
+  display: flex;
+  height: 100px;
+  margin-left: 35px;
+  width: 800px;
+}
+
+.input-checkbox {
+  display: inline-block;
+  height: 15px;
+  margin-top: 20px;
+  width: 20px;
+}
+
+.label-checkbox {
+  margin: auto;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  color: aliceblue;
+  margin-bottom: 20px;
+  margin-left: 35px;
+  margin-top: 20px;
+  padding: 8px 15px;
+}
