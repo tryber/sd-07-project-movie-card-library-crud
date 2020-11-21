@@ -22,7 +22,7 @@ export const getMovie = (movieId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(movie);
-    }, 2000);
+    }, 5000);
   });
 };
 
@@ -38,7 +38,7 @@ export const updateMovie = (updatedMovie) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 1000);
+    }, 5000);
   });
 };
 
@@ -52,7 +52,7 @@ export const createMovie = (movieData) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 1000);
+    }, 5000);
   });
 };
 

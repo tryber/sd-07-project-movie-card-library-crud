@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading.js';
 import '../App.css';
@@ -17,12 +18,18 @@ class MovieList extends Component {
     this.renderMovies();
   }
 
-  renderMovies() {
-    this.setState({ loading: true }, async () => {
+  async renderMovies() {
       const result = await movieAPI.getMovies();
       this.setState({ movies: result, loading: false });
-    });
-  }
+    };
+  
+   
+  // renderMovies() {
+  //   this.setState({ loading: true }, async () => {
+  //     const result = await movieAPI.getMovies();
+  //     this.setState({ movies: result, loading: false });
+  //   });
+  // }
 
   render() {
     const { movies, loading } = this.state;
@@ -33,11 +40,11 @@ class MovieList extends Component {
         </header>
         <div className="grid">
           <div className="item">
-            {loading ? (
-              <Loading />
-          ) : (
-          movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)
-          )}
+            {loading ? 
+              <Loading /> : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+          <div className="div-area-imput">
+            <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
+          </div>
           </div>
         </div>
       </div>

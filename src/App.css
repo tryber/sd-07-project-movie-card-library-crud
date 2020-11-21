@@ -69,11 +69,49 @@ body {
 
 }
 
-.example {
-  color: #FFF;
-  text-align: justify;
-  
+.div-area-imput {
+  align-items: center;
+  background-color: rgb(128, 128, 128, 0.7);
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  height: 40px;
+  justify-content: center;
+  margin: 15px 15% 15px 15%;
+  text-align: center;
+  width: 75%;
+
 }
+
+textarea {
+  height:150px;
+  width: 700px; 
+  margin-right: 50px;
+  margin-left: 30px;
+}
+
+input, select {
+  width: 350px;
+  margin-right: 50px;
+  margin-left: 30px;
+}
+
+.div-area-textarea {
+  align-items: center;
+  background-color: rgb(128, 128, 128, 0.7);
+  border: 2px solid black;
+  border-radius: 10px;
+  color: white;
+  display: flex;
+  height: 180px;
+  justify-content: center;
+  margin: 15px 15% 15px 15%;
+  text-align: center;
+  width: 75%;
+
+}
+
   .example-item {
       display: inline-block;
       height: 20px;
@@ -276,4 +314,5 @@ section:hover {
    
   }
 
+ 
 }

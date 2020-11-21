@@ -1,5 +1,6 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
+import '../App.css'
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -21,16 +22,17 @@ class MovieForm extends React.Component {
     const { title } = this.state;
 
     return (
-      <div>
+      <div className="div-area-imput">
+        <label class Name="" htmlFor="movie_title">Título</label>
         <input
           id="movie_title"
           placeholder="Insira o título"
           type="text"
+          size="80"
           value={title}
-          className="validate"
+          className=""
           onChange={(event) => this.updateMovie('title', event.target.value)}
         />
-        <label htmlFor="movie_title">Título</label>
       </div>
     );
   }
@@ -39,15 +41,16 @@ class MovieForm extends React.Component {
     const { subtitle } = this.state;
 
     return (
-      <div>
+      <div className="div-area-imput">
+        <label htmlFor="movie_subtitle">Subtítulo</label>
         <input
           placeholder="Insira o subtítulo"
           id="movie_subtitle"
           type="text"
+          size="80"
           value={subtitle}
           onChange={(event) => this.updateMovie('subtitle', event.target.value)}
         />
-        <label htmlFor="movie_subtitle">Subtítulo</label>
       </div>
     );
   }
@@ -56,15 +59,16 @@ class MovieForm extends React.Component {
     const { imagePath } = this.state;
 
     return (
-      <div className="row">
+      <div className="div-area-imput">
+        <label htmlFor="movie_image">Imagem</label>
         <input
           placeholder="Insira o caminho da imagem"
           id="movie_image"
           type="text"
+          size="80"
           value={imagePath}
           onChange={(event) => this.updateMovie('imagePath', event.target.value)}
         />
-        <label htmlFor="movie_image">Imagem</label>
       </div>
     );
   }
@@ -73,13 +77,14 @@ class MovieForm extends React.Component {
     const { storyline } = this.state;
 
     return (
-      <div>
+      <div className="div-area-textarea">
+        <label htmlFor="movie_storyline">Sinopse</label>
         <textarea
+          class="resizedTextare"
           id="movie_storyline"
           value={storyline}
           onChange={(event) => this.updateMovie('storyline', event.target.value)}
         />
-        <label htmlFor="movie_storyline">Sinopse</label>
       </div>
     );
   }
@@ -88,7 +93,7 @@ class MovieForm extends React.Component {
     const { genre } = this.state;
 
     return (
-      <div>
+      <div className="div-area-imput">
         <label htmlFor="movie_genre">Gênero</label>
         <select
           id="movie_genre"
@@ -108,7 +113,8 @@ class MovieForm extends React.Component {
     const { rating } = this.state;
 
     return (
-      <div>
+      <div className="div-area-imput">
+      <label htmlFor="movie_rating">Avaliação</label>
         <input
           placeholder="Dê a avaliação do filme"
           id="movie_rating"
@@ -119,14 +125,13 @@ class MovieForm extends React.Component {
           value={rating}
           onChange={(event) => this.updateMovie('rating', event.target.value)}
         />
-        <label htmlFor="movie_rating">Avaliação</label>
       </div>
     );
   }
 
   renderSubmitButton() {
     return (
-      <div>
+      <div className="div-area-imput">
         <button
           type="button"
           onClick={this.handleSubmit}
@@ -153,5 +158,28 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    rating: PropTypes.number,
+    imagePath: PropTypes.string,
+    genre: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    subtitle: '',
+    storyline: '',
+    imagePath: '',
+    rating: 0,
+    genre: '',
+  },
+};
 
 export default MovieForm;
