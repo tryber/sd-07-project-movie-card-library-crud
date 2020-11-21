@@ -32,7 +32,7 @@ class MovieDetails extends Component {
   async deleteMovie() {
     const movieDeletedId = this.props.match.params.id;
     const requestMovieDelete = await movieAPI.deleteMovie(movieDeletedId);
-    
+
     return requestMovieDelete;
   }
 
