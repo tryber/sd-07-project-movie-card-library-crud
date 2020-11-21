@@ -15,12 +15,15 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-        this.listMovies()
+    this.listMovies();
   }
 
-  listMovies = () => movieAPI.getMovies()
-  .then( resolve => this.setState({movies: resolve, loading: false}))
-  .catch(error => console.log("Promises rejected: " + error));
+
+  listMovies() {
+    movieAPI.getMovies()
+    .then((resolve) => this.setState({ movies: resolve, loading: false }))
+    .catch((error) => console.log('Promises rejected: ', error));
+  }
 
 
   render() {
@@ -28,7 +31,7 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     if (loading) {
-      return <Loading />
+      return <Loading />;
     }
 
     return (
