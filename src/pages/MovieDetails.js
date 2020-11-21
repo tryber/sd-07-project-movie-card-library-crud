@@ -27,6 +27,7 @@ class MovieDetails extends Component {
 
   async removeMovie(movieId) {
     await movieAPI.deleteMovie(movieId);
+    console.log('Thadeu');
   }
   render() {
     const {
@@ -42,18 +43,35 @@ class MovieDetails extends Component {
     return this.state.loading ? (
       <Loading />
     ) : (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Title: ${title}`}</p>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        <button onClick={() => this.removeMovie(id)}>
-          <Link to="/">DELETAR</Link>
-        </button>
-        <Link to="/">VOLTAR</Link>
+      <div data-testid="movie-details" className="movie-card">
+        <img
+          alt="Movie Cover"
+          src={`../${imagePath}`}
+          className="movie-card-image"
+        />
+        <div className="movie-card-body">
+          <p className="movie-card-title">{`Title: ${title}`}</p>
+          <p className="movie-card-subtitle">{`Subtitle: ${subtitle}`}</p>
+          <p className="movie-card-storyline">{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
+          <div className="buttons">
+            <Link to={`/movies/${id}/edit`} className="button-text">
+              EDITAR
+            </Link>
+            <button
+              className="button-text"
+              onClick={() => this.removeMovie(id)}
+            >
+              <Link to="/" className="button-text">
+                DELETAR
+              </Link>
+            </button>
+            <Link to="/" className="button-text">
+              VOLTAR
+            </Link>
+          </div>
+        </div>
       </div>
     );
   }

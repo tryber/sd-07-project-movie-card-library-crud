@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
+import Header from './Header';
 
 class MovieList extends Component {
   constructor(props) {
@@ -28,8 +29,9 @@ class MovieList extends Component {
 
     return (
       <div data-testid="movie-list">
+        <Header />
         {movieList === true ? (
-          <div>
+          <div className="movie-list">
             {movies.map((movie) => (
               <MovieCard key={movie.title} movie={movie} />
             ))}

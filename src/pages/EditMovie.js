@@ -13,6 +13,7 @@ class EditMovie extends Component {
       status: 'loading',
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.update = this.update.bind(this);
   }
 
   componentDidMount() {
