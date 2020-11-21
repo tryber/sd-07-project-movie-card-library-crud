@@ -4,6 +4,8 @@ body {
 }
 
 .image-movie {
+  border-radius: 10px;
+  margin-top: 10px;
   width: 300px;
 }
 
@@ -13,33 +15,57 @@ body {
 }
 
 .movie-card {
+  align-items: center;
+  background-color: grey;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
-  padding: 10px;
-  width: 300px;
+  margin: 20px;
+  text-align: center;
+  width: 320px;
+}
+
+.movie-card:hover {
+  background-color: brown;
+  cursor: grab;
+  transition: 1s;
+  width: 340px;
 }
 
 .link {
   background-color: aquamarine;
-  border-radius: 10px;
+  border-radius: 5px;
   color: black;
   margin: 10px;
+  text-align: center;
   text-decoration: none;
-  width: 115px;
+  width: 120px;
 }
 
 .link:hover {
+  color: rgb(48, 48, 167);
   font-size: 17px;
-  height: 22px;
   transition: 0.5s;
   width: 130px;
 }
 
 .movie-details {
+  align-items: center;
+  background-color: brown;
+  border-radius: 10px;
   margin: 10px;
+  text-align: center;
+}
+
+.image-details {
+  border-radius: 10px;
+  margin-top: 10px;
 }
 
 h1 {
+  background-color: grey;
+  height: 70px;
+  margin: auto;
   text-align: center;
 }
 
