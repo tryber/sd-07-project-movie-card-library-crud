@@ -30,6 +30,7 @@ class MovieDetails extends Component {
     },
     );
   }
+
   render() {
     const { movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
