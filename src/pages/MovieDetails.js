@@ -55,6 +55,9 @@ class MovieDetails extends Component {
             <Link to="/" className="btn-details">
               <button> VOLTAR </button>
             </Link>
+            <Link to={movieAPI.deleteMovie(id)}>
+            <button>DELETAR</button>
+            </Link>
           </div>
         )}
       </div>
