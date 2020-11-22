@@ -9,7 +9,7 @@ class MovieList extends Component {
     this.fetchMovies = this.fetchMovies.bind(this);
     this.state = {
       movies: [],
-      loading: true
+      loading: true,
     }
   }
 
@@ -18,7 +18,7 @@ class MovieList extends Component {
   }
 
   async fetchMovies() {
-    const requestReturn = await movieAPI.getMovies();    
+    const requestReturn = await movieAPI.getMovies();
     this.setState(({ movies }) => ({
       movies: [...movies, ...requestReturn],
       loading: false,
@@ -29,7 +29,6 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     if (this.state.loading) return 'Carregando...';
-    
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
