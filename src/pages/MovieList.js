@@ -13,17 +13,16 @@ class MovieList extends Component {
       loading: true,
     };
   }
-  
+
   componentDidMount() {
     this.renderMovies();
   }
 
   async renderMovies() {
-      const result = await movieAPI.getMovies();
-      this.setState({ movies: result, loading: false });
-    };
-  
-   
+    const result = await movieAPI.getMovies();
+    this.setState({ movies: result, loading: false });
+  }
+
   // renderMovies() {
   //   this.setState({ loading: true }, async () => {
   //     const result = await movieAPI.getMovies();
@@ -40,11 +39,11 @@ class MovieList extends Component {
         </header>
         <div className="grid">
           <div className="item">
-            {loading ? 
+            {loading ?
               <Loading /> : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-          <div className="div-area-imput">
-            <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
-          </div>
+            <div className="div-area-imput">
+              <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
+            </div>
           </div>
         </div>
       </div>

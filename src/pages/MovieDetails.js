@@ -12,22 +12,24 @@ class MovieDetails extends Component {
       loading: true,
     };
   }
-  
+
   componentDidMount() {
     this.renderMovie();
   }
 
- 
+  async handleSubmit(newMovie) {
+    await movieAPI.deleteMovie(newMovie);
+  } 
 
   async renderMovie() {
-      const { match } = this.props;
-      const result = await movieAPI.getMovie(match.params.id);
-      this.setState({ movie: result, loading: false });
-    };
-  
-  deleteMovie() {
-    movieAPI.deleteMovie(this.props.match.params.id);
+    const { match } = this.props;
+    const result = await movieAPI.getMovie(match.params.id);
+    this.setState({ movie: result, loading: false });
   }
+
+  // deleteMovie() {
+  //   movieAPI.deleteMovie(this.props.match.params.id);
+  // }
 
   // async delMovie() {
   //   const { id } = this.props.match.params;
@@ -45,7 +47,6 @@ class MovieDetails extends Component {
   render() {
     const { loading, movie } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
-    
     return (
       <div className="movie-card" data-testid="movie-details">
         {loading ? (
@@ -59,9 +60,10 @@ class MovieDetails extends Component {
             <p className="movie-card-storyline"><b>{`Gênero: ${genre}`}</b></p>
             <p className="rating" ><em>{`Rating: ${rating}`}</em></p>
             <div className="exemplo">
-            <Link to={`/movies/${id}/edit`} className="example-item example-item_first">EDITAR</Link>
-            <Link to="/" className="example-item example-item_second">VOLTAR</Link>
-            <Link to="/" className="example-item example-item_third" onCLick={() => this.deleteMovie()}>DELETAR</Link>
+              <Link to={`/movies/${id}/edit`} className="example-item example-item_first">EDITAR</Link>
+              <Link to="/" className="example-item example-item_second">VOLTAR</Link>
+              <Link to="/" className="example-item example-item_third" 
+              onCLick={() => this.deleteMovie()}>DELETAR</Link>
             </div>
           </div>
       )}

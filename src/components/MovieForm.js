@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '../App.css'
+import '../App.css';
 
 class MovieForm extends React.Component {
   constructor(props) {
@@ -23,7 +23,7 @@ class MovieForm extends React.Component {
 
     return (
       <div className="div-area-imput">
-        <label class Name="" htmlFor="movie_title">Título</label>
+        <label htmlFor="movie_title">Título</label>
         <input
           id="movie_title"
           placeholder="Insira o título"
@@ -80,7 +80,6 @@ class MovieForm extends React.Component {
       <div className="div-area-textarea">
         <label htmlFor="movie_storyline">Sinopse</label>
         <textarea
-          class="resizedTextare"
           id="movie_storyline"
           value={storyline}
           onChange={(event) => this.updateMovie('storyline', event.target.value)}
@@ -114,7 +113,7 @@ class MovieForm extends React.Component {
 
     return (
       <div className="div-area-imput">
-      <label htmlFor="movie_rating">Avaliação</label>
+        <label htmlFor="movie_rating">Avaliação</label>
         <input
           placeholder="Dê a avaliação do filme"
           id="movie_rating"

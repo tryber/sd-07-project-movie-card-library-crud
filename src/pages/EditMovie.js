@@ -19,25 +19,25 @@ class EditMovie extends Component {
     this.renderMovie();
   }
 
-  async renderMovie() {
-      const { match } = this.props;
-      const result = await movieAPI.getMovie(match.params.id);
-      this.setState({ movie: result, status: 'loaded' });
-    };
-
   async handleSubmit(updatedMovie) {
     await movieAPI.updateMovie(updatedMovie);
-    this.setState({ shouldRedirect: true});
+    this.setState({ shouldRedirect: true });
+  }
+
+  async renderMovie() {
+    const { match } = this.props;
+    const result = await movieAPI.getMovie(match.params.id);
+    this.setState({ movie: result, status: 'loaded' });
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
-      return <Loading />
+      return <Loading />;
     }
 
     return (

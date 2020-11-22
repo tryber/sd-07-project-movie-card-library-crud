@@ -33,9 +33,6 @@ body {
 }
 
 .movie-card {
-  background-color: white;
-  border: 5px solid rgba(0, 0, 0, 0.125);
-  border-radius: 10px;
   display: inline-block;
   height: 95%;
   margin-left: 15%;
@@ -71,68 +68,75 @@ body {
 
 .div-area-imput {
   align-items: center;
-  background-color: rgb(128, 128, 128, 0.7);
+  background-color: rgba(128, 128, 128, 0.7);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   display: flex;
   height: 40px;
   justify-content: center;
-  margin: 15px 15% 15px 15%;
+  margin: 15px 15%;
   text-align: center;
   width: 75%;
 
 }
 
 textarea {
-  height:150px;
-  width: 700px; 
-  margin-right: 50px;
+  height: 150px;
   margin-left: 30px;
+  margin-right: 50px;
+  width: 700px;
 }
 
 input, select {
-  width: 350px;
-  margin-right: 50px;
   margin-left: 30px;
+  margin-right: 50px;
+  width: 350px;
 }
 
 .div-area-textarea {
   align-items: center;
-  background-color: rgb(128, 128, 128, 0.7);
+  background-color: rgba(128, 128, 128, 0.7);
   border: 2px solid black;
   border-radius: 10px;
   color: white;
   display: flex;
   height: 180px;
   justify-content: center;
-  margin: 15px 15% 15px 15%;
+  margin: 15px 15%;
   text-align: center;
   width: 75%;
 
 }
 
-  .example-item {
-      display: inline-block;
-      height: 20px;
-      margin-bottom: 10px;
-      margin-left: 20px;
-      margin-right: 20px;
-      width: 20%;
-  }
-  .example-item_first {
-      background-color: #FAA116;
-      margin-left: 150px;
-      text-align: center;
-  }
-  .example-item_second {
-      background-color: #57C7C3;
-      text-align: center;
-  }
-  .example-item_third {
-      background-color: #3B97D3;
-      text-align: center;
-  }
+.example-item {
+  display: inline-block;
+  height: 20px;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 20%;
+
+}
+
+.example-item_first {
+  background-color: orange;
+  margin-left: 150px;
+  text-align: center;
+
+}
+
+.example-item_second {
+  background-color: cyan;
+  text-align: center;
+
+}
+
+.example-item_third {
+  background-color: steelblue;
+  text-align: center;
+
+}
 
 .movie-card-storyline {
   font-size: 14px;
@@ -161,8 +165,7 @@ input, select {
 }
 
 /* ----Modelo utilizado no youTrybe---- */
-
-@import url('https://fonts.googleapis.com/css2?family=Roboto');
+/* @import url('https://fonts.googleapis.com/css2?family=Roboto'); */
 
 .loading {
   align-items: center;
@@ -189,21 +192,21 @@ input, select {
 
 } */
 
-body,
+body, 
 html, 
-#root {
-  font-family: 'Roboto' , sans-serif;
+/* #root {
+  font-family: "Roboto" , sans-serif;
   height: 100vh;
   overflow-x: hidden;
   width: 100vw;
-}
+} */
 
 .grid {
   display: grid;
-  margin: 5px 0;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: 150px 1;
   grid-template-rows: 150px;
   height: 100%;
+  margin: 5px 0;
   width: 100%;
 
 }
@@ -213,7 +216,7 @@ html,
   display: flex;
   flex-flow: row wrap;
   grid-column-start: 2;
-  justify-content: space-evenly;
+  justify-content: space-between;
 
 }
 
@@ -230,7 +233,7 @@ img {
   max-height: 36px;
   max-width: 75px;
   width: 100%;
-  
+
 }
 
 .subtitle {
@@ -253,14 +256,14 @@ img {
   display: inline-block;
   margin-left: 5%;
   max-height: 300px;
-  max-width: 90%; 
+  max-width: 90%;
 
 }
 
 section {
+  height: auto;
   margin: 1rem 1.5rem 0;
   max-width: 288px;
-  height: auto;
   transition: all ease-in-out 0.2s;
   width: 100%;
 
@@ -273,7 +276,6 @@ section:hover {
 
 .info {
   align-items: center;
-  margin: 0;
   display: flex;
   flex-flow: row wrap;
   justify-content: flex-start;
@@ -302,16 +304,15 @@ section:hover {
     height: 250px;
     margin: 1.5rem 0;
     max-width: none;
-    margin: 1.5rem 0
-
-  }
   
+  }
+
   .card-image {
     height: 180px;
     max-height: none;
     max-width: 100%;
     width: 100%;
-   
+
   }
 
  
