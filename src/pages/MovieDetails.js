@@ -25,11 +25,11 @@ class MovieDetails extends Component {
   }
 
   render() {
-      const { match } = this.props;
-      const { loading, movie } = this.state;
-      const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { match } = this.props;
+    const { loading, movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
       return (
-      <div className="movie-card" data-testid="movie-details">
+        <div className="movie-card" data-testid="movie-details">
         {loading ? (
           <Loading />
         ) : (
@@ -60,8 +60,8 @@ class MovieDetails extends Component {
           </div>
       )}
       </div>
-    );
-    }
+      );
+  }
 }
 
 MovieDetails.propTypes = {
