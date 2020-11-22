@@ -166,7 +166,6 @@ input, select {
 
 /* ----Modelo utilizado no youTrybe---- */
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto'); */
-
 .loading {
   align-items: center;
   animation: is-rotating 1s infinite;
@@ -192,8 +191,9 @@ input, select {
 
 } */
 
-body, 
-html, 
+/* body, 
+
+html,  */
 /* #root {
   font-family: "Roboto" , sans-serif;
   height: 100vh;
@@ -295,7 +295,7 @@ section:hover {
 }
 
 @media screen and ( max-width : 600px ) {
-  
+
   .grid {
     grid-template-columns: 2;
   }
@@ -314,6 +314,4 @@ section:hover {
     width: 100%;
 
   }
-
- 
 }
