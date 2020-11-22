@@ -75,7 +75,7 @@ class MovieDetails extends Component {
               <Link
                 to="/"
                 className="example-item example-item_third"
-                onCLick={ () => this.deleteMovie() }
+                onCLick={() => this.deleteMovie()}
               >
                 DELETAR
               </Link>
