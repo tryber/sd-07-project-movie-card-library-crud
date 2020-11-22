@@ -14,11 +14,9 @@ class MovieDetails extends Component {
       movies: [],
     };
   }
-  
   componentDidMount() {
     this.fetchMovie();
   }
-  
   async fetchMovie() {
     const movieId = this.props.match.params.id;
     const requestReturn = await movieAPI.getMovie(movieId);
@@ -51,9 +49,6 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  movieId: PropTypes.string.isRequired,
-};
+MovieDetails.propTypes = { match: PropTypes.arrayOf(PropTypes.object).isRequired };
 
 export default MovieDetails;

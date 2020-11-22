@@ -19,7 +19,6 @@ class EditMovie extends Component {
   componentDidMount() {
     this.fetchMovie();
   }
-  
   async fetchMovie() {
     const movieId = this.props.match.params.id;
     const requestReturn = await movieAPI.getMovie(movieId);
@@ -53,9 +52,6 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = {
-  movieId: PropTypes.number.isRequired,
-  onSubmit: PropTypes.func.isRequired,
-};
+EditMovie.propTypes = { match: PropTypes.arrayOf(PropTypes.object).isRequired };
 
 export default EditMovie;
