@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
+import Loading from '../components/Loading';
 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      movie: {},
+      status: 'loading',
+      shouldRedirect: false,
+
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -15,12 +21,13 @@ class EditMovie extends Component {
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
+
     if (shouldRedirect) {
       // Redirect
     }
 
     if (status === 'loading') {
-      // render Loading
+      return <Loading />;
     }
 
     return (

@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
-
-
 
 class MovieDetails extends Component {
   constructor(props) {
@@ -20,9 +17,9 @@ class MovieDetails extends Component {
     this.listMovie();
   }
 
-  componentDidUpdate() {
+/*   componentDidUpdate() {
     this.listMovie();
-  }
+  } */
 
   listMovie() {
     const { id } = this.props.match.params;
@@ -30,7 +27,7 @@ class MovieDetails extends Component {
     .then((resolve) => {
       if (resolve.title !== undefined) {
         this.setState({ movie: resolve, loading: false, id });
-      }      
+      }
     })
     .catch((error) => console.log('Promises rejected: ', error));
   }
@@ -46,7 +43,6 @@ class MovieDetails extends Component {
 
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     const { id } = this.state;
-   
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -61,7 +57,5 @@ class MovieDetails extends Component {
     );
   }
 }
-
-MovieDetails.propTypes = { id: PropTypes.string };
 
 export default MovieDetails;

@@ -23,6 +23,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <input
+          name="title"
           placeholder="Insira o título"
           id="movie_title"
           type="text"
