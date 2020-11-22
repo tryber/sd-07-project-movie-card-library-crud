@@ -25,7 +25,6 @@ class MovieDetails extends Component {
       movies: requestReturn,
     });
   }
-  
   render() {
     if (this.state.loading) {
       return <Loading />;
