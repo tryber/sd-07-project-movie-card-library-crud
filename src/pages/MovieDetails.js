@@ -7,46 +7,28 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       movie: {},
       loading: true,
     };
   }
-
+ 
   componentDidMount() {
-    this.renderMovie();
-  }
-
-  async handleSubmit(newMovie) {
-    await movieAPI.deleteMovie(newMovie);
-  }
-
-  async renderMovie() {
     const { match } = this.props;
-    const result = await movieAPI.getMovie(match.params.id);
+    this.renderMovie(match.params.id);
+  
+  }
+
+  async renderMovie(id) {
+    const result = await movieAPI.getMovie(id);
     this.setState({ movie: result, loading: false });
   }
 
-  // deleteMovie() {
-  //   movieAPI.deleteMovie(this.props.match.params.id);
-  // }
-
-  // async delMovie() {
-  //   const { id } = this.props.match.params;
-  //   await movieAPI.deleteMovie(id);
-  //   }
-
-  // renderMovie() {
-  //   this.setState({ loading: true }, async () => {
-  //     const { match } = this.props;
-  //     const requestMovie = await movieAPI.getMovie(match.params.id);
-  //     this.setState({ movie: requestMovie, loading: false });
-  //   });
-  // }
-
-  render() {
+    render() {
+    const { match } = this.props;
     const { loading, movie } = this.state;
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const {title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div className="movie-card" data-testid="movie-details">
         {loading ? (
@@ -61,7 +43,7 @@ class MovieDetails extends Component {
             <p className="rating" ><em>{`Rating: ${rating}`}</em></p>
             <div className="exemplo">
               <Link
-                to={`/movies/${id}/edit`}
+                to={`/movies/${match.params.id}/edit`}
                 className="example-item example-item_first"
               >
                 EDITAR
@@ -72,13 +54,9 @@ class MovieDetails extends Component {
               >
                 VOLTAR
               </Link>
-              <Link
-                to="/"
-                className="example-item example-item_third"
-                onCLick={() => this.deleteMovie()}
-              >
-                DELETAR
-              </Link>
+              <button className="example-item example-item_third">
+                <Link to="/" onClick={() => movieAPI.deleteMovie(match.params.id)}>DELETAR</Link> 
+              </button>
             </div>
           </div>
       )}
@@ -90,9 +68,10 @@ class MovieDetails extends Component {
 MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
     }),
   }).isRequired,
 };
 
 export default MovieDetails;
+

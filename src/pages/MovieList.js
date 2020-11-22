@@ -42,7 +42,9 @@ class MovieList extends Component {
             {loading ?
               <Loading /> : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
             <div className="div-area-imput">
-              <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
+              <button>
+                <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
+              </button>
             </div>
           </div>
         </div>

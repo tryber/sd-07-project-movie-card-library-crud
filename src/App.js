@@ -23,9 +23,3 @@ function App() {
 }
 
 export default App;
-
-// fetchDog() {
-//   fetch("https://dog.ceo/api/breeds/image/random")
-//     .then(res => res.json())
-//     .then(result => this.setState({ data: result }));
-// }

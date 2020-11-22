@@ -12,7 +12,7 @@ export const getMovies = () => (
     setTimeout(() => {
       const movies = readMovies();
       resolve(movies);
-    }, 5000);
+    }, 2000);
   })
 );
 
@@ -22,7 +22,7 @@ export const getMovie = (movieId) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(movie);
-    }, 5000);
+    }, 2000);
   });
 };
 
@@ -38,7 +38,7 @@ export const updateMovie = (updatedMovie) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 5000);
+    }, 2000);
   });
 };
 
@@ -52,7 +52,7 @@ export const createMovie = (movieData) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 5000);
+    }, 2000);
   });
 };
 
@@ -60,6 +60,7 @@ export const createMovie = (movieData) => {
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
   movies = movies.filter((movie) => movie.id !== parseInt(movieId, 10));
+  console.log(movies);
   saveMovies(movies);
 
   return new Promise((resolve) => {
