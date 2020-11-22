@@ -165,6 +165,7 @@ input, select {
 }
 
 /* ----Modelo utilizado no youTrybe---- */
+
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto'); */
 .loading {
   align-items: center;
@@ -191,9 +192,10 @@ input, select {
 
 } */
 
-/* body, 
+/* body,
 
 html,  */
+
 /* #root {
   font-family: "Roboto" , sans-serif;
   height: 100vh;
@@ -304,7 +306,6 @@ section:hover {
     height: 250px;
     margin: 1.5rem 0;
     max-width: none;
-  
   }
 
   .card-image {

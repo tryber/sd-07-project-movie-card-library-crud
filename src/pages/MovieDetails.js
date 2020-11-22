@@ -60,17 +60,25 @@ class MovieDetails extends Component {
             <p className="movie-card-storyline"><b>{`Gênero: ${genre}`}</b></p>
             <p className="rating" ><em>{`Rating: ${rating}`}</em></p>
             <div className="exemplo">
-              <Link to={`/movies/${id}/edit`} 
-              className="example-item example-item_first">
-              EDITAR
+              <Link 
+                to={`/movies/${id}/edit`}
+                className="example-item example-item_first"
+              >
+                EDITAR
               </Link>
-              <Link to="/" 
-              className="example-item example-item_second">
-              VOLTAR
+              <Link 
+                to="/" 
+                className="example-item example-item_second"
+              >
+                VOLTAR
               </Link>
-              <Link to="/" 
-              className="example-item example-item_third"
-              onCLick={ () => this.deleteMovie()}>
+              <Link 
+                to="/"
+                className="example-item example-item_third"
+              >
+                onCLick={ 
+                () => this.deleteMovie()
+              }>
                 DELETAR
               </Link>
             </div>
