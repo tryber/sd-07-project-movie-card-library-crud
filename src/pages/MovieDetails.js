@@ -17,7 +17,7 @@ class MovieDetails extends Component {
     this.fetchMovie(idMovie);
   }
   
-  fetchMovie = async (id) => {
+  async fetchMovie(id){
     const response = await movieAPI.getMovie(id)
     this.setState({movie: response});
   }
