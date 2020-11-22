@@ -17,7 +17,7 @@ class MovieCard extends React.Component {
             <div className="card-description__labels--genre">{movie.rating}</div>
           </div>
           <p>{movie.storyline}</p>
-          <Link to={`movies/${movie.id}`}><p>VER DETALHES</p></Link>
+          <Link to={`movies/${movie.id}`}>VER DETALHES</Link>
         </div>
       </div>
     );
