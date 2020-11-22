@@ -53,7 +53,7 @@ class MovieDetails extends Component {
               <button> EDITAR </button>
             </Link>
             <Link to="/" className="btn-details">
-             <button> VOLTAR </button>
+              <button> VOLTAR </button>
             </Link>
           </div>
         )}
