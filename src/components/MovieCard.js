@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
-    const { id, title, storyline } = this.props.movie;  
+    const { id, title, storyline } = this.props.movie;
     const name = `/movies/${id}`;
     return (
       <div data-testid="movie-card">
@@ -19,7 +19,7 @@ class MovieCard extends React.Component {
 MovieCard.propTypes = {
   id: PropTypes.number,
   title: PropTypes.string,
-  storyline: PropTypes.string,    
+  storyline: PropTypes.string,
 }.isRequired;
 
 export default MovieCard;
