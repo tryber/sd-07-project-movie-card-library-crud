@@ -29,9 +29,9 @@ class MovieDetails extends Component {
     const { loading, movie } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
-        <div className="movie-card" data-testid="movie-details">
+      <div className="movie-card" data-testid="movie-details">
           {loading ? (
-          <Loading />
+            <Loading />
         ) : (
           <div>
             <img className="card-image" alt="Movie Cover" src={`../${imagePath}`} />
@@ -60,7 +60,7 @@ class MovieDetails extends Component {
           </div>
       )}
         </div>
-      );
+    );
   }
 }
 
