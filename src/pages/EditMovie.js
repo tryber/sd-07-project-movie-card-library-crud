@@ -13,19 +13,19 @@ class EditMovie extends Component {
       movie: undefined,
       loading: true,
       shouldRedirect: false,
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    this.requestMovie();
   }
 
   async requestMovie() {
     const { id } = this.props.match.params;
     const requestedMovie = await movieAPI.getMovie(id);
     this.setState({ movie: requestedMovie })
-  }
-
-  componentDidMount() {
-    this.requestMovie()
-  }
+  };
 
   async handleSubmit(updatedMovie) {
     this.setState({ shouldRedirect: true });
@@ -36,12 +36,12 @@ class EditMovie extends Component {
     const { shouldRedirect, movie } = this.state;
     if (shouldRedirect === true) {
       // Redirect
-      return ( <Redirect to="/" exact /> )
+      return (<Redirect to="/" exact />);
     }
 
     if (movie === undefined) {
       // render Loading
-      return ( <Loading /> );
+      return (<Loading />);
     }
 
     return (
@@ -53,9 +53,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  match: PropTypes
-  .objectOf([PropTypes.string, PropTypes.bool, PropTypes.object])
-    .isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default EditMovie;

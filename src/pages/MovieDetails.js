@@ -14,21 +14,21 @@ class MovieDetails extends Component {
       movie: undefined,
       loading: true,
       function: false,
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.requestMovie();
   }
 
   async deleteMovie(movieID) {
-    await movieAPI.deleteMovie(movieID)
+    await movieAPI.deleteMovie(movieID);
   }
 
   async requestMovie() {
     const { id } = this.props.match.params;
     const requestedMovie = await movieAPI.getMovie(id);
-    this.setState({ movie: requestedMovie })
-  }
-
-  componentDidMount() {
-    this.requestMovie()
+    this.setState({ movie: requestedMovie });
   }
 
   renderMovie() {
@@ -44,7 +44,7 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <div>
           <Link to={`/movies/${id}/edit`}><p>EDITAR</p></Link>
-          <Link to="/"><p onClick={() => this.deleteMovie(id)}>DELETAR</p></Link>
+          <Link to="/"><button onClick={() => this.deleteMovie(id)}>DELETAR</button></Link>
           <Link to="/"><p>VOLTAR</p></Link>
         </div>
       </div>
@@ -54,7 +54,7 @@ class MovieDetails extends Component {
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    return ( this.state.movie ? this.renderMovie() : <Loading /> );
+    return (this.state.movie ? this.renderMovie() : <Loading />);
     /*
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 

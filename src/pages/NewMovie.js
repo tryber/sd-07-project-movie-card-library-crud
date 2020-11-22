@@ -7,7 +7,7 @@ import * as movieAPI from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
-    this.state = { shouldRedirect: false }
+    this.state = { shouldRedirect: false };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -19,7 +19,7 @@ class NewMovie extends Component {
   render() {
     if (this.state.shouldRedirect === true) {
       // Redirect
-      return ( <Redirect to="/" exact /> )
+      return (<Redirect to="/" exact />);
     }
 
     return (
