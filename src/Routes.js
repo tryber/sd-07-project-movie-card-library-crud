@@ -14,12 +14,10 @@ class Routes extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/">
-            {" "}
-            <MovieList />{" "}
+            <MovieList />
           </Route>
           <Route path="/movies/new">
-            {" "}
-            <NewMovie />{" "}
+            <NewMovie />
           </Route>
           <Route
             path="/movies/:id/edit"
@@ -30,12 +28,10 @@ class Routes extends React.Component {
             render={(props) => <MovieDetails {...props} />}
           />
           <Route path="*">
-            {" "}
-            <NotFound />{" "}
+            <NotFound />
           </Route>
           <Route path="/movies/*">
-            {" "}
-            <NotFound />{" "}
+            <NotFound />
           </Route>
         </Switch>
       </BrowserRouter>

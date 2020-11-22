@@ -12,9 +12,7 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     const idMovie = this.props.match.params.id;
-    // match params nulo
     this.fetchMovie(idMovie);
   }
 
@@ -26,7 +24,6 @@ class MovieDetails extends Component {
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-
     const {
       title,
       storyline,

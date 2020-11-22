@@ -74,18 +74,17 @@ body {
   padding: 10px;
 }
 
-.body-card h4 {
+.h4 {
   color: #3d858c;
   font-size: 16pt;
+  margin:0;
 }
 
-.body-card h5 {
+.h5 {
   font-weight: 200;
+  margin:0;
 }
 
-.body-card h4, h5 {
-  margin: 0;
-}
 
 .body-card p {
   font-family: Arial , Helvetica , sans-serif;
