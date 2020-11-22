@@ -1,3 +1,5 @@
+// Para a realizacao deste projeto consultei o repositorio do colega Ygor Fonseca.
+
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
