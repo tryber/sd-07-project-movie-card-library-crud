@@ -37,7 +37,7 @@ MovieCard.propTypes = {
   movie: PropTypes.shape({
     title: PropTypes.string.isRequired,
     id: PropTypes.number.isRequired,
-    subtitle:  PropTypes.string.isRequired,
+    subtitle: PropTypes.string.isRequired,
     imagePath: PropTypes.string.isRequired,
     rating: PropTypes.number.isRequired,
     storyline: PropTypes.string.isRequired,

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+
 
 class MovieDetails extends Component {
   constructor() {
@@ -49,6 +51,15 @@ class MovieDetails extends Component {
       </div>
     );
   }
+}
+
+
+MovieDetails.propTypes = {
+  math: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }),
+  }).isRequired,
 }
 
 export default MovieDetails;
