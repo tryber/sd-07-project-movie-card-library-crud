@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 class MovieCard extends React.Component {
   render() {
-    // Ao adicionar propTypes remover prop
-    const prop = this.props;
-    const { id, storyline, title } = prop.movie;
+    const { id, storyline, title } = this.props.movie;
     return (
       <div data-testid="movie-card">
         <h4>{title}</h4>
@@ -15,5 +15,11 @@ class MovieCard extends React.Component {
     );
   }
 }
-
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    title: PropTypes.number.isRequired,
+    storyline: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+};
 export default MovieCard;
