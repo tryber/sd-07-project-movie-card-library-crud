@@ -6,6 +6,8 @@ class MovieForm extends React.Component {
     super(props);
     this.state = { ...props.movie };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.updateMovie = this.updateMovie.bind(this);
+    this.renderTitleInput = this.renderTitleInput.bind(this);
   }
 
   handleSubmit() {
