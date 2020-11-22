@@ -6,9 +6,6 @@ import Loading from '../components/Loading';
 
 import * as movieAPI from '../services/movieAPI';
 
-import { Wrapper } from '../styles/MovieList';
-import Button from '../styles/Button';
-
 class MovieList extends Component {
   constructor() {
     super();
@@ -30,15 +27,15 @@ class MovieList extends Component {
     if (movies.length === 0) return <Loading />;
 
     return (
-      <Wrapper>
-        <Button>
+      <div>
+        <button>
           <Link to="/movies/new">ADICIONAR CARTÃO</Link>
-        </Button>
+        </button>
 
         <div data-testid="movie-list">
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
-      </Wrapper>
+      </div>
     );
   }
 }

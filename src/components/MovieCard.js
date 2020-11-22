@@ -2,10 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-import Button from '../styles/Button';
-
-import { MovieCardWrapper } from '../styles/MovieCard';
-
 class MovieCard extends React.Component {
   render() {
     const {
@@ -15,16 +11,16 @@ class MovieCard extends React.Component {
     } = this.props.movie;
 
     return (
-      <MovieCardWrapper data-testid="movie-card">
+      <div data-testid="movie-card">
         <h1>{title}</h1>
         <p>{storyline}</p>
 
-        <Button>
+        <button>
           <Link to={`/movies/${id}`}>
             VER DETALHES
         </Link>
-        </Button>
-      </MovieCardWrapper>
+        </button>
+      </div>
     );
   }
 }

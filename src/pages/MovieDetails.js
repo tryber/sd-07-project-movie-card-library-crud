@@ -5,9 +5,6 @@ import PropTypes from 'prop-types';
 import { Loading } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-import { MovieDetailsWrapper, MovieInfoWrapper } from '../styles/MovieDetails';
-import Button from '../styles/Button';
-
 class MovieDetails extends Component {
   constructor() {
     super();
@@ -57,9 +54,9 @@ class MovieDetails extends Component {
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
     return (
-      <MovieDetailsWrapper data-testid="movie-details">
+      <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
-        <MovieInfoWrapper>
+        <div>
           <h1>TITLE</h1>
           <p>{`${title}`}</p>
           <h1>SUBTITLE</h1>
@@ -70,23 +67,23 @@ class MovieDetails extends Component {
           <p>{`Genre: ${genre}`}</p>
           <h1>RATING</h1>
           <p>{`Rating: ${rating}`}</p>
-        </MovieInfoWrapper>
-
-        <div>
-          <Button>
-            <Link to="/">VOLTAR</Link>
-          </Button>
-
-          <Button>
-            <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
-          </Button>
-
-          <Button>
-            <a href="/" onClick={this.handleDelete}>DELETAR</a>
-          </Button>
         </div>
 
-      </MovieDetailsWrapper>
+        <div>
+          <button>
+            <Link to="/">VOLTAR</Link>
+          </button>
+
+          <button>
+            <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link>
+          </button>
+
+          <button>
+            <a href="/" onClick={this.handleDelete}>DELETAR</a>
+          </button>
+        </div>
+
+      </div>
     );
   }
 }
