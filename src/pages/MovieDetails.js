@@ -50,10 +50,10 @@ class MovieDetails extends Component {
             <p>{`Genre: ${genre}`}</p>
             <p>{`Rating: ${rating}`}</p>
             <Link to={`/movies/${id}/edit`} className="btn-details">
-              Editar
+              <button> EDITAR </button>
             </Link>
             <Link to="/" className="btn-details">
-              Voltar
+             <button> VOLTAR </button>
             </Link>
           </div>
         )}
