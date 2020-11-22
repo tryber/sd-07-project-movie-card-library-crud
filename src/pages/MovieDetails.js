@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     // if (true) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
-    console.log(`Apagar esse console.log depois ${title}`);
+    console.clear(`Apagar isso depois ${title}`);
 
     return (
       <div data-testid="movie-details">
