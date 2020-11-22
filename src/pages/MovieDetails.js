@@ -60,7 +60,7 @@ class MovieDetails extends Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.shape({
+  match: PropTypes.forma({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
