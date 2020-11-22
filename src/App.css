@@ -92,18 +92,21 @@ body {
 
 .bottom-card {
   background-color: #18454b;
+  border-bottom-left-radius:5px;
+  border-bottom-right-radius:5px;
   display: flex;
-  padding: 5px;
+  padding: 10px;
+  
 }
 
 .btn-details {
   background-color: #18454b;
   border: none;
-  border-radius: 5px;
   color: white;
   cursor: pointer;
   flex: 1;
   line-height: 30px;
+  text-decoration: none;
 }
 
 .btn-details:hover {

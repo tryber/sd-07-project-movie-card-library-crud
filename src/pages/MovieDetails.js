@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import { Link } from 'react-router-dom';
 
 
 class MovieDetails extends Component {
@@ -27,6 +28,7 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
     const {
+      id,
       title,
       storyline,
       imagePath,
@@ -42,10 +44,17 @@ class MovieDetails extends Component {
         ) : (
           <div>
             <img alt="Movie Cover" src={`../${imagePath}`} />
+            <h1>{title}</h1>
             <p>{`Subtitle: ${subtitle}`}</p>
             <p>{`Storyline: ${storyline}`}</p>
             <p>{`Genre: ${genre}`}</p>
             <p>{`Rating: ${rating}`}</p>
+            <Link to={`/movies/${id}/edit`}>
+              <button>Editar</button>
+            </Link>
+            <Link to="/">
+            <button>Voltar</button>
+            </Link>
           </div>
         )}
       </div>
