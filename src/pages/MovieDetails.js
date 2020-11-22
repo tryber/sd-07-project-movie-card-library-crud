@@ -20,22 +20,22 @@ class MovieDetails extends Component {
   async fetchIDMovie() {
     this.setState(
       { loading: true },
-    async () => {      
+    async () => {
       const { id } = this.props.match.params;
-      const movie = await movieAPI.getMovie(id);      
+      const movie = await movieAPI.getMovie(id);
       this.setState({
         loading: false,
         movie,
-      });      
+      });
     },
     );
   }
   render() {
-    const { movie } = this.state;    
-    const { title, storyline, imagePath, genre, rating, subtitle, id} = movie;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
 
     if (this.state.loading === true) return <Loading />;
-        
+
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -48,9 +48,11 @@ class MovieDetails extends Component {
         </div>
         <div>
           <span><Link to="/">VOLTAR</Link></span>
+        </div>
+        <div>
           <span><Link to={`/movies/${id}/edit`}>EDITAR</Link></span>
-        </div>        
-      </div>      
+        </div>
+      </div>
     );
   }
 }
