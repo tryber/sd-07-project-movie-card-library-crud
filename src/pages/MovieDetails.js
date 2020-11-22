@@ -26,15 +26,13 @@ class MovieDetails extends Component {
       loading: false,
     });
   }
-    
-  render() {
-                
+  render() {    
     if (this.state.loading) return 'Carregando...';
-    
+
     const myMovie = this.state.movie;
-  
+
     const { id, title, storyline, imagePath, genre, rating, subtitle } = myMovie;
-  
+
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
