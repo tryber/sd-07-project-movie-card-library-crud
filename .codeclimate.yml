@@ -33,6 +33,7 @@ exclude_patterns:
 - "src/serviceWorker.js"
 - "src/index.css"
 - "node_modules/"
+- "src/styles"
 plugins:
   csslint:
     enabled: true
