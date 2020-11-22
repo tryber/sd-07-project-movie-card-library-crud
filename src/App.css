@@ -92,11 +92,10 @@ body {
 
 .bottom-card {
   background-color: #18454b;
-  border-bottom-left-radius:5px;
-  border-bottom-right-radius:5px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
   display: flex;
   padding: 10px;
-  
 }
 
 .btn-details {
