@@ -26,7 +26,7 @@ class MovieDetails extends Component {
       loading: false,
     });
   }
-  render() {    
+  render() {   
     if (this.state.loading) return 'Carregando...';
 
     const myMovie = this.state.movie;
