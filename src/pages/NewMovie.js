@@ -23,7 +23,7 @@ class NewMovie extends Component {
     if (this.state.shouldRedirect) return <Redirect to="/" />
     return (
       <div data-testid="new-movie">
-        <MovieForm onSubmit={this.handleSubmit} />}
+        <MovieForm onSubmit={this.handleSubmit} />
       </div>
     );
   }

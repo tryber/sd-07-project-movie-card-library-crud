@@ -56,6 +56,7 @@ export const createMovie = (movieData) => {
   });
 };
 
+
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
   movies = movies.filter((movie) => movie.id !== parseInt(movieId, 10));
