@@ -14,6 +14,10 @@ class MovieDetails extends Component {
     };
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   fetchMovie() {
     const { id } = this.props.match.params;
     this.setState({ isLoading: true }, async () => {
@@ -24,10 +28,6 @@ class MovieDetails extends Component {
         movie: returnedMovie,
       });
     });
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
   }
 
   renderMovie() {
