@@ -5,8 +5,6 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 import '../App.css';
 
-
-
 class MovieDetails extends Component {
   constructor() {
     super();
@@ -63,7 +61,6 @@ class MovieDetails extends Component {
     );
   }
 }
-
 
 MovieDetails.propTypes = {
   match: PropTypes.shape({
