@@ -13,11 +13,10 @@ class MovieDetails extends Component {
       loading: true,
     };
   }
- 
+
   componentDidMount() {
     const { match } = this.props;
     this.renderMovie(match.params.id);
-  
   }
 
   async renderMovie(id) {
@@ -25,11 +24,11 @@ class MovieDetails extends Component {
     this.setState({ movie: result, loading: false });
   }
 
-    render() {
-    const { match } = this.props;
-    const { loading, movie } = this.state;
-    const {title, storyline, imagePath, genre, rating, subtitle } = movie;
-    return (
+  render() {
+      const { match } = this.props;
+      const { loading, movie } = this.state;
+      const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+      return (
       <div className="movie-card" data-testid="movie-details">
         {loading ? (
           <Loading />
@@ -55,14 +54,14 @@ class MovieDetails extends Component {
                 VOLTAR
               </Link>
               <button className="example-item example-item_third">
-                <Link to="/" onClick={() => movieAPI.deleteMovie(match.params.id)}>DELETAR</Link> 
+                <Link to="/" onClick={() => movieAPI.deleteMovie(match.params.id)}>DELETAR</Link>
               </button>
             </div>
           </div>
       )}
       </div>
     );
-  }
+    }
 }
 
 MovieDetails.propTypes = {
