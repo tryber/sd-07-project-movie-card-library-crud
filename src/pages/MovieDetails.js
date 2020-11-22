@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import Loading from '../components/Loading';
-import { Link } from 'react-router-dom';
+
 
 
 class MovieDetails extends Component {
@@ -19,19 +20,19 @@ class MovieDetails extends Component {
     this.listMovie();
   }
 
+  componentDidUpdate() {
+    this.listMovie();
+  }
+
   listMovie() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id)
     .then((resolve) => {
-      if(resolve.title !== undefined){
+      if (resolve.title !== undefined) {
         this.setState({ movie: resolve, loading: false, id });
       }      
     })
     .catch((error) => console.log('Promises rejected: ', error));
-  }
-
-  componentDidUpdate() {
-    this.listMovie();
   }
 
   render() {
