@@ -8,7 +8,10 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/movies/new" component={NewMovie} />
-        <Route exact path="/movies/:id/edit" component={EditMovie} />
+        <Route
+          exact path="/movies/:id/edit"
+          component={(props) => <EditMovie {...props} />}
+        />
         <Route
           exact path="/movies/:id"
           component={(props) => <MovieDetails {...props} />}
