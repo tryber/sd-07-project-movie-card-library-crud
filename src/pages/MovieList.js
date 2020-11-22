@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Loading, MovieCard} from '../components/index'
+import { Loading, MovieCard } from '../components/index'
 
 import * as movieAPI from '../services/movieAPI';
 
@@ -17,8 +17,8 @@ class MovieList extends Component {
   }
 
   async fetchMovies() {
-   const response = await movieAPI.getMovies();
-   this.setState({movies: response});
+    const response = await movieAPI.getMovies();
+    this.setState({ movies: response });
   }
 
   render() {
