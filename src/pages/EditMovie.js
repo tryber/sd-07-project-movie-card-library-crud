@@ -20,8 +20,8 @@ class EditMovie extends Component {
 
   // Solução de bloco de edição sugerida por Edu Souza - T07
   async fecthMovie() {
-    const { match } = this.props;
-    const requestMovie = await movieAPI.getMovie(match.params.id);
+    const { id } = this.props.match.params;
+    const requestMovie = await movieAPI.getMovie(id);
     this.setState({ movie: requestMovie, status: 'loaded' });
   }
 
