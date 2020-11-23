@@ -23,7 +23,7 @@ function App() {
           <EditMovie
             {...props}
             movie="editar movie"
-        />}
+          />}
       />
     </BrowserRouter>
   );
