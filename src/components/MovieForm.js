@@ -154,4 +154,28 @@ class MovieForm extends React.Component {
   }
 }
 
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
+
+MovieForm.defaultProps = {
+  movie: {
+    id: 2,
+    title: 'Final Fantasy',
+    subtitle: 'Spirits Within',
+    storyline: 'A scientist makes a last stand on Earth with the help of a ragtag team of soldiers against an invasion of alien phantoms.',
+    rating: 4.5,
+    imagePath: 'images/Final_Fantasy_Spirits_Within.jpg',
+    bookmarked: false,
+    genre: 'fantasy',
+  },
+};
+
 export default MovieForm;
