@@ -6,7 +6,6 @@ function App() {
     <BrowserRouter>
       <div>Movie Card Library Crud</div>
     </BrowserRouter>
-    
   );
 }
 
