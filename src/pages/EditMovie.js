@@ -56,10 +56,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  id: PropTypes.oneOfType([
-    PropTypes.string,
-    PropTypes.any,
-  ])
+  id: PropTypes.string,  
 }
 
 export default EditMovie;
