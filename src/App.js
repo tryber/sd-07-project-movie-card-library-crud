@@ -4,11 +4,11 @@ import './App.css';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import EditMovie from './pages/EditMovie';
-import NewMovie from './pages/NewMovie'
+import NewMovie from './pages/NewMovie';
 import NotFound from './pages/NotFound';
 
 class App extends React.Component {
-  render () {
+  render() {
     return (
       <Switch>
         <Route exact path="/" component={MovieList} />
@@ -20,6 +20,4 @@ class App extends React.Component {
     );
   }
 }
-  
-
 export default App;
