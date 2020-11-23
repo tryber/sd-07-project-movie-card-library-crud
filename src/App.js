@@ -1,30 +1,16 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
-import MovieList from './pages/MovieList';
-import MovieDetails from './pages/MovieDetails';
-import NewMovie from './pages/NewMovie';
-import EditMovie from './pages/EditMovie';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { MovieList, MovieDetails, NewMovie, EditMovie, NotFound } from './pages';
 
 function App() {
   return (
     <BrowserRouter>
-      <Route path="/"><MovieList /></Route>
-      <Route
-        path="movies/:id"
-        render={(props) => <MovieDetails
-          {...props}
-          title="recebe algo aqui"
-        />}
-      />
-      <Route path="movies/new"><NewMovie /></Route>
-      <Route
-        path="/movies/:id/edit"
-        render={(props) =>
-          <EditMovie
-            {...props}
-            movie="editar movie"
-          />}
-      />
+      <Switch>
+        <Route exact path="/" component={MovieList} />
+        <Route path="NewMovies/new" component={NewMovie} />
+        <Route path="/movies/:id/edit" component={MovieDetails} />
+        <Route component={NotFound} />
+      </Switch>
     </BrowserRouter>
   );
 }
