@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import MovieList from './pages/MovieList.js';
