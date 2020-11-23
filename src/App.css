@@ -3,3 +3,35 @@ body {
   box-sizing: border-box;
 }
 
+.header {
+  background-color: black;
+  color: white;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0;
+  padding: 15px;
+  text-align: center;
+  width: 100%;
+}
+
+.movie-list > a {
+  display: flex;
+  justify-content: center;
+  min-width: 700px;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  min-width: 700px;
+}
+
+.movie-card {
+  align-items: center;
+  flex: 1 1 150px;
+  flex: 0 1 150px;
+  flex-direction: column;
+  margin: 5px;
+}
+

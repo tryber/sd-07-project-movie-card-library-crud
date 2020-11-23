@@ -1,8 +1,14 @@
 import React from 'react';
+import { BrowserRouter } from 'react-router-dom';
+import Routes from './Routes';
+import './App.css';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <BrowserRouter>
+      <h1 className="header">Movie Card Library CRUD</h1>
+      <Routes />
+    </BrowserRouter>
   );
 }
 
