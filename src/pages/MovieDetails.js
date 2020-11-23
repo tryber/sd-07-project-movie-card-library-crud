@@ -47,21 +47,23 @@ class MovieDetails extends Component {
     const urlMovieEdit = `/movies/${id}/edit`;
 
     return (
-      <div>
+      <div className="movie-card movie-details">
         {loading ? <Loading /> :
-        <div data-testid="movie-details">
+        <div data-testid="movie-details" className="movie-card-body">
           <img alt="Movie Cover" src={`../${imagePath}`} />
-          <h1>{title}</h1>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
+          <h1 className="movie-card-title">{title}</h1>
+          <p className="movie-card-subtitle">{`Subtitle: ${subtitle}`}</p>
+          <p className="movie-card-storyline">{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
+          <div className="movie-card-rating">
+            <p className="rating">{`Rating: ${rating}`}</p>
+          </div>
+          <div className="buttons-movie-details">
+            <Link className="button link" to="/" onClick={onClick}> VOLTAR</Link>
+            <Link className="button link" to={urlMovieEdit}>EDITAR</Link>
+            <Link className="button link" to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
+          </div>
         </div>}
-        <button><Link to="/" onClick={onClick}> VOLTAR</Link></button>
-        <button><Link to={urlMovieEdit}>EDITAR</Link></button>
-        <button>
-          <Link to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
-        </button>
       </div>
     );
   }

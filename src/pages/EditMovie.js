@@ -46,7 +46,7 @@ class EditMovie extends Component {
     }
 
     return (
-      <div data-testid="edit-movie">
+      <div className="edit-movie" data-testid="edit-movie">
         {status === 'loading' ? <Loading /> :
         <MovieForm movie={movie} onSubmit={this.handleSubmit} />}
       </div>

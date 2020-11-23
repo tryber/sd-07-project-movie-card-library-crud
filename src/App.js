@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch, Redirect, Link } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+import './App.css';
 import MovieList from './pages/MovieList.js';
 import EditMovie from './pages/EditMovie.js';
 import MovieDetails from './pages/MovieDetails.js';
@@ -31,10 +33,18 @@ class App extends Component {
     const { addCard } = this.state;
 
     return (
-      <div>
-        <div>Movie Card Library CRUD</div>
+      <div className="main">
+        <div className="movie-card-header page-title">Movie Card Library CRUD</div>
         <BrowserRouter>
-          { addCard ? <Link to="/movies/new" onClick={this.changeAddCard}>ADICIONAR CARTÃO</Link> : ''}
+          { addCard ?
+            <div className="add-card">
+              <Link
+                className="link"
+                to="/movies/new"
+                onClick={this.changeAddCard}
+              >ADICIONAR CARTÃO</Link>
+            </div> : ''
+          }
           <Switch>
             <Route
               exact path="/"
