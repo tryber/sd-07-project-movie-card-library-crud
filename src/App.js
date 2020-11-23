@@ -8,7 +8,7 @@ import NotFound from './pages/NotFound';
 
 
 class App extends React.component {
-  renderRoutes() {
+  render() {
     return (
       <BrowserRouter>
         <Switch>
@@ -21,15 +21,5 @@ class App extends React.component {
       </BrowserRouter>
     );
   }
-
-  render() {
-    return (
-      <div className="App">
-        <h1> Movie Card Library CRUD</h1>
-        {this.renderRoutes()}
-      </div>
-    );
-  }
 }
-
 export default App;
