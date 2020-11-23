@@ -20,7 +20,7 @@ class NewMovie extends Component {
     })
   }
 
-  render() {    
+  render() {
     if (this.state.shouldRedirect) {
       return <Redirect to="/" />;
     }

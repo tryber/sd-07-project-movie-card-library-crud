@@ -10,7 +10,7 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: true,
-    }
+    };
   }
 
   componentDidMount() {
@@ -22,7 +22,7 @@ class MovieList extends Component {
     this.setState(({ movies }) => ({
       movies: [...movies, ...requestReturn],
       loading: false,
-    }))
+    }));
   }
 
   render() {
@@ -35,7 +35,7 @@ class MovieList extends Component {
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
         <Link to="/movies/new"> ADICIONAR CARTÃO </Link>
-      </div>      
+      </div>
     );
   }
 }
