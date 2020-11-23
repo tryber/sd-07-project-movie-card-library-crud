@@ -13,7 +13,7 @@ class MovieList extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.updateMovie();
   }
 
