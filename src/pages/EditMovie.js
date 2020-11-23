@@ -5,6 +5,10 @@ import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
 class EditMovie extends Component {
+  static defaultProps = {
+    id: '0',
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +60,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  id: PropTypes.string,  
-}
+  id: PropTypes.number,  
+}.isRequired;
 
 export default EditMovie;
