@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -9,6 +9,7 @@ class MovieDetails extends Component {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
     this.renderMovie = this.renderMovie.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.state = {
       isLoading: true,
       movie: [],
@@ -23,11 +24,20 @@ class MovieDetails extends Component {
     const { id } = this.props.match.params;
     this.setState({ isLoading: true }, async () => {
       const returnedMovie = await movieAPI.getMovie(id);
-      console.log(returnedMovie);
       this.setState({
         isLoading: false,
         movie: returnedMovie,
       });
+    });
+  }
+
+  handleDelete() {
+    const { movie } = this.state;
+    movieAPI.deleteMovie(movie.id).then(({ status }) => {
+      console.log(status);
+      if (status === 'OK') {
+        this.setState({ shouldRedirect: status });
+      }
     });
   }
 
@@ -44,13 +54,19 @@ class MovieDetails extends Component {
         <div>
           <Link to={`/movies/${id}/edit`} >EDITAR</Link>
           <Link to={'/'} >VOLTAR</Link>
+          <a href="http://localhost/" onClick={this.handleDelete}>DELETAR</a>
         </div>
       </div>
     );
   }
 
   render() {
-    const { isLoading } = this.state;
+    const { isLoading, shouldRedirect } = this.state;
+    if (shouldRedirect === 'OK') {
+      return (
+        <Redirect to="/" />
+      );
+    }
     return (
       <div data-testid="movie-details">
         {isLoading ? <Loading /> : this.renderMovie()}
