@@ -14,7 +14,7 @@ class MovieDetails extends Component {
     };
   }
 
-  componentDidMount() {    
+  componentDidMount() {
     this.fetchMoviesId();
   }
 
