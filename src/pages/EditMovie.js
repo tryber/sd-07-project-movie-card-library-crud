@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-class EditMovie extends Component {  
+class EditMovie extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -56,7 +56,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  id: PropTypes.number,  
+  id: PropTypes.number,
 }.isRequired;
 
 export default EditMovie;
