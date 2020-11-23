@@ -14,12 +14,12 @@ class MovieDetails extends Component {
     };
   }
 
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.fetchMoviesId(id);
+  componentDidMount() {    
+    this.fetchMoviesId();
   }
 
-  async fetchMoviesId(id) {
+  async fetchMoviesId() {
+    const { id } = this.props.match.params;
     const requestReturn = await movieAPI.getMovie(id);
     this.setState({
       movie: requestReturn,
