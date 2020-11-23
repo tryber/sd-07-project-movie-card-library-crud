@@ -4,11 +4,7 @@ import PropTypes from 'prop-types';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
 
-class EditMovie extends Component {
-  static defaultProps = {
-    id: '0',
-  }
-
+class EditMovie extends Component {  
   constructor(props) {
     super(props);
     this.state = {
