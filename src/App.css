@@ -30,6 +30,8 @@ body {
 .movie-card {
   align-items: center;
   flex: 1 1 150px;
+  flex: 0 1 150px;
   flex-direction: column;
   margin: 5px;
 }
+
