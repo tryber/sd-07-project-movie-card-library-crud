@@ -29,7 +29,7 @@ class EditMovie extends Component {
   }
 
   async fetchMovieEdit() {
-    const { id } = this.props.match.params;
+    const { id } = this.props.match.params;    
     const requestResult = await movieAPI.getMovie(id);
     this.setState({
       status: 'not loading',
@@ -55,8 +55,9 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = {
-  id: PropTypes.string.isRequired,
-};
+id: PropTypes.oneOfType([
+  PropTypes.string,
+  PropTypes.any,
+]).isRequired;
 
 export default EditMovie;
