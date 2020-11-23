@@ -7,7 +7,7 @@ import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
 
-class App extends React.component {
+class App extends React.Component {
   render() {
     return (
       <BrowserRouter>
