@@ -44,7 +44,7 @@ class EditMovie extends Component {
     }
 
     if (status === 'loading') {
-      return "Carregando...";
+      return 'Carregando...';
     }
 
     return (
@@ -56,7 +56,7 @@ class EditMovie extends Component {
 }
 
 EditMovie.propTypes = {
-  id: PropTypes.number.isRequired, 
+  id: PropTypes.string.isRequired,
 };
 
 export default EditMovie;
