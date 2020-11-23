@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 
@@ -15,6 +16,8 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    const { onSubmit } = this.props;
+    onSubmit();
     movieAPI.createMovie(newMovie);
     this.setState(() => ({ shouldRedirected: true }));
   }
@@ -33,4 +36,7 @@ class NewMovie extends Component {
     );
   }
 }
+
+NewMovie.propTypes = { onSubmit: PropTypes.func.isRequired };
+
 export default NewMovie;

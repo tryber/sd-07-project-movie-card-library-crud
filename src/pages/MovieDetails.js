@@ -36,12 +36,14 @@ class MovieDetails extends Component {
   }
 
   async deleteMovie(idMovie) {
+    const { onClick } = this.props;
+    onClick();
     await movieAPI.deleteMovie(idMovie);
   }
   render() {
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     const { loading } = this.state;
-    const { id } = this.props;
+    const { id, onClick } = this.props;
     const urlMovieEdit = `/movies/${id}/edit`;
 
     return (
@@ -55,21 +57,19 @@ class MovieDetails extends Component {
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
         </div>}
-        <button><Link to="/">VOLTAR</Link></button>
+        <button><Link to="/" onClick={onClick}> VOLTAR</Link></button>
         <button><Link to={urlMovieEdit}>EDITAR</Link></button>
-        <button
-          onClick={() => this.deleteMovie(id)}
-          value="DELETAR"
-        >
-          <Link to="/">DELETAR</Link>
+        <button>
+          <Link to="/" onClick={() => this.deleteMovie(id)}>DELETAR</Link>
         </button>
       </div>
     );
   }
 }
 
-MovieDetails.propTypes = {
-  id: PropTypes.number.isRequired,
-};
+MovieDetails.propTypes = ({
+  id: PropTypes.number,
+  onClick: PropTypes.func,
+}).isRequired;
 
 export default MovieDetails;

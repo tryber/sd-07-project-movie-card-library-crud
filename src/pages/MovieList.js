@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard.js';
 import Loading from '../components/Loading.js';
@@ -31,6 +32,7 @@ class MovieList extends Component {
 
   render() {
     const { movies, loading } = this.state;
+    const { onClick } = this.props;
 
     // Render Loading here if the request is still happening
     return (
@@ -41,10 +43,13 @@ class MovieList extends Component {
           <MovieCard
             key={movie.title}
             movie={movie}
+            onClick={onClick}
           />)}
       </div>
     );
   }
 }
+
+MovieList.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default MovieList;

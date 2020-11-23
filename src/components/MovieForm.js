@@ -167,14 +167,13 @@ MovieForm.propTypes = {
 
 MovieForm.defaultProps = {
   movie: {
-    id: 2,
-    title: 'Final Fantasy',
-    subtitle: 'Spirits Within',
-    storyline: 'A scientist makes a last stand on Earth with the help of a ragtag team of soldiers against an invasion of alien phantoms.',
-    rating: 4.5,
-    imagePath: 'images/Final_Fantasy_Spirits_Within.jpg',
+    title: '',
+    subtitle: '',
+    storyline: '',
+    rating: 0.0,
+    imagePath: '',
     bookmarked: false,
-    genre: 'fantasy',
+    genre: '',
   },
 };
 

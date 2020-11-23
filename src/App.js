@@ -20,7 +20,11 @@ class App extends Component {
   }
 
   changeAddCard() {
-    this.setState(() => ({ addCard: false }));
+    if (this.state.addCard) {
+      this.setState(() => ({ addCard: false }));
+    } else {
+      this.setState(() => ({ addCard: true }));
+    }
   }
 
   render() {
@@ -32,13 +36,20 @@ class App extends Component {
         <BrowserRouter>
           { addCard ? <Link to="/movies/new" onClick={this.changeAddCard}>ADICIONAR CARTÃO</Link> : ''}
           <Switch>
-            <Route exact path="/" component={MovieList} />;
-            <Route path="/movies/new" component={NewMovie} />;
+            <Route
+              exact path="/"
+              render={() => <MovieList onClick={this.changeAddCard} />}
+            />;
+            <Route
+              path="/movies/new"
+              render={() => <NewMovie onSubmit={this.changeAddCard} />}
+            />;
             <Route
               exact path="/movies/:id"
               render={(props) =>
                 <MovieDetails
                   id={parseInt(props.match.params.id, 10)}
+                  onClick={this.changeAddCard}
                 />
               }
             />;
@@ -47,6 +58,7 @@ class App extends Component {
               render={(props) =>
                 <EditMovie
                   id={parseInt(props.match.params.id, 10)}
+                  onSubmit={this.changeAddCard}
                 />
               }
             />;

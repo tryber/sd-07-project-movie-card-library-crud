@@ -33,6 +33,8 @@ class EditMovie extends Component {
   }
 
   handleSubmit(updatedMovie) {
+    const { onSubmit } = this.props;
+    onSubmit();
     movieAPI.updateMovie(updatedMovie);
     this.setState(() => ({ shouldRedirect: true }));
   }
@@ -52,8 +54,9 @@ class EditMovie extends Component {
   }
 }
 
-EditMovie.propTypes = {
-  id: PropTypes.number.isRequired,
-};
+EditMovie.propTypes = ({
+  id: PropTypes.number,
+  onSubmit: PropTypes.func,
+}).isRequired;
 
 export default EditMovie;
