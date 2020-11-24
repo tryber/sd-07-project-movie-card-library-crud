@@ -24,7 +24,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_title">Título<br/>
+        <label htmlFor="movie_title">Título<br />
           <input
             placeholder="Insira o título"
             id="movie_title"
@@ -43,7 +43,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_subtitle">Subtítulo<br/>
+        <label htmlFor="movie_subtitle">Subtítulo<br />
           <input
             placeholder="Insira o subtítulo"
             id="movie_subtitle"
@@ -61,7 +61,7 @@ class MovieForm extends React.Component {
 
     return (
       <div className="row">
-        <label htmlFor="movie_image">Imagem<br/>
+        <label htmlFor="movie_image">Imagem<br />
           <input
             placeholder="Insira o caminho da imagem"
             id="movie_image"
@@ -79,7 +79,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_storyline">Sinopse<br/>
+        <label htmlFor="movie_storyline">Sinopse<br />
           <textarea
             id="movie_storyline"
             value={storyline}
@@ -161,5 +161,16 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+  }).isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default MovieForm;

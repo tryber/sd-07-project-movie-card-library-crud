@@ -12,32 +12,31 @@ class MovieList extends Component {
     this.state = {
       movies: '',
       loading: true,
-    }
+    };
+  }
+
+  componentDidMount() {
+    this.fetchMovies();
   }
 
   fetchMovies() {
-    this.setState( async () => {
+    this.setState(async () => {
       const movieslist = await movieAPI.getMovies();
       this.setState({ movies: movieslist, loading: false });
     });
   }
 
-  componentDidMount() {    
-    this.fetchMovies();
-  }
-
   render() {
     const { movies, loading } = this.state;
-      return (
+    return (
       <div>
         <div className="button-background">
           <Link className="button-link" to="/movies/new">ADICIONAR CARTAO</Link>
         </div>
-        {loading ? <Loading /> : 
+        {loading ? <Loading /> :
         <div data-testid="movie-list" className="movie-list">
           {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
-        </div> }
-        
+        </div>}
       </div>
     );
   }

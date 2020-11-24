@@ -9,7 +9,7 @@ body {
   display: flex;
   height: 100px;
   justify-content: center;
-} 
+}
 
 .page-title {
   color: #f8f9fa;
@@ -81,7 +81,7 @@ body {
   padding: 12px 20px;
 }
 
-.button-background  {
+.button-background {
   background-color: rgba(0, 0, 0, 0.03);
   border-top: 1px solid rgba(0, 0, 0, 0.125);
   display: flex;

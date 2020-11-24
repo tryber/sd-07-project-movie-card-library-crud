@@ -1,33 +1,33 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
-  constructor (props) {
+  constructor(props) {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
     this.state = {
       movie: [],
       loading: true,
-    }
-  }
-
-  fetchMovie() {
-    this.setState(async () => {
-      const movie = await movieAPI.getMovie(this.props.match.params.id);
-      this.setState({ movie: movie, loading: false });
-    });
+    };
   }
 
   componentDidMount() {
     this.fetchMovie();
   }
 
+  fetchMovie() {
+    this.setState(async () => {
+      const movie = await movieAPI.getMovie(this.props.match.params.id);
+      this.setState({ movie, loading: false });
+    });
+  }
+
   render() {
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    const { loading } = this.state
+    const { loading } = this.state;
     return (
       <div data-testid="movie-details">
         { loading ? <Loading /> :
@@ -39,10 +39,10 @@ class MovieDetails extends Component {
             <p className="movie-card-storyline">{storyline}</p>
             <p>{`Genre: ${genre} / Rating: ${rating}`}</p>
           </div>
-          <div className="button-background"> 
-            <Link className="button-link" to={`/`}>VOLTAR</Link>
+          <div className="button-background">
+            <Link className="button-link" to={'/'}>VOLTAR</Link>
             <Link className="button-link" to={`/movies/${id}/edit`}>EDITAR</Link>
-            <Link className="button-link" to={`/`}>DELETAR</Link>
+            <Link className="button-link" to={'/'}>DELETAR</Link>
           </div>
         </div>
         }
@@ -50,5 +50,14 @@ class MovieDetails extends Component {
     );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    path: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+    isExact: PropTypes.bool.isRequired,
+    params: PropTypes.object.isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
