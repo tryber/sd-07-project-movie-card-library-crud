@@ -41,7 +41,7 @@ class MovieList extends Component {
         <div className="grid">
           <div className="item">
             {loading ?
-         <Loading /> : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+            <Loading /> : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
             <div className="div-area-input">
               <button>
                 <Link className="red" to="/movies/new">ADICIONAR CARTÃO</Link>
@@ -51,6 +51,6 @@ class MovieList extends Component {
         </div>
       </div>
     );
-}
+  }
 }
 export default MovieList;
