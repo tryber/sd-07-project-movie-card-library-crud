@@ -11,8 +11,8 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       loading: true,
-    }
-  } 
+    };
+  }
   componentDidMount() {
     this.loadingPag();
   }
@@ -21,14 +21,14 @@ class MovieDetails extends Component {
     this.setState(async () => {
       const { match } = this.props;
       const movie = await movieAPI.getMovie(match.params.id);
-      this.setState({ movie, loading: false })
-    })
+      this.setState({ movie, loading: false });
+    });
   }
 
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
-    const { movie, loading } = this.state
+    const { movie, loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
