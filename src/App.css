@@ -116,14 +116,71 @@ body {
 .new-movie {
   align-items: center;
   background-color: #18454b;
+  border-radius: 5px;
+  box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.5);
   display: flex;
   font-weight: 700;
-  height: 4em;
+  height: 408px;
   justify-content: center;
+  margin-top: 25px;
+  margin-left: 25px;
+  padding: 10px;
+  width: 280px;
 }
 
 .new-movie a {
   color: #c9c9c9;
   font-size: 15pt;
   text-decoration: none;
+}
+
+.new-movie a:hover {
+  color: #f3f2f2;
+}
+
+.new-movie-form {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  margin: 0;
+}
+
+.form-add-movie {
+  border: none;
+  border-top: 5px solid #18454b;
+  border-radius: 5px;
+  box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.5);
+  padding: 20px;
+  width: 500px;  
+}
+
+.form-add-movie input {
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px ;
+  padding : 10px;
+  width: 100%;
+}
+
+.form-add-movie textarea {
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px ;
+  padding : 10px;
+  width: 100%;
+}
+
+.form-add-movie select {
+  border: none;
+  border-radius: 5px;
+  box-sizing: border-box;
+  margin-top: 10px;
+  margin-bottom: 10px ;
+  padding : 10px;
+  width: 100%;  
 }

@@ -16,9 +16,7 @@ class Routes extends React.Component {
           <Route exact path="/">
             <MovieList />
           </Route>
-          <Route path="/movies/new">
-            <NewMovie />
-          </Route>
+          <Route exact path="/movies/new" component={NewMovie} />
           <Route
             path="/movies/:id/edit"
             render={(props) => <EditMovie {...props} />}
