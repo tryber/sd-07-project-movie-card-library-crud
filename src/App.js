@@ -9,10 +9,10 @@ function App() {
       <Header />
       <Router>
         <Switch>
-          <Route exact path="/" component={MovieList} />
-          <Route path="/movies/new" component={NewMovie} />
-          <Route exect path="/movies/:id" component={MovieDetails} />
-          <Route exact path="/movies/:id/edit" component={EditMovie} />
+          <Route exact path="/" component={MovieList} ></Route>
+          <Route path="/movies/new" component={NewMovie} ></Route>
+          <Route path="/movies/:id" component={MovieDetails} ></Route>
+          <Route path="/movies/:id/edit" component={EditMovie} ></Route>
           <Route component={NotFound} />
         </Switch>
       </Router>
