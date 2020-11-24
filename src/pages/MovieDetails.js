@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -8,6 +7,7 @@ class MovieDetails extends Component {
   constructor(props) {
     super(props);
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
 
     this.state = {
       movie: {},
@@ -30,6 +30,11 @@ class MovieDetails extends Component {
     });
   }
 
+  async handleDelete(id) {
+    await movieAPI.deleteMovie(id);
+  }
+  // source: Dica do delete peguei no plantão do Rufino.
+
   render() {
     // Change the condition to check the state
     const { loading, movie } = this.state;
@@ -47,18 +52,10 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
-        {/* <Link >DELETAR</Link> */}
+        <Link to="/" onClick={() => this.handleDelete(id)}>DELETAR</Link>
       </div>
     );
   }
 }
-
-MovieDetails.propTypes = {
-  match: PropTypes.shape({
-    params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
 
 export default MovieDetails;
