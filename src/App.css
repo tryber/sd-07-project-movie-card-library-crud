@@ -120,10 +120,10 @@ body {
   font-weight: 700;
   height: 4em;
   justify-content: center;
- }
+}
 
  .new-movie a {
-   text-decoration: none;
-   color:#c9c9c9;
-   font-size: 15pt;
+  color: #c9c9c9;
+  font-size: 15pt;
+  text-decoration: none;
  }
