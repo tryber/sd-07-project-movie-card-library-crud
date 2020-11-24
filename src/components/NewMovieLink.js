@@ -5,7 +5,7 @@ class NewMovieLink extends React.Component {
   render() {
     return (
       <div className="new-movie">
-        <Link to={"/movies/new"}>ADICIONAR CARTÃO</Link>
+        <Link to={'/movies/new'}>ADICIONAR CARTÃO</Link>
       </div>
     );
   }
