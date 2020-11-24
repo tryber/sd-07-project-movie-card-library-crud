@@ -8,12 +8,13 @@ class MovieDetails extends Component {
     // Change the condition to check the state
     // if (true) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <div>
+          <p>{`Title: ${title}`}</p>
           <p>{`Subtitle: ${subtitle}`}</p>
           <p>{`Storyline: ${storyline}`}</p>
           <p>{`Genre: ${genre}`}</p>
@@ -21,7 +22,6 @@ class MovieDetails extends Component {
         </div>
         <Link to="/" onClick={() => movieAPI.deleteMovie(id)}>DELETAR</Link>
       </div>
-      
     );
   }
 }
