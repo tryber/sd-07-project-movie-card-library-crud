@@ -12,7 +12,7 @@ class MovieList extends Component {
       movies: [],
     }
   }
-  
+
   componentDidMount() {
     this.fetchMovie()
   }
@@ -29,7 +29,7 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     const loadingRender = <Loading />;
-    
+
     return (
       <div className="movie-list" data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
