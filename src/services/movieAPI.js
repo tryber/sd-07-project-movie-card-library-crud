@@ -1,5 +1,6 @@
 import data from './movieData';
 
+
 localStorage.setItem('movies', JSON.stringify(data));
 
 const readMovies = () => JSON.parse(localStorage.getItem('movies'));
@@ -37,7 +38,7 @@ export const updateMovie = (updatedMovie) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 1000);
+    }, 2000);
   });
 };
 
@@ -51,13 +52,15 @@ export const createMovie = (movieData) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve('OK');
-    }, 1000);
+    }, 2000);
   });
 };
+
 
 export const deleteMovie = (movieId) => {
   let movies = readMovies();
   movies = movies.filter((movie) => movie.id !== parseInt(movieId, 10));
+  console.log(movies);
   saveMovies(movies);
 
   return new Promise((resolve) => {
@@ -66,3 +69,4 @@ export const deleteMovie = (movieId) => {
     }, 1000);
   });
 };
+
