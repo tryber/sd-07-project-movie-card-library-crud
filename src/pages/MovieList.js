@@ -28,12 +28,14 @@ class MovieList extends Component {
     const { movies } = this.state;
 
     // Render Loading here if the request is still happening
+    const loadingState = this.state.loading;
     const loadingRender = <Loading />;
 
     return (
       <div className="movie-list" data-testid="movie-list">
-        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-        <span>{this.state.loading ? loadingRender : ''}</span>
+        <span>
+          { loadingState ? loadingRender : movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+        </span>
       </div>
     );
   }
