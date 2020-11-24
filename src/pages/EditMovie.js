@@ -23,7 +23,7 @@ class EditMovie extends Component {
         movie: movieId,
       });
     };
-    const { id } = this.props.match.params;
+    const id = this.props.match.params;
     getMovieId(id);
   }
 
