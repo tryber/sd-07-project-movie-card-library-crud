@@ -22,7 +22,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_title">Título</label><br/>
+        <label htmlFor="movie_title"> Título </label> <br/>
         <input
           placeholder="Insira o título"
           id="movie_title"
@@ -41,7 +41,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_subtitle">Subtítulo</label><br/>
+        <label htmlFor="movie_subtitle"> Subtítulo </label> <br/>
         <input
           placeholder="Insira o subtítulo"
           id="movie_subtitle"
@@ -59,7 +59,7 @@ class MovieForm extends React.Component {
 
     return (
       <div className="row">
-        <label htmlFor="movie_image">Imagem</label><br/>
+        <label htmlFor="movie_image"> Imagem </label> <br/>
         <input
           placeholder="Insira o caminho da imagem"
           id="movie_image"
@@ -67,7 +67,6 @@ class MovieForm extends React.Component {
           value={imagePath}
           onChange={(event) => this.updateMovie('imagePath', event.target.value)}
         />
-        
       </div>
     );
   }
@@ -77,7 +76,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_storyline">Sinopse</label><br/>
+        <label htmlFor="movie_storyline"> Sinopse </label>  <br/>
         <textarea
           id="movie_storyline"
           value={storyline}

@@ -148,19 +148,19 @@ body {
 
 .form-add-movie {
   border: none;
-  border-top: 5px solid #18454b;
   border-radius: 5px;
+  border-top: 5px solid #18454b;
   box-shadow: 1px 4px 5px rgba(0, 0, 0, 0.5);
   padding: 20px;
-  width: 500px;  
+  width: 500px;
 }
 
 .form-add-movie input {
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
+  margin-bottom: 10px;
   margin-top: 10px;
-  margin-bottom: 10px ;
   padding : 10px;
   width: 100%;
 }
@@ -169,8 +169,8 @@ body {
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
+  margin-bottom: 10px;
   margin-top: 10px;
-  margin-bottom: 10px ;
   padding : 10px;
   width: 100%;
 }
@@ -179,8 +179,8 @@ body {
   border: none;
   border-radius: 5px;
   box-sizing: border-box;
+  margin-bottom: 10px;
   margin-top: 10px;
-  margin-bottom: 10px ;
   padding : 10px;
-  width: 100%;  
+  width: 100%; 
 }
