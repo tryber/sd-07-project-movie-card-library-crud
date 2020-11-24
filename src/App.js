@@ -7,9 +7,9 @@ function App() {
     <div>Movie Card Library CRUD
       <BrowserRouter >
         <Switch>
-          <Route exact path="/" component={MovieList} />
-          <Route exact path="/movies/:id" render={(props) => <MovieDetails {...props} />} />
+          <Route exact path="/" render={(props) => <MovieList {...props} />} />
           <Route exact path="/movies/new" component={NewMovie} />
+          <Route exact path="/movies/:id" render={(props) => <MovieDetails {...props} />} />
           <Route exact path="/movies/:id/edit" component={EditMovie} />
           <Route component={NotFound} />
         </Switch>
