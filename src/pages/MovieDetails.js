@@ -50,8 +50,8 @@ class MovieDetails extends Component {
           <span>{`Rating: ${rating}`}</span>
         </div>
         <div className="movie-details">
-          <Link to={`./${id}/edit`}>EDITAR</Link>
           <Link to="/">VOLTAR</Link>
+          <Link to={`./${id}/edit`}>EDITAR</Link>
           <Link to="/" onClick={this.deleteMovie}>DELETAR</Link>
         </div>
       </div>
