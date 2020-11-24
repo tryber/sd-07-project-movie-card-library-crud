@@ -73,7 +73,7 @@ class MovieForm extends React.Component {
 
     return (
       <div>
-        <label htmlFor="movie_storyline"> Sinopse </label>  <br />
+        <label htmlFor="movie_storyline"> Sinopse </label> <br />
         <textarea
           id="movie_storyline"
           value={storyline}
@@ -118,7 +118,7 @@ class MovieForm extends React.Component {
           max={5}
           value={rating}
           onChange={(event) => this.updateMovie('rating', event.target.value)}
-        />  
+        />
       </div>
     );
   }
