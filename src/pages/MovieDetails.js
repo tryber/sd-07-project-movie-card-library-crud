@@ -1,62 +1,64 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
-
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      done: false,
-      isFetching: true,
       movie: {},
+      loading: true,
     };
-
-    this.fetchAPI = this.fetchAPI.bind(this);
-    this.deleteMovie = this.deleteMovie.bind(this);
   }
 
   componentDidMount() {
-    this.fetchAPI();
+    const { match } = this.props;
+    this.renderMovie(match.params.id);
   }
 
-  async fetchAPI() {
-    const movieData = await movieAPI.getMovie(this.props.match.params.id);
-    this.setState({
-      isFetching: false,
-      movie: movieData,
-    });
-  }
-
-  async deleteMovie() {
-    await movieAPI.deleteMovie(this.props.match.params.id);
-    this.setState({
-      done: true,
-    });
+  async renderMovie(id) {
+    const result = await movieAPI.getMovie(id);
+    this.setState({ movie: result, loading: false });
   }
 
   render() {
-    const { isFetching, done } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-
-    if (isFetching) return <Loading />;
-
-    if (done) return <Redirect to="/" />;
-
+    const { match } = this.props;
+    const { loading, movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <h1>{title}</h1>
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-        <Link to="" onClick={() => this.deleteMovie()}>DELETAR</Link><br />
-        <Link to={`/movies/${this.props.match.params.id}/edit`}>EDITAR</Link><br />
-        <Link to="/" >VOLTAR</Link>
+      <div className="movie-card" data-testid="movie-details">
+        {loading ? (
+          <Loading />
+        ) : (
+          <div>
+            <img className="card-image" alt="Movie Cover" src={`../${imagePath}`} />
+            <p className="title"><strong>{`Título: ${title}`}</strong></p>
+            <h3 className="subtitle">{`Subtítulo: ${subtitle}`}</h3>
+            <p className="movie-card-storyline">{`Sinopse: ${storyline}`}</p>
+            <p className="movie-card-storyline"><b>{`Gênero: ${genre}`}</b></p>
+            <p className="rating" ><em>{`Rating: ${rating}`}</em></p>
+            <div className="exemplo">
+              <Link
+                to={`/movies/${match.params.id}/edit`}
+                className="example-item example-item_first"
+              >
+                EDITAR
+              </Link>
+              <Link
+                to="/"
+                className="example-item example-item_second"
+              >
+                VOLTAR
+              </Link>
+              <button className="example-item example-item_third">
+                <Link to="/" onClick={() => movieAPI.deleteMovie(match.params.id)}>DELETAR</Link>
+              </button>
+            </div>
+          </div>
+      )}
       </div>
     );
   }
@@ -66,7 +68,7 @@ MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
-    }).isRequired,
+    }),
   }).isRequired,
 };
 
