@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import '../App.css';
+import "../App.css";
 
 class MovieDetails extends Component {
   constructor() {
@@ -24,6 +24,9 @@ class MovieDetails extends Component {
     this.setState({ movie: response });
   }
 
+  async delet(id) {
+    await movieAPI.deleteMovie(id);
+  }
   render() {
     // Change the condition to check the state
     // if (true) return <Loading />;
@@ -49,15 +52,19 @@ class MovieDetails extends Component {
             <p>{`Storyline: ${storyline}`}</p>
             <p>{`Genre: ${genre}`}</p>
             <p>{`Rating: ${rating}`}</p>
-            <Link to={`/movies/${id}/edit`} className="btn-details">
-              <button> EDITAR </button>
-            </Link>
-            <Link to="/" className="btn-details">
-              <button> VOLTAR </button>
-            </Link>
-            <Link to={movieAPI.deleteMovie(id)}>
-              <button>DELETAR</button>
-            </Link>
+            <button>
+              <Link to={`/movies/${id}/edit`} className="btn-details">
+                EDITAR
+              </Link>
+            </button>
+            <button>
+              <Link to="/" className="btn-details">
+                VOLTAR
+              </Link>
+            </button>
+            <button onClick={() => this.delet(id)}>
+              <Link to="/">DELETAR </Link>
+            </button>
           </div>
         )}
       </div>
