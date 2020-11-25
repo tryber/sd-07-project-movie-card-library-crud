@@ -21,8 +21,8 @@ class MovieDetails extends Component {
     this.getDetails(response);
   }
 
-  getDetails(response) {
-    this.setState({ movie: response, loading: false });
+  getDetails(details) {
+    this.setState({ movie: details, loading: false });
   }
 
   render() {
