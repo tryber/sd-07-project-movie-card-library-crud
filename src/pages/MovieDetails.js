@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -14,24 +14,40 @@ class MovieDetails extends Component {
       loading: false,
     };
     this.getMovie = this.getMovie.bind(this);
+    this.deletMovie = this.deletMovie.bind(this);
   }
 
   componentDidMount() {
     this.getMovie();
   }
 
+  componentWillUnmount() {
+    this.deletMovie();
+  }
+
   getMovie() {
     this.setState({ loading: true }, async () => {
       const pegamovie = await movieAPI.getMovies();
       const id = this.props.match.params.id;
-      const aMovie = pegamovie.find((getAMovie) => getAMovie.id === parseInt(id, 10));
+      const aMovie = pegamovie.find(
+        (getAMovie) => getAMovie.id === parseInt(id, 10)
+      );
       this.setState({ loading: false, movies: pegamovie, movie: aMovie });
+    });
+  }
+
+  deletMovie() {
+    this.setState({ loading: true }, async () => {
+      const id = this.props.match.params.id;
+      await movieAPI.deleteMovie(id);
+      this.setState({ loading: false });
     });
   }
 
   render() {
     const { loading, movie } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
+
     return (
       <div data-testid="movie-details">
         {loading ? (
@@ -51,8 +67,8 @@ class MovieDetails extends Component {
               <Link className="link-movie-card" to="/">
                 VOLTAR
               </Link>
-              <Link to="/">
-                <button className="link-movie-card">DELETAR</button>
+              <Link to="/" className="link-movie-card">
+                DELETAR
               </Link>
             </div>
           </div>
