@@ -91,55 +91,55 @@ const renderPath = (path) => {
   return { ...resources }
 };
 
-// describe('1 - Rotas: O componente App deve renderizar BrowserRouter', () => {
-//   test('a rota "/" deve renderizar MovieList', async () => {
-//     const { unmount, getByTestId } = renderPath('/');
-//     await waitFor(() => movieAPI.getMovies());
-//     expect.anything(getByTestId('movie-list'));
-//     unmount();
-//   })
-//   test('a rota "/movies/:id" deve renderizar MovieDetails', async () => {
-//     for (const movie of readMovies()) {
-//       const { unmount, getByTestId } = renderPath('/movies/' + movie.id);
-//       await waitFor(() => movieAPI.getMovies());
-//       expect.anything(getByTestId('movie-details'));
-//       unmount();
-//     }
-//   })
-//   test('a rota "/movies/new" deve renderizar NewMovie', () => {
-//     const { unmount, getByTestId } = renderPath('/movies/new');
-//     expect.anything(getByTestId('new-movie'));
-//     unmount();
-//   })
-//   test('a rota "/movies/:id/edit" deve renderizar EditMovie', async () => {
-//     for (const movie of readMovies()) {
-//       const { unmount, getByTestId } = renderPath('/movies/' + movie.id + '/edit');
-//       await waitFor(() => movieAPI.getMovies());
-//       expect.anything(getByTestId('edit-movie'));
-//       unmount();
-//     }
-//   })
-//   test('qualquer rota não declarada deve renderizar NotFound', () => {
-//     const { unmount, getByTestId } = renderPath('/' + Math.random());
-//     expect.anything(getByTestId('404-error'));
-//     unmount();
-//   })
-// });
+describe('1 - Rotas: O componente App deve renderizar BrowserRouter', () => {
+  test('a rota "/" deve renderizar MovieList', async () => {
+    const { unmount, getByTestId } = renderPath('/');
+    await waitFor(() => movieAPI.getMovies());
+    expect.anything(getByTestId('movie-list'));
+    unmount();
+  })
+  test('a rota "/movies/:id" deve renderizar MovieDetails', async () => {
+    for (const movie of readMovies()) {
+      const { unmount, getByTestId } = renderPath('/movies/' + movie.id);
+      await waitFor(() => movieAPI.getMovies());
+      expect.anything(getByTestId('movie-details'));
+      unmount();
+    }
+  })
+  test('a rota "/movies/new" deve renderizar NewMovie', () => {
+    const { unmount, getByTestId } = renderPath('/movies/new');
+    expect.anything(getByTestId('new-movie'));
+    unmount();
+  })
+  test('a rota "/movies/:id/edit" deve renderizar EditMovie', async () => {
+    for (const movie of readMovies()) {
+      const { unmount, getByTestId } = renderPath('/movies/' + movie.id + '/edit');
+      await waitFor(() => movieAPI.getMovies());
+      expect.anything(getByTestId('edit-movie'));
+      unmount();
+    }
+  })
+  test('qualquer rota não declarada deve renderizar NotFound', () => {
+    const { unmount, getByTestId } = renderPath('/' + Math.random());
+    expect.anything(getByTestId('404-error'));
+    unmount();
+  })
+});
 
-// describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição para buscar a lista de filmes a ser renderizada', () => {
-//   test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
-//     const { container, unmount, getByText } = renderPath('/');
-//     expect(getByText('Carregando...'));
-//     await waitFor(() => movieAPI.getMovies())
-//     unmount();
-//   })
-//   test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
-//     const { unmount, getAllByTestId } = renderPath('/');
-//     await waitFor(() => movieAPI.getMovies());
-//     expect(getAllByTestId('movie-card').length).toBe(5);
-//     unmount();
-//   })
-// });
+describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição para buscar a lista de filmes a ser renderizada', () => {
+  test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
+    const { container, unmount, getByText } = renderPath('/');
+    expect(getByText('Carregando...'));
+    await waitFor(() => movieAPI.getMovies())
+    unmount();
+  })
+  test('deverá exibir um MovieCard para cada filme retornado pela API', async () => {
+    const { unmount, getAllByTestId } = renderPath('/');
+    await waitFor(() => movieAPI.getMovies());
+    expect(getAllByTestId('movie-card').length).toBe(5);
+    unmount();
+  })
+});
 
 describe('3 - MovieCard: deve possuir um link para a página de detalhes de um filme', () => {
   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
@@ -162,52 +162,52 @@ describe('3 - MovieCard: deve possuir um link para a página de detalhes de um f
   })
 })
 
-// describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que deverá ser renderizado', () => {
+describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que deverá ser renderizado', () => {
 
-//   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', () => {
-//     readMovies().forEach(async (movie) => {
-//       await cleanup();
-//       const { getByText } = renderPath('/movies/' + movie.id);
-//       expect(getByText('Carregando...'));
-//     });
-//   });
+  it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', () => {
+    readMovies().forEach(async (movie) => {
+      await cleanup();
+      const { getByText } = renderPath('/movies/' + movie.id);
+      expect(getByText('Carregando...'));
+    });
+  });
 
-//   it('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
-//     for (const movie of readMovies()) {
-//       const { container, unmount } = renderPath(`/movies/${movie.id}`);
-//       await waitFor(() => movieAPI.getMovie(movie.id))
-//       expect(screen.getAllByText(readMovies()[movie.id - 1].title, { exact: false }).length).toBeGreaterThanOrEqual(1);
-//       expect(screen.getAllByText(readMovies()[movie.id - 1].subtitle, { exact: false }).length)
-//         .toBeGreaterThanOrEqual(1);
-//       expect(screen.getByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
+  it('deverá exibir o título, o subtítulo, a sinopse, a imagem e o gênero do filme', async () => {
+    for (const movie of readMovies()) {
+      const { container, unmount } = renderPath(`/movies/${movie.id}`);
+      await waitFor(() => movieAPI.getMovie(movie.id))
+      expect(screen.getAllByText(readMovies()[movie.id - 1].title, { exact: false }).length).toBeGreaterThanOrEqual(1);
+      expect(screen.getAllByText(readMovies()[movie.id - 1].subtitle, { exact: false }).length)
+        .toBeGreaterThanOrEqual(1);
+      expect(screen.getByText(readMovies()[movie.id - 1].storyline, { exact: false })).toBeTruthy;
 
-//       let image = screen.getByAltText('Movie Cover').src.split('/').slice(-2).join('/')
-//       expect(image).toEqual(readMovies()[movie.id - 1].imagePath);
-//       expect(screen.getAllByText(readMovies()[movie.id - 1].genre, { exact: false })).toBeTruthy;
-//       unmount();
-//     }
-//   });
+      let image = screen.getByAltText('Movie Cover').src.split('/').slice(-2).join('/')
+      expect(image).toEqual(readMovies()[movie.id - 1].imagePath);
+      expect(screen.getAllByText(readMovies()[movie.id - 1].genre, { exact: false })).toBeTruthy;
+      unmount();
+    }
+  });
 
-//   it('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
-//     for (const movie of readMovies()) {
-//       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
-//       await waitFor(() => movieAPI.getMovie(movie.id));
-//       const backButton = await findByText('VOLTAR')
-//       expect(backButton.href).toBe('http://localhost/');
-//       unmount();
-//     }
-//   });
+  it('deverá conter um botão com o texto "VOLTAR" que redireciona para a página inicial', async () => {
+    for (const movie of readMovies()) {
+      const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
+      await waitFor(() => movieAPI.getMovie(movie.id));
+      const backButton = await findByText('VOLTAR')
+      expect(backButton.href).toBe('http://localhost/');
+      unmount();
+    }
+  });
 
-//   it('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
-//     for (const movie of readMovies()) {
-//       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
-//       await waitFor(() => movieAPI.getMovie(movie.id));
-//       const backButton = await findByText('EDITAR')
-//       expect(backButton.href).toBe(`http://localhost/movies/${movie.id}/edit`);
-//       unmount();
-//     }
-//   });
-// });
+  it('deverá conter um botão com o texto "EDITAR" que redireciona para a página de edição de filme', async () => {
+    for (const movie of readMovies()) {
+      const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
+      await waitFor(() => movieAPI.getMovie(movie.id));
+      const backButton = await findByText('EDITAR')
+      expect(backButton.href).toBe(`http://localhost/movies/${movie.id}/edit`);
+      unmount();
+    }
+  });
+});
 
 // describe('5 - EditMovie: deve realizar uma requisição para buscar o filme que será editado', () => {
 
