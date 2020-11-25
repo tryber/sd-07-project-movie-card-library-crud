@@ -32,7 +32,7 @@ class MovieDetails extends Component {
       <div data-testid="movie-details">
         { loading ? <Loading /> :
         <div className="movie-card">
-          <img className="movie-card-image" alt="Movie Cover" src={imagePath} />
+          <img className="movie-card-image" alt="Movie Cover" src={`../${imagePath}`} />
           <div className="movie-card-body">
             <h4 data-testid="movie-card-title" className="movie-card-title">{title}</h4>
             <h5 className="movie-card-subtitle">{subtitle}</h5>

@@ -7,6 +7,9 @@ import * as movieAPI from '../services/movieAPI';
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+    this.state = {
+      movie: {},
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,7 +23,7 @@ class NewMovie extends Component {
     return (
       <div className="movie-card">
         <div className="movie-card-body" data-testid="new-movie">
-          <MovieForm onSubmit={() => this.handleSubmit()} />
+          <MovieForm movie={this.state.movie} onSubmit={() => this.handleSubmit()} />
         </div>
         <div className="button-background">
           <Link className="button-link" to={'/'}>VOLTAR</Link>

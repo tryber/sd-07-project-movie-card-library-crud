@@ -31,7 +31,7 @@ class MovieList extends Component {
     return (
       <div>
         <div className="button-background">
-          <Link className="button-link" to="/movies/new">ADICIONAR CARTAO</Link>
+          <Link className="button-link" to="/movies/new">ADICIONAR CARTÃO</Link>
         </div>
         {loading ? <Loading /> :
         <div data-testid="movie-list" className="movie-list">

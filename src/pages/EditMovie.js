@@ -21,28 +21,26 @@ class EditMovie extends Component {
   }
 
   handleSubmit() {
-    // updatedMovie
+    this.setState(async () => {
+      await movieAPI.updateMovie(this.props.match.params.id);
+      // <Redirect to={"/"} />
+    });
   }
 
   fetchMovie() {
     this.setState(async () => {
       const movie = await movieAPI.getMovie(this.props.match.params.id);
       this.setState({ movie, loading: false });
-      console.log(this.props.match);
     });
   }
 
   render() {
     const { loading, movie } = this.state;
-    // const { shouldRedirect } = this.state;
-    // if (shouldRedirect) {
-    //   // Redirect
-    // }
 
     return (
-      <div className="movie-card">
+      <div>
         { loading ? <Loading /> :
-        <div>
+        <div className="movie-card">
           <div className="movie-card-body" data-testid="edit-movie">
             <MovieForm movie={movie} onSubmit={this.handleSubmit} />
           </div>
