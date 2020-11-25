@@ -4,6 +4,16 @@ body {
   font-size: 16px;
 }
 
+.formulario {
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #daa000;
+  margin-left: 18%;
+  margin-top: 17%;
+  text-align: center;
+  width: 900px;
+}
+
 .movie-card-header {
   align-items: center;
   background-color: #343a40;
@@ -49,18 +59,6 @@ body {
   width: 900px;
 }
 
-.movie-form {
-  align-items: center;
-  border-radius: 5px;
-  border: 2px solid #daa000;
-  font-size: medium;
-  height: 40px;
-  margin: 5px;
-  text-align: center;
-  width: 500px;
-}
-
-
 .movie-form-button {
   border-radius: 5px;
   border: 2px solid #daa000;
@@ -70,14 +68,15 @@ body {
   width: 200px;
 }
 
-.formulario {
+.movie-form {
   align-items: center;
   border-radius: 5px;
   border: 2px solid #daa000;
-  margin-left: 18%;
-  margin-top: 17%;
+  font-size: medium;
+  height: 40px;
+  margin: 5px;
   text-align: center;
-  width: 900px;
+  width: 500px;
 }
 
 .movie-card-image {
