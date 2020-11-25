@@ -4,21 +4,39 @@ import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      resultDetails = {},
+      loaded: false,
+    }
+  }
+
+  componentDidMount() {
+    this.getMovie(movieId)
+  }
+
+  async getMovie(movieId) {
+    const resultDetails = await movieAPI.getMovie(movieId)
+    this.setState({ resultDetails, loaded: true })
+  }
+
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
     const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    const { loaded } = this.state;
 
-    return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{`Subtitle: ${subtitle}`}</p>
-        <p>{`Storyline: ${storyline}`}</p>
-        <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
-      </div>
-    );
+    if (loaded) {
+      return (
+        <div data-testid="movie-details">
+          <img alt="Movie Cover" src={`../${imagePath}`} />
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
+        </div>
+      );
+    } return <Loading />;
   }
 }
 
