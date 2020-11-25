@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { Loading, MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -39,10 +40,15 @@ class EditMovie extends Component {
     // }
 
     return (
-      <div>
+      <div className="movie-card">
         { loading ? <Loading /> :
-        <div data-testid="edit-movie">
-          <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <div>
+          <div className="movie-card-body" data-testid="edit-movie">
+            <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+          </div>
+          <div className="button-background">
+            <Link className="button-link" to={'/'}>VOLTAR</Link>
+          </div>
         </div> }
       </div>
     );

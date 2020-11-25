@@ -136,6 +136,7 @@ class MovieForm extends React.Component {
     return (
       <div>
         <button
+          className="button-link"
           type="button"
           onClick={this.handleSubmit}
         >
@@ -147,8 +148,8 @@ class MovieForm extends React.Component {
 
   render() {
     return (
-      <div className="movie-card">
-        <form className="movie-card-body">
+      <div>
+        <form>
           {this.renderTitleInput()}
           {this.renderSubtitleInput()}
           {this.renderImagePathInput()}
