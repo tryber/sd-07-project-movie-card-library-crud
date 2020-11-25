@@ -4,16 +4,6 @@ body {
   font-size: 16px;
 }
 
-.formulario {
-  align-items: center;
-  border-radius: 5px;
-  border: 2px solid #daa000;
-  margin-left: 18%;
-  margin-top: 17%;
-  text-align: center;
-  width: 900px;
-}
-
 .movie-card-header {
   align-items: center;
   background-color: #343a40;
@@ -60,9 +50,6 @@ body {
 }
 
 .movie-form-button {
-  border-radius: 5px;
-  border: 2px solid #daa000;
-  font-size: medium;
   height: 40px;
   margin: 5px;
   width: 200px;
@@ -70,13 +57,23 @@ body {
 
 .movie-form {
   align-items: center;
-  border-radius: 5px;
   border: 2px solid #daa000;
+  border-radius: 5px;
   font-size: medium;
+  text-align: center;
+}
+
+.movie-form-size {
   height: 40px;
   margin: 5px;
-  text-align: center;
   width: 500px;
+}
+
+.formulario {
+  margin-left: 18%;
+  margin-top: 17%;
+  text-align: center;
+  width: 900px;
 }
 
 .movie-card-image {
