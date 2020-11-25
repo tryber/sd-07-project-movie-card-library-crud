@@ -46,14 +46,39 @@ input, textarea, select {
   width: 300px;
 }
 
+.movie-detail {
+  align-items: center;
+  background-color: black;
+  border: 1px solid rgba(75, 72, 72, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 800px;
+  justify-content: center;
+  margin: 50px auto;
+  overflow: hidden;
+  padding: 20px;
+  width: 600px;
+}
+
 .movie-card-image {
   height: 150px;
   width: 300px;
 }
 
+.movie-detail-image {
+  height: 300px;
+  width: 600px;
+}
+
 .movie-card-body {
   flex: 1 1 auto;
   padding: 20px;
+}
+
+.movie-detail-body {
+  flex: 1 1 auto;
+  padding: 10px;
 }
 
 .movie-card-title {
@@ -72,6 +97,11 @@ input, textarea, select {
 .movie-card-storyline {
   font-size: 14px;
   text-align: justify;
+}
+
+.movie-card-genre {
+  font-size: 14px;
+
 }
 
 .rating {
