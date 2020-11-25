@@ -1,5 +1,121 @@
 body {
   background-color: whitesmoke;
   box-sizing: border-box;
+  font-size: 16px;
 }
 
+.movie-card-header {
+  align-items: center;
+  background-color: #343a40;
+  display: flex;
+  height: 100px;
+  justify-content: center;
+}
+
+.page-title {
+  color: #f8f9fa;
+  font-size: 28px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.movie-list {
+  display: flex;
+  flex-flow: row wrap;
+  padding: 48px 30px;
+}
+
+.movie-card {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  margin: 25px;
+  overflow: hidden;
+  width: 400px;
+}
+
+.movie-card-details {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  height: 700px;
+  margin: 25px;
+  overflow: hidden;
+  width: 900px;
+}
+
+.movie-form-button {
+  height: 40px;
+  margin: 5px;
+  width: 200px;
+}
+
+.movie-form {
+  align-items: center;
+  border: 2px solid #daa000;
+  border-radius: 5px;
+  font-size: medium;
+  text-align: center;
+}
+
+.movie-form-size {
+  height: 40px;
+  margin: 5px;
+  width: 500px;
+}
+
+.formulario {
+  margin-left: 18%;
+  margin-top: 17%;
+  text-align: center;
+  width: 900px;
+}
+
+.movie-card-image {
+  width: 100%;
+}
+
+.movie-card-body {
+  flex: 1 1 auto;
+  padding: 20px;
+}
+
+.movie-card-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0 0 12px;
+}
+
+.movie-card-subtitle {
+  color: #6c757d;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 0 0 8px;
+}
+
+.movie-card-storyline {
+  font-size: 14px;
+  text-align: justify;
+}
+
+.link-movie-card {
+  align-items: center;
+  background-color: rgb(75, 75, 75);
+  color: #ecb80b;
+  font-size: 19px;
+  margin: 15px;
+  padding: 3px;
+  text-decoration: none;
+}
+
+.loading {
+  align-items: center;
+  font-size: 30px;
+  margin: 600px;
+  text-align: center;
+}
