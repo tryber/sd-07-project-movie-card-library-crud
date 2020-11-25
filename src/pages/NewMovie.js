@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import '../App.css';
 import * as movieAPI from '../services/movieAPI';
-import { Redirect } from 'react-router-dom';
 
 class NewMovie extends Component {
   constructor(props) {
@@ -22,7 +22,7 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
-    this.createOneMovie(newMovie)
+    this.createOneMovie(newMovie);
   }
 
   render() {
