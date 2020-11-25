@@ -49,6 +49,37 @@ body {
   width: 900px;
 }
 
+.movie-form {
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #daa000;
+  font-size: medium;
+  height: 40px;
+  margin: 5px;
+  text-align: center;
+  width: 500px;
+}
+
+
+.movie-form-button {
+  border-radius: 5px;
+  border: 2px solid #daa000;
+  font-size: medium;
+  height: 40px;
+  margin: 5px;
+  width: 200px;
+}
+
+.formulario {
+  align-items: center;
+  border-radius: 5px;
+  border: 2px solid #daa000;
+  margin-left: 18%;
+  margin-top: 17%;
+  text-align: center;
+  width: 900px;
+}
+
 .movie-card-image {
   width: 100%;
 }
