@@ -60,6 +60,6 @@ MovieDetails.defaultProps = {
       id: PropTypes.number,
     }),
   }),
-}
+};
 
 export default MovieDetails;
