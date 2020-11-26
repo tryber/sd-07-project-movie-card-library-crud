@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
   constructor() {
@@ -11,17 +11,17 @@ class MovieDetails extends Component {
     this.state = {
       resultDetails: {},
       loaded: false,
-    }
+    };
   }
 
   componentDidMount() {
     const { id } = this.props.match.params;
-    this.getMovie(id)
+    this.getMovie(id);
   }
 
   async getMovie(movieId) {
-    const resultDetails = await movieAPI.getMovie(movieId)
-    this.setState({ resultDetails, loaded: true })
+    const resultDetails = await movieAPI.getMovie(movieId);
+    this.setState({ resultDetails, loaded: true });
   }
 
   render() {
@@ -29,7 +29,7 @@ class MovieDetails extends Component {
     const { id, title, storyline, imagePath, genre, rating, subtitle } = resultDetails;
     if (loaded) {
       return (
-        <div data-testid="movie-details">          
+        <div data-testid="movie-details">
           <img alt="Movie Cover" src={`../${imagePath}`} />
           <p>{`Title: ${title}`}</p>
           <p>{`Subtitle: ${subtitle}`}</p>
@@ -37,7 +37,7 @@ class MovieDetails extends Component {
           <p>{`Genre: ${genre}`}</p>
           <p>{`Rating: ${rating}`}</p>
           <Link to="/">VOLTAR</Link>
-          <br/>
+          <br />
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         </div>
       );
