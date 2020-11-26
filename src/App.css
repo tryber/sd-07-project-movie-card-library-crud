@@ -3,7 +3,7 @@ body {
   box-sizing: border-box;
 }
 
-.img-card { 
+.img-card {
   width: 400px;
 }
 
@@ -11,11 +11,10 @@ body {
   text-align: center;
 }
 
-.movie-card {
-  border: 1px solid black; 
+.movie-card {  
   display: inline-block;
-  margin-left: 80px;
   margin-bottom: 20px;
+  margin-left: 80px;
   text-align: center;
   width: 420px;
 }
@@ -25,18 +24,18 @@ body {
   margin: auto 0;
 }
 
-.text-card {  
-  text-align: justify;
+.text-card {
   font-size: 15px;
   margin-left: 15px;
+  text-align: justify;
   width: 400px;
 }
 
 .text-link {
-  color: #daa520
+  color: goldenrod;
 }
 
-.title-card {  
+.title-card {
   font-weight: 700;
   margin-bottom: 5px;
   margin-top: 5px;
