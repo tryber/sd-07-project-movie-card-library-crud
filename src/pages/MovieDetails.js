@@ -56,7 +56,7 @@ class MovieDetails extends Component {
         </button>
 
         <button type="button" onClick={() => this.removeMovie(id)}>
-          <Link to={"/"}>DELETAR</Link>
+          <Link to={'/'}>DELETAR</Link>
         </button>
 
       </div>
