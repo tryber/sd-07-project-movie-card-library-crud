@@ -26,13 +26,12 @@ class MovieList extends Component {
   }
 
   render() {
-    const { movies } = this.state;
-
     if (this.state.loading) return 'Carregando...';
+    const { movies } = this.state;
     return (
       <div>
         <div data-testid="movie-list">
-          {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+          {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
         </div>
         <Link to="/movies/new"> ADICIONAR CARTÃO </Link>
       </div>
