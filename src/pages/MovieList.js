@@ -29,11 +29,11 @@ class MovieList extends Component {
     if (this.state.loading) return 'Carregando...';
     const { movies } = this.state;
     return (
-      <div>
+      <div className= 'list-cars'>
         <div data-testid="movie-list">
           {movies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}
         </div>
-        <Link to="/movies/new"> ADICIONAR CARTÃO </Link>
+        <Link to="/movies/new" className='text-add-card'> ADICIONAR CARTÃO </Link>
       </div>
     );
   }
