@@ -23,7 +23,7 @@ class EditMovie extends Component {
         this.setState({
           status: '',
           movie: response,
-        }),
+        });
       });
   }
 
