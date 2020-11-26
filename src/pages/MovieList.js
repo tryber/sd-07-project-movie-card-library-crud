@@ -31,6 +31,23 @@ class MovieList extends Component {
     }
 
     handleLoading(this);
+    this.fetchMovies = this.fetchMovies.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovies();
+  }
+
+  // Inspirado no projeto de Alexandre Rufino
+  async fetchMovies() {
+    const response = await movieAPI.getMovies();
+    const updateMovieList = [];
+    response.forEach((movie) => {
+      updateMovieList.push(movie);
+    });
+    this.setState({
+      movies: updateMovieList,
+    });
   }
 
   render() {

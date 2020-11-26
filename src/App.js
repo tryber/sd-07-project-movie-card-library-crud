@@ -8,7 +8,7 @@ function App() {
     <BrowserRouter>
       <Switch>
         <Route exact path="/movies/new" render={(props) => <NewMovie {...props} />} />
-        <Route exact path="/movies/:id/edit" component={EditMovie} />
+        <Route exact path="/movies/:id/edit" render={(props) => <EditMovie {...props} />} />
         <Route exact path="/movies/:id" render={(props) => <MovieDetails {...props} />} />
         <Route
           path="/"
@@ -17,7 +17,7 @@ function App() {
               if (props.location.pathname !== '/') {
                 return <NotFound />;
               }
-              return <MovieList />;
+              return <MovieList {...props} />;
             }
           }
         />
