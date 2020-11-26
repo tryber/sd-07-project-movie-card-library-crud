@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
+console.clear(`Apagar isso depois ${movieAPI}`);
+
 class NewMovie extends Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,7 @@ class NewMovie extends Component {
   }
 
   handleSubmit(newMovie) {
+    console.clear(`Apagar isso depois ${newMovie}`);
   }
 
   render() {
