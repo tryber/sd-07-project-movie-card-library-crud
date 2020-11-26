@@ -24,7 +24,7 @@ MovieCard.propTypes = {
     storyline: PropTypes.string.isRequired,
     imagePath: PropTypes.string.isRequired,
   }),
-}
+};
 
 MovieCard.defaultProps = {
   movie: PropTypes.shape({
@@ -33,6 +33,6 @@ MovieCard.defaultProps = {
     storyline: '',
     imagePath: '',
   }),
-}
+};
 
 export default MovieCard;
