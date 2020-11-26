@@ -22,8 +22,8 @@ class EditMovie extends Component {
       .then((response) => {
         this.setState({
           status: '',
-          movie: response
-        })
+          movie: response,
+        }),
       });
   }
 
@@ -35,7 +35,7 @@ class EditMovie extends Component {
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to={shouldRedirect} />
+      return <Redirect to={shouldRedirect} />;
     }
 
     if (status === 'loading') {
