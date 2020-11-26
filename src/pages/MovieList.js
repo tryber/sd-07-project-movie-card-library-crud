@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import MovieCard from '../components/MovieCard';
-import { Route } from 'react-router-dom';
+
+
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -9,7 +10,7 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-    }
+    };
   }
 
   render() {
