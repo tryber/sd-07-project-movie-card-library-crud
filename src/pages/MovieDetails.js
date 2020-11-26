@@ -6,15 +6,16 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
-
+    this.getMovie = this.getMovie.bind(this);
     this.state = {
-      resultDetails = {},
+      resultDetails: {},
       loaded: false,
     }
   }
 
   componentDidMount() {
-    this.getMovie(movieId)
+    const { id } = this.props.match.params;
+    this.getMovie(id)
   }
 
   async getMovie(movieId) {
