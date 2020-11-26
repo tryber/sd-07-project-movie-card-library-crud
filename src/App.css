@@ -3,3 +3,40 @@ body {
   box-sizing: border-box;
 }
 
+.img-card {
+  width: 400px;
+}
+
+.list-cars {
+  text-align: center;
+}
+
+.movie-card {
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 80px;
+  text-align: center;
+  width: 420px;
+}
+
+.text-add-card {
+  color: blueviolet;
+  margin: auto 0;
+}
+
+.text-card {
+  font-size: 15px;
+  margin-left: 15px;
+  text-align: justify;
+  width: 400px;
+}
+
+.text-link {
+  color: goldenrod;
+}
+
+.title-card {
+  font-weight: 700;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
