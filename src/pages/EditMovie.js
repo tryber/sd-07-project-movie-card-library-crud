@@ -27,8 +27,8 @@ class EditMovie extends Component {
       const idMovie = this.props.match.params.id;
       const movie = await movieAPI.getMovie(idMovie);
       this.setState({ movie, status: '' });
-    })
-  };
+    });
+  }
 
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie)
