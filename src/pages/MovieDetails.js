@@ -52,6 +52,14 @@ MovieDetails.propTypes = {
       id: PropTypes.number,
     }),
   }),
+};
+
+MovieDetails.defaultProps = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
 }
 
 export default MovieDetails;
