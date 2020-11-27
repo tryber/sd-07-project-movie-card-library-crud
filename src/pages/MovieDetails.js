@@ -1,19 +1,21 @@
 import React, { Component } from 'react';
-
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
+
 
 class MovieDetails extends Component {
   constructor() {
     super();
 
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.movieDetail = this.movieDetail.bind(this);
 
     this.state = {
       movie: {},
       loading: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -22,15 +24,15 @@ class MovieDetails extends Component {
 
   fetchMovie() {
     this.setState(
-      { loading: true},
+      { loading: true },
       async () => {
-      const { id } = this.props.match.params;
-      const allMovies = await movieAPI.getMovie(id)
-      this.setState(() => ({
-        loading: false,
-        movie: allMovies,
-      }))
-    })
+        const { id } = this.props.match.params;
+        const allMovies = await movieAPI.getMovie(id);
+        this.setState(() => ({
+          loading: false,
+          movie: allMovies,
+        }));
+      });
   }
 
   movieDetail() {
@@ -50,15 +52,18 @@ class MovieDetails extends Component {
     );
   }
 
-
   render() {
     const { loading } = this.state;
     return (
       <div>
         {loading ? <Loading /> : this.movieDetail()}
       </div>
-    )
+    );
   }
 }
+
+MovieDetails.propTypes = {
+  match: PropTypes.func.isRequired,
+};
 
 export default MovieDetails;

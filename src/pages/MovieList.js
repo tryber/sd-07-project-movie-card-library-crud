@@ -14,7 +14,7 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -23,28 +23,26 @@ class MovieList extends Component {
 
   fetchLoadingMovies() {
     this.setState(
-      { loading: true},
+      { loading: true },
       async () => {
-      const allMovies = await movieAPI.getMovies()
-      this.setState(({ movies }) => ({
-        loading: false,
-        movies: [...movies, ...allMovies],
-        // precisa do spread em allMovies para ele pegar todos e não apenas o primeiro elemento
-      }))
-    })
+        const allMovies = await movieAPI.getMovies();
+        this.setState(({ movies }) => ({
+          loading: false,
+          movies: [...movies, ...allMovies],
+          // precisa do spread em allMovies para ele pegar todos e não apenas o primeiro elemento
+        }));
+      });
   }
 
   mapMovies() {
     const { movies } = this.state;
-    return(
+    return (
       <div data-testid="movie-list">
-      {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
-    </div>
-    )
+        {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+      </div>
+    );
   }
- 
 
-  
   render() {
     const { loading } = this.state;
 
