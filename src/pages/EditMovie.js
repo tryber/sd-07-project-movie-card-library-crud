@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Loading } from '../components';
 import { Redirect } from 'react-router-dom';
+import { Loading } from '../components';
 
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -17,7 +17,7 @@ class EditMovie extends Component {
     this.fetch = this.fetch.bind(this);
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.fetch();
   }
 
