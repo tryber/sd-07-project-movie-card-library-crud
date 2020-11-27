@@ -32,7 +32,7 @@ class MovieDetails extends Component {
 
   render() {
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    const { loading } = this.state;
+    const { loading, movie } = this.state;
     return (
       <div data-testid="movie-details">
         { loading ? <Loading /> :
@@ -46,7 +46,7 @@ class MovieDetails extends Component {
           </div>
           <div className="button-background">
             <Link className="button-link" to={'/'}>VOLTAR</Link>
-            <Link className="button-link" to={`/movies/${id}/edit`}>EDITAR</Link>
+            <Link className="button-link" to={`/movies/${id}/edit`} teste={movie}>EDITAR</Link>
             <Link className="button-link" to={'/'} onClick={this.deleteMovie}>DELETAR</Link>
           </div>
         </div>

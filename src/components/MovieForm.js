@@ -170,7 +170,7 @@ MovieForm.propTypes = {
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
     imagePath: PropTypes.string,
-  }),
+  }).isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
