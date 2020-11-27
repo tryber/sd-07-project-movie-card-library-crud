@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       movie: {},
@@ -28,6 +29,7 @@ class MovieDetails extends Component {
   render() {
     // Change the condition to check the state
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+
     if (this.state.loading) return <Loading />;
 
     return (
@@ -38,11 +40,17 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <button><Link to={`/movies/${id}/edit`}>EDITAR</Link></button>
-        <button><Link to={'/'}>VOLTAR</Link></button>
+
+        <button><Link to={`/movies/${id}/edit`}> EDITAR </Link></button>
+        <button><Link to={'/'}> VOLTAR </Link></button>
+        <button><Link to={'/'} onClick={() => movieAPI.deleteMovie(id)}> DELETAR </Link></button>
       </div>
     );
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({}).isRequired,
+};
