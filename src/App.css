@@ -48,7 +48,7 @@ input, textarea, select {
 
 .movie-detail {
   align-items: center;
-  background-color: black;
+  background-color: rgb(114, 190, 196);
   border: 1px solid rgba(75, 72, 72, 0.125);
   border-radius: 3px;
   display: flex;
@@ -58,7 +58,7 @@ input, textarea, select {
   margin: 50px auto;
   overflow: hidden;
   padding: 20px;
-  width: 600px;
+  width: fit-content;
 }
 
 .movie-card-image {
@@ -87,6 +87,12 @@ input, textarea, select {
   margin: 0 0 12px;
 }
 
+.movie-detail-title {
+  font-size: 50px;
+  font-weight: 900;
+  margin: auto;
+}
+
 .movie-card-subtitle {
   color: #6c757d;
   font-size: 16px;
@@ -94,20 +100,38 @@ input, textarea, select {
   margin: 0 0 8px;
 }
 
+.movie-detail-subtitle {
+  color: rgb(0, 0, 0);
+  font-size: 24px;
+  font-weight: 500;
+}
+
 .movie-card-storyline {
   font-size: 14px;
   text-align: justify;
 }
 
-.movie-card-genre {
+.movie-detail-storyline {
+  font-size: 14px;
+}
+
+.movie-detail-genre {
   font-size: 14px;
 
+}
+
+.movie-detail-link {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
 }
 
 .rating {
   background-color: #007bff;
   border-radius: 25px;
   color: white;
+  display: block;
+  width: fit-content;
   font-size: 16px;
   font-weight: 700;
   padding: 3px 9px;
