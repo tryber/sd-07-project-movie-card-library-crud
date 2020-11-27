@@ -24,4 +24,4 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     storyline: PropTypes.string.isRequired,
   }).isRequired,
-}
+};
