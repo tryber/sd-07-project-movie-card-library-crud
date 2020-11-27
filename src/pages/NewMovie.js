@@ -9,7 +9,7 @@ class NewMovie extends Component {
     super(props);
     this.state = {
       redirect: null,
-    }
+    };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -20,9 +20,8 @@ class NewMovie extends Component {
 
   render() {
     const { redirect } = this.state;
-    
     if (redirect) {
-      return <Redirect to={redirect}/>
+      return <Redirect to={redirect} />;
     }
 
     return (
