@@ -1,35 +1,25 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
-
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.state = {
       shouldRedirect: false,
     };
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   async handleSubmit(newMovie) {
-    const { onSubmit } = this.props;
-    onSubmit();
     await movieAPI.createMovie(newMovie);
-    this.setState({
-      shouldRedirect: true,
-    });
+    this.setState({ shouldRedirect: true });
   }
 
   render() {
     const { shouldRedirect } = this.state;
-
-    if (shouldRedirect) {
-      return <Redirect to="/" />;
-    }
-
+    if (shouldRedirect) return <Redirect to="/" />;
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={this.handleSubmit} />
@@ -37,7 +27,4 @@ class NewMovie extends Component {
     );
   }
 }
-
-NewMovie.propTypes = { onSubmit: PropTypes.func.isRequired };
-
 export default NewMovie;
