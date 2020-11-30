@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
@@ -14,6 +15,8 @@ class NewMovie extends Component {
   }
 
   async handleSubmit(newMovie) {
+    const { onSubmit } = this.props;
+    onSubmit();
     await movieAPI.createMovie(newMovie);
     this.setState({
       shouldRedirect: true,
@@ -34,5 +37,7 @@ class NewMovie extends Component {
     );
   }
 }
+
+NewMovie.propTypes = { onSubmit: PropTypes.func.isRequired };
 
 export default NewMovie;

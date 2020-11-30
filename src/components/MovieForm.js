@@ -165,4 +165,15 @@ MovieForm.propTypes = {
   }).isRequired,
 };
 
+MovieForm.defaultProps = {
+  movie: {
+    title: '',
+    subtitle: '',
+    imagePath: '',
+    storyline: '',
+    genre: '',
+    rating: 0,
+  },
+};
+
 export default MovieForm;
