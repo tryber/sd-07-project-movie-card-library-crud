@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import MovieCard from '../components/MovieCard';
 import Loading from '../components/Loading';
 
@@ -34,10 +35,12 @@ class MovieList extends Component {
 
     return (
       <div>
-        { this.state.displayLoadingMessage && <Loading /> /* https://app.betrybe.com/course/live-lectures/sd-cohort-7#aula-131-react-ciclo-de-vida-de-componentes - tempo: 1:00h*/ }
+        { this.state.displayLoadingMessage ? <Loading /> :
         <div data-testid="movie-list">
+          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
           {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
+        }
       </div>
     );
   }
