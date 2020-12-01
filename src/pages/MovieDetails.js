@@ -1,22 +1,64 @@
 import React, { Component } from 'react';
-
-import * as movieAPI from '../services/movieAPI';
+import { Link } from 'react-router-dom';
 import { Loading } from '../components';
+import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
-  render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
+  constructor(props) {
+    super(props);
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = {};
+    this.state = {
+      movie: {},
+      loading: true,
+    };
+
+    this.fetchMovies = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
+    this.movieLoaded = this.movieLoaded.bind(this);
+  }
+
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
+  async fetchMovie() {
+    const { match } = this.props;
+    const requestMovie = await movieAPI.getMovie(match.params.id);
+    this.setState({
+      movie: requestMovie,
+      loading: false,
+    });
+  }
+
+  async deleteMovie() {
+    const { match } = this.props;
+    await movieAPI.deleteMovie(match.params.id);
+  }
+
+  movieLoaded() {
+    const { id, title, subtitle, storyline, rating, imagePath, genre } = this.state.movie;
 
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to={'/'}>VOLTAR</Link>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to={'/'} onClick={this.deleteMovie}>DELETAR</Link>
+      </div>
+    );
+  }
+
+  render() {
+    const { loading } = this.state;
+
+    return (
+      <div>
+        { loading ? <Loading /> : this.movieLoaded() }
       </div>
     );
   }
