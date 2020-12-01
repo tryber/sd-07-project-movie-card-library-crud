@@ -1,39 +1,24 @@
-// trecho retirado do codigo de thiago
+// implement MovieLibrary component here
 import React, { Component } from 'react';
-import * as movieAPI from '../services/movieAPI';
-import { MovieCard, Loading } from '../components';
-import SearchBar from '../components/SearchBar';
+import Proptype from 'prop-types';
+import SearchBar from './SearchBar';
+import MovieList from '../pages/MovieList';
 
-class MovieList extends Component {
-  constructor() {
-    super();
+class MovieLibrary extends Component {
+  constructor(props) {
+    super(props);
 
     this.state = {
       searchText: '',
       bookmarkedOnly: false,
       selectedGenre: '',
-      loading: false,
-      movies: [],
+      movies: props.movies,
     };
+
     this.searchTextChange = this.searchTextChange.bind(this);
     this.bookmarkedOnlyChange = this.bookmarkedOnlyChange.bind(this);
     this.slectedGenreChange = this.slectedGenreChange.bind(this);
-    this.renderMovieList = this.renderMovieList.bind(this);
-    this.fetchMovies = this.fetchMovies.bind(this);
-  }
-
-  componentDidMount() {
-    this.fetchMovies();
-  }
-
-  fetchMovies() {
-    this.setState({ loading: true }, async () => {
-      const requestReturn = await movieAPI.getMovies();
-      this.setState(({ movies }) => ({
-        loading: false,
-        movies: [...movies, ...requestReturn],
-      }));
-    });
+    this.AddNewMovie = this.AddNewMovie.bind(this);
   }
 
   searchTextChange({ target }) {
@@ -45,8 +30,8 @@ class MovieList extends Component {
             (movie) =>
               movie.title.includes(value) ||
               movie.subtitle.includes(value) ||
-              movie.storyline.includes(value))
-        : movies;
+              movie.storyline.includes(value)) : movies;
+
     this.setState({
       searchText: value,
       movies: showMovie,
@@ -74,11 +59,17 @@ class MovieList extends Component {
     });
   }
 
-  renderMovieList() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.state;
+  AddNewMovie(movie) {
+    this.setState((estadoAnterior) => ({
+      movies: [...estadoAnterior.movies, movie],
+    }));
+  }
 
+  render() {
+    const { searchText, bookmarkedOnly, selectedGenre } = this.props;
     return (
       <div>
+        <h1>Movie Library</h1>
         <SearchBar
           searchText={searchText}
           onSearchTextChange={this.searchTextChange}
@@ -87,25 +78,17 @@ class MovieList extends Component {
           selectedGenre={selectedGenre}
           onSelectedGenreChange={this.slectedGenreChange}
         />
-
-        <div data-testid="movie-list" className="movie-list">
-          {this.state.movies.map((movie) => (
-            <MovieCard key={movie.title} movie={movie} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-  render() {
-    const { loading } = this.state;
-
-    return (
-      <div>
-        <div>{loading ? <Loading /> : this.renderMovieList()}</div>
+        <MovieList />
       </div>
     );
   }
 }
 
-export default MovieList;
+MovieLibrary.propTypes = {
+  movies: Proptype.arrayOf(Proptype.object).isRequired,
+  searchText: Proptype.string.isRequired,
+  bookmarkedOnly: Proptype.bool.isRequired,
+  selectedGenre: Proptype.string.isRequired,
+};
 
+export default MovieLibrary;
