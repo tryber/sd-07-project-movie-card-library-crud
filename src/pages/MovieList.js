@@ -44,10 +44,11 @@ class MovieList extends Component {
           :
           movies.map((movie) =>
             <MovieCard
-            key={movie.title}
-            movie={movie}
-            onClick={onClick}
-          />)}
+              key={movie.title}
+              movie={movie}
+              onClick={onClick}
+            />
+          )}
         </div>
         <Link to="/movies/new" className="text-add-card"> ADICIONAR CARTÃO </Link>
       </div>
