@@ -43,7 +43,7 @@ class MovieList extends Component {
           {loading ? <Loading />
           :
           movies.map((movie) =>
-          <MovieCard
+            <MovieCard
             key={movie.title}
             movie={movie}
             onClick={onClick}
