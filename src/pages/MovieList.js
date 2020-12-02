@@ -48,7 +48,7 @@ class MovieList extends Component {
               movie={movie}
               onClick={onClick}
             />
-          )}
+          )};
         </div>
         <Link to="/movies/new" className="text-add-card"> ADICIONAR CARTÃO </Link>
       </div>
