@@ -37,7 +37,7 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     return (
-      <div className="movie-list" data-testid="movie-list">
+      <div data-testid="movie-list">
         {loading ? <Loading />
           :
         movies.map((movie) =>
