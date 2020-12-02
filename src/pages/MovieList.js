@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import MovieCard from '../components/MovieCard.js';
 import Loading from '../components/Loading.js';
@@ -37,7 +38,8 @@ class MovieList extends Component {
 
     // Render Loading here if the request is still happening
     return (
-      <div data-testid="movie-list">
+      <div>
+        <div data-testid="movie-list">
         {loading ? <Loading />
           :
         movies.map((movie) =>
@@ -46,6 +48,8 @@ class MovieList extends Component {
             movie={movie}
             onClick={onClick}
           />)}
+        </div>
+        <Link to="/movies/new" className="text-add-card"> ADICIONAR CARTÃO </Link>
       </div>
     );
   }
