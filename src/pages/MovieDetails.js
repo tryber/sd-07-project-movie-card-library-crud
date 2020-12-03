@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -13,7 +14,12 @@ class MovieDetails extends Component {
     this.state = {
       loadingMensage: true,
       movie: {},
-    }
+    };
+  }
+
+  componentDidMount() {
+    const { match: { params: { id } } } = this.props;
+    this.fetchDetails(id);
   }
 
   fetchDetails(id) {
@@ -24,13 +30,12 @@ class MovieDetails extends Component {
         this.setState({
           loadingMensage: false,
           movie: response,
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
   returnMovieDetails(movie) {
-    console.log('chamou')
     const { imagePath, subtitle, storyline, genre, rating, title, id } = movie;
     return (
       <div>
@@ -40,20 +45,16 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <button type='button'>
+        <button type="button">
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         </button>
-        <button type='button'>
-          <Link to='/'>VOLTAR</Link>
+        <button type="button">
+          <Link to="/">VOLTAR</Link>
         </button>
       </div>
-    )
+    );
   }
-  
-  componentDidMount() {
-    const { id } = this.props.match.params;
-    this.fetchDetails(id);
-  }
+
   render() {
     // Change the condition to check the state
     const { loadingMensage, movie } = this.state;
@@ -66,3 +67,9 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+  }).isRequired,
+};
