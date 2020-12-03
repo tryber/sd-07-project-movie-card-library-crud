@@ -1,11 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Rating from './Rating';
 
 class MovieCard extends React.Component {
   render() {
-    const { id, title, subtitle, storyline, rating, imagePath } = this.props.movie;
+    const { id, title, subtitle, storyline, imagePath } = this.props.movie;
     return (
       <div className="movie-card" data-testid="movie-card">
         <img alt="Movie Cover" className="movie-card-image" src={imagePath} />
@@ -16,8 +15,9 @@ class MovieCard extends React.Component {
           <h5 className="movie-card-subtitle">{subtitle}</h5>
           <p className="movie-card-storyline">{storyline}</p>
         </div>
-        <Rating rating={rating} />
-        <Link to={`movies/${id}`}>VER DETALHES </Link>
+        <div className="movie-card-details">
+          <Link to={`movies/${id}`}>VER DETALHES </Link>
+        </div>
       </div>
     );
   }
@@ -29,7 +29,6 @@ MovieCard.propTypes = {
     title: PropTypes.string,
     subtitle: PropTypes.string,
     storyline: PropTypes.string,
-    rating: PropTypes.number,
     imagePath: PropTypes.string,
   }).isRequired,
 };

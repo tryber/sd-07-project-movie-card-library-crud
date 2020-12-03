@@ -70,7 +70,6 @@ class MovieDetails extends Component {
       </div>
     );
   }
-
 }
 MovieDetails.propTypes = {
   match: Proptype.shape({
