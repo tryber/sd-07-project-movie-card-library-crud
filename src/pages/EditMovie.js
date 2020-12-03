@@ -9,14 +9,14 @@ class EditMovie extends Component {
     super(props);
     this.state = {
       selectedMovie: {
-        id: 0,
-        title: '',
-        storyline: '',
-        genre: '',
-        rating: 0,
-        subtitle: '',
-        imagePath: '',
-        bookmarked: false,
+        sid: 0,
+        stitle: '',
+        sstoryline: '',
+        sgenre: '',
+        srating: 0,
+        ssubtitle: '',
+        simagePath: '',
+        sbookmarked: false,
       },
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,14 +27,14 @@ class EditMovie extends Component {
     .then((result) => {
       const { title, storyline, imagePath, genre, rating, subtitle } = result;
       this.setState({ selectedMovie: {
-        id: result.id,
-        title: title,
-        storyline: storyline,
-        genre: genre,
-        rating: rating,
-        subtitle: subtitle,
-        imagePath: imagePath,
-        bookmarked: result.bookmarked,
+        sid: result.id,
+        stitle: title,
+        sstoryline: storyline,
+        sgenre: genre,
+        srating: rating,
+        ssubtitle: subtitle,
+        simagePath: imagePath,
+        sbookmarked: result.bookmarked,
       },
       });
     });
@@ -46,7 +46,7 @@ class EditMovie extends Component {
 
   render() {
     const { selectedMovie } = this.state;
-    if (selectedMovie.id < 1) {
+    if (selectedMovie.sid < 1) {
       return <Loading />;
     }
     const { status, shouldRedirect } = this.state;
