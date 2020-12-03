@@ -8,6 +8,7 @@ import { Loading } from '../components';
 class MovieDetails extends Component {
   constructor() {
     super();
+    this.deleteMovie = this.deleteMovie.bind(this);
 
     this.state = {
       loading: true,
@@ -25,13 +26,13 @@ class MovieDetails extends Component {
     });
   }
   deleteMovie() {
-    const { id } = this.props.match.params;
-    movieAPI.deleteMovie(id);
+    const { match } = this.props;
+    movieAPI.deleteMovie(match.params.id);
   }
   renderMovie({ id, title, storyline, imagePath, genre, rating, subtitle }) {
     return (
       <div className="movie-details">
-        <img className="movie-details-img" alt="movie-cover" src={`../${imagePath}`} />
+        <img className="movie-details-img" alt="Movie Cover" src={`../${imagePath}`} />
         <p className="movie-details-title">
           Título: <span>{title}</span>
         </p>
