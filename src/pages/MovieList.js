@@ -26,7 +26,7 @@ class MovieList extends Component {
         this.setState(() => ({ loading: false, movies: movieList }));
       });
   }
-  
+
   render() {
     const { movies, loading } = this.state;
     const { onClick } = this.props;

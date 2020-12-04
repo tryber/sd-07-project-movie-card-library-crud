@@ -3,11 +3,6 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  background-color: whitesmoke;
-  box-sizing: border-box;
-}
-
 .add-card {
   align-items: center;
   background-color: rgb(221, 160, 47);
