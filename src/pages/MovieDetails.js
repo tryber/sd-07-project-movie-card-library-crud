@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -14,6 +15,12 @@ class MovieDetails extends Component {
     };
   }
 
+  async componentDidMount() {
+    const { id } = this.props.match.params;
+    const fetchPromise = await movieAPI.getMovie(id);
+    this.attState(fetchPromise);
+  }
+
   attState(movie) {
     this.setState({
       movie,
@@ -21,26 +28,24 @@ class MovieDetails extends Component {
     });
   }
 
-  async componentDidMount() {
-    const { params } = this.props.match;
-    const fetchPromise = await movieAPI.getMovie(params.id);
-    this.attState(fetchPromise);
-  }
-
   movieCardDetail() {
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
     return (
-      <div className="movie-detail" data-testid="movie-details">
-        <img className="movie-detail-image" alt="Movie Cover" src={`../${imagePath}`} />
+      <div data-testid="movie-details">
+        <img alt="Movie Cover" src={`../${imagePath}`} />
         <p>{title}</p>
-        <div className="movie-detail-body">
-          <p className="movie-card-subtitle">{`Subtitle: ${subtitle}`}</p>
-          <p className="movie-card-storyline">{`Storyline: ${storyline}`}</p>
-          <p className="movie-card-genre">{`Genre: ${genre}`}</p>
-          <p className="rating">{`Rating: ${rating}`}</p>
+        <div>
+          <p>{`Subtitle: ${subtitle}`}</p>
+          <p>{`Storyline: ${storyline}`}</p>
+          <p>{`Genre: ${genre}`}</p>
+          <p>{`Rating: ${rating}`}</p>
         </div>
-      </div>)
+        <div>
+          <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+          <Link to="/">VOLTAR</Link>
+        </div>
+      </div>);
   }
 
   render() {
@@ -56,3 +61,11 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }).isRequired,
+};
