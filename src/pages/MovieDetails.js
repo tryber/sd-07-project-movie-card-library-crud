@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
-import movies from '../services/movieData';
 // import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -57,7 +56,7 @@ class MovieDetails extends Component {
         <div data-testid="movie-details">
           <Loading />
         </div>
-      )
+      );
     }
     return (
       <div data-testid="movie-details">
@@ -88,13 +87,17 @@ class MovieDetails extends Component {
 export default MovieDetails;
 
 MovieDetails.propTypes = {
-  location: PropTypes.shape({
-    aboutProps: PropTypes.shape({}),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
   }),
 };
 MovieDetails.defaultProps = {
-  location: PropTypes.shape({
-    aboutProps: PropTypes.shape({}),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
   }),
 };
 

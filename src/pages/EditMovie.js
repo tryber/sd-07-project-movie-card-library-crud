@@ -25,22 +25,22 @@ class EditMovie extends Component {
     const movie = this.props.match.params.id;
     movieAPI.getMovie(movie)
     .then((result) => {
-      const { title, storyline, imagePath, genre, rating, subtitle } = result;
       this.setState({ selectedMovie: {
-        sid: result.id,
-        stitle: title,
-        sstoryline: storyline,
-        sgenre: genre,
-        srating: rating,
-        ssubtitle: subtitle,
-        simagePath: imagePath,
-        sbookmarked: result.bookmarked,
+        id: result.id,
+        title: result.title,
+        storyline: result.storyline,
+        genre: result.genre,
+        rating: result.rating,
+        subtitle: result.subtitle,
+        imagePath: result.imagePath,
+        bookmarked: result.result.bookmarked,
       },
       });
     });
   }
 
   handleSubmit(updatedMovie) {
+    console.log(updatedMovie);
     movieAPI.updateMovie(updatedMovie);
   }
 
@@ -69,12 +69,16 @@ class EditMovie extends Component {
 export default EditMovie;
 
 EditMovie.propTypes = {
-  location: PropTypes.shape({
-    aboutProps: PropTypes.shape({}),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
   }),
 };
 EditMovie.defaultProps = {
-  location: PropTypes.shape({
-    aboutProps: PropTypes.shape({}),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
   }),
 };
