@@ -10,7 +10,8 @@ class MovieCard extends React.Component {
         <img src={imagePath} alt="Capa do filme" style={{ height: 150 }} />
         <p>{title}</p>
         <p>{storyline}</p>
-        <p><Link to={`movies/${id}`}>VER DETALHES</Link></p>
+        <p><Link to={ { pathname: `movies/${title}`, state: { movieId: id } } }
+        >VER DETALHES</Link></p>
       </div>
     );
   }
