@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { Loading } from '../components';
-
-import { Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
@@ -13,7 +12,7 @@ class MovieDetails extends Component {
       loading: true,
       shouldRedirect: false,
       movie: [],
-    }
+    };
     this.fetchMovie = this.fetchMovie.bind(this);
     this.fethDelet = this.fethDelet.bind(this);
   }
@@ -48,7 +47,7 @@ class MovieDetails extends Component {
 
     if (loading) {
       return (<Loading />);
-    } else {
+    }
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -57,17 +56,18 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={{ pathname: '/', }}>
+        <Link to={{ pathname: '/' }}>
         VOLTAR
         </Link>
-        <Link to={{ pathname: `/movies/${id}/edit`, id, }}>
+        <Link to={{ pathname: `/movies/${id}/edit`, id }}>
         EDITAR
         </Link>
-        <Link to='/' onClick={this.fethDelet} >DELETAR</Link>
+        <Link to="/" onClick={this.fethDelet} >DELETAR</Link>
       </div>
     );
-    }
   }
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = { location: PropTypes.element.isRequired };

@@ -1,19 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    const id = movie.id
-    //console.log(movie);
+    const id = movie.id;
     return (
       <div data-testid="movie-card">
         <img src={movie.imagePath} alt={movie.title} />
         <h3>{movie.title}</h3>
-        <p>
-          {movie.storyline}
-        </p>
-        <Link to={{ pathname: `/movies/${id}`, id, }}>
+        <p>{movie.storyline}</p>
+        <Link to={{ pathname: `/movies/${id}`, id }}>
           VER DETALHES
         </Link>
       </div>
@@ -22,3 +20,5 @@ class MovieCard extends React.Component {
 }
 
 export default MovieCard;
+
+MovieCard.propTypes = { movie: PropTypes.element.isRequired };

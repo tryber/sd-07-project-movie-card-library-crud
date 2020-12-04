@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-
-import MovieForm from '../components/MovieForm';
 import { Redirect } from 'react-router-dom';
+import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
 class NewMovie extends Component {
@@ -16,7 +15,7 @@ class NewMovie extends Component {
   handleSubmit(newMovie) {
     this.setState(
       async () => {
-       await movieAPI.createMovie(newMovie);
+        await movieAPI.createMovie(newMovie);
         this.setState({
           shouldRedirect: true,
         });
@@ -28,7 +27,7 @@ class NewMovie extends Component {
     const { shouldRedirect } = this.state;
 
     if (shouldRedirect) {
-      return(<Redirect to='/' />)
+      return (<Redirect to="/" />);
     }
     return (
       <div data-testid="new-movie">
