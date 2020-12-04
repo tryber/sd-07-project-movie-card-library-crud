@@ -34,10 +34,6 @@ class MovieList extends Component {
   }
 
   render() {
-    console.table(this.state.movies);
-
-    // Render Loading here if the request is still happening
-
     return (
       <div>
         {this.state.movies.length === 0 ? <Loading /> : this.moviesList()}

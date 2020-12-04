@@ -29,21 +29,21 @@ class MovieDetails extends Component {
   }
 
   movieCardDetail() {
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
-
+    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { id } = this.props.match.params;
     return (
-      <div data-testid="movie-details">
-        <img alt="Movie Cover" src={`../${imagePath}`} />
-        <p>{title}</p>
-        <div>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
+      <div className="movie-detail" data-testid="movie-details">
+        <img className="movie-detail-image" alt="Movie Cover" src={`../${imagePath}`} />
+        <p className="movie-detail-title">{title}</p>
+        <div className="movie-detail-body">
+          <p className="movie-detail-subtitle">{`Subtitle: ${subtitle}`}</p>
+          <p className="movie-detail-storyline">{`Storyline: ${storyline}`}</p>
+          <p className="movie-detail-genre">{`Genre: ${genre}`}</p>
+          <p className="rating">{`Rating: ${rating}`}</p>
         </div>
-        <div>
+        <div className="movie-detail-link">
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          <Link to="/">VOLTAR</Link>
+          <Link to={'/'}>VOLTAR</Link>
         </div>
       </div>);
   }
