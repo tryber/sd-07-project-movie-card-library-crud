@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Loading } from '../components';
 
+import { Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieDetails extends Component {
@@ -10,9 +11,11 @@ class MovieDetails extends Component {
 
     this.state = {
       loading: true,
+      shouldRedirect: false,
       movie: [],
     }
     this.fetchMovie = this.fetchMovie.bind(this);
+    this.fethDelet = this.fethDelet.bind(this);
   }
 
   componentDidMount() {
@@ -31,6 +34,12 @@ class MovieDetails extends Component {
         });
       },
     );
+  }
+
+  fethDelet() {
+    const { location } = this.props;
+    const id = location.pathname.slice(-1);
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -54,6 +63,7 @@ class MovieDetails extends Component {
         <Link to={{ pathname: `/movies/${id}/edit`, id, }}>
         EDITAR
         </Link>
+        <Link to='/' onClick={this.fethDelet} >DELETAR</Link>
       </div>
     );
     }
