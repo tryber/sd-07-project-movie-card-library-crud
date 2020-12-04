@@ -1,38 +1,51 @@
 import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
-import Loading from '../components/Loading';
+import PropTypes from 'prop-types';
+import MovieCard from '../components/MovieCard.js';
+import Loading from '../components/Loading.js';
 import * as movieAPI from '../services/movieAPI';
-
-
 
 class MovieList extends Component {
   constructor() {
     super();
     this.state = {
       movies: [],
-      loading: true,
+      loading: false,
     };
-  }
-
-  async getMovies() {
-    const moviesData = await movieAPI.getMovies();
-    this.setState({ movies: moviesData, loading: false });
+    this.getMoviesLibrary = this.getMoviesLibrary.bind(this);
   }
 
   componentDidMount() {
-    this.getMovies();
+    this.getMoviesLibrary();
   }
+
+  async getMoviesLibrary() {
+    this.setState(
+      { loading: true },
+      async () => {
+        const movieList = await movieAPI.getMovies();
+        this.setState(() => ({ loading: false, movies: movieList }));
+      });
+  }
+  
   render() {
     const { movies, loading } = this.state;
+    const { onClick } = this.props;
 
-    if (!loading) {
-      return (
-        <div data-testid="movie-list">
-          {movies.map((movie) =><MovieCard key={movie.title} movie={movie} />)}
-        </div>
-      );
-    } return <Loading />;
+    return (
+      <div className="movie-list" data-testid="movie-list">
+        {loading ? <Loading />
+          :
+        movies.map((movie) =>
+          <MovieCard
+            key={movie.title}
+            movie={movie}
+            onClick={onClick}
+          />)}
+      </div>
+    );
   }
 }
+
+MovieList.propTypes = { onClick: PropTypes.func.isRequired };
 
 export default MovieList;

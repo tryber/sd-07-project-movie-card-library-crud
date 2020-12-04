@@ -4,27 +4,40 @@ import PropTypes from 'prop-types';
 
 class MovieCard extends React.Component {
   render() {
-    const { movie: { imagePath, title, storyline, id } } = this.props;
+    const { id, title, subtitle, storyline, imagePath } = this.props.movie;
+    const { onClick } = this.props;
+    const movieDetailsUrl = `/movies/${id}`;
     return (
-      <div data-testid="movie-card">
-        <img src={imagePath} alt="Capa do filme" style={{ height: 150 }} />
-        <p>{title}</p>
-        <p>{storyline}</p>
-        <p><Link to={ { pathname: `movies/${title}`, state: { movieId: id } } }
-        >VER DETALHES</Link></p>
+      <div className="movie-card" data-testid="movie-card">
+        <div className="movie-card-body">
+          <img className="movie-card-image" src={imagePath} alt="Movie" />
+          <div className="titles">
+            <h2 className="movie-card-title">{title}</h2>
+            <h4 className="movie-card-subtitle">{subtitle}</h4>
+          </div>
+          <p className="movie-card-storyline">{storyline}</p>
+          <div className="more-details">
+            <Link
+              className="link"
+              to={movieDetailsUrl}
+              onClick={onClick}
+            >VER DETALHES</Link>
+          </div>
+        </div>
       </div>
     );
   }
 }
 
-
-MovieCard.propTypes = {
+MovieCard.propTypes = ({
   movie: PropTypes.shape({
-    imagePath: PropTypes.string,
-    title: PropTypes.string,
-    storyline: PropTypes.string,
     id: PropTypes.number,
-  }).isRequired,
-};
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    storyline: PropTypes.string,
+    imagePath: PropTypes.string,
+  }),
+  onClick: PropTypes.func,
+}).isRequired;
 
 export default MovieCard;
