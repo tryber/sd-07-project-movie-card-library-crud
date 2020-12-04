@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
+import movies from '../services/movieData';
 // import { Loading } from '../components';
 
 class MovieDetails extends Component {
@@ -22,8 +23,8 @@ class MovieDetails extends Component {
     };
   }
   componentDidMount() {
-    const movie = this.props.location.aboutProps;
-    movieAPI.getMovie(movie.movie)
+    const movie = this.props.match.params.id;
+    movieAPI.getMovie(movie)
     .then((result) => {
       const { title, storyline, imagePath, genre, rating, subtitle } = result;
       this.setState({ selectedMovie: {
@@ -50,9 +51,13 @@ class MovieDetails extends Component {
       srating,
       ssubtitle,
     } = this.state.selectedMovie;
-    const editRoute = `/movies/:${sid}/edit`;
+    const editRoute = `/movies/${sid}/edit`;
     if (sid < 1) {
-      return <Loading />;
+      return (
+        <div data-testid="movie-details">
+          <Loading />
+        </div>
+      )
     }
     return (
       <div data-testid="movie-details">

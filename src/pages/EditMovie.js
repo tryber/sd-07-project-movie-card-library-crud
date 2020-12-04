@@ -22,8 +22,8 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   componentDidMount() {
-    const movie = this.props.location.aboutProps;
-    movieAPI.getMovie(movie.movie)
+    const movie = this.props.match.params.id;
+    movieAPI.getMovie(movie)
     .then((result) => {
       const { title, storyline, imagePath, genre, rating, subtitle } = result;
       this.setState({ selectedMovie: {

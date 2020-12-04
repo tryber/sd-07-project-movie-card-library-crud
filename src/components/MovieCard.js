@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 class MovieCard extends React.Component {
   render() {
     const { movie } = this.props;
-    const linkAdress = `movies/:${movie.id}`;
+    const linkAdress = `movies/${movie.id}`;
     return (
       <div data-testid="movie-card">
         <img src={movie.imagePath} alt="" />

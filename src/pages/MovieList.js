@@ -21,7 +21,7 @@ class MovieList extends Component {
     const { movies } = this.state;
     if (movies.length > 0) {
       return (
-        <div>
+        <div data-testid="movie-list">
           <Link to="/movies/new">
             ADICIONAR CARTÃO
           </Link>
