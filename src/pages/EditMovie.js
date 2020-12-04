@@ -33,7 +33,7 @@ class EditMovie extends Component {
         rating: result.rating,
         subtitle: result.subtitle,
         imagePath: result.imagePath,
-        bookmarked: result.result.bookmarked,
+        bookmarked: result.bookmarked,
       },
       });
     });
