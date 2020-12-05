@@ -29,7 +29,8 @@ class MovieDetails extends Component {
   }
 
   movieCardDetail() {
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { movie } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     const { id } = this.props.match.params;
     return (
       <div className="movie-detail" data-testid="movie-details">
@@ -43,15 +44,13 @@ class MovieDetails extends Component {
         </div>
         <div className="movie-detail-link">
           <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-          <Link to={'/'}>VOLTAR</Link>
+          <Link to="/">VOLTAR</Link>
+          <Link to="/" onClick={() => movieAPI.deleteMovie(id)}>DELETAR</Link>
         </div>
       </div>);
   }
 
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-
     return (
       <div>
         {this.state.isLoading === true ? <Loading /> : this.movieCardDetail()}
