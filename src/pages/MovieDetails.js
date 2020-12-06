@@ -8,6 +8,7 @@ import * as movieAPI from '../services/movieAPI';
 class MovieDetails extends Component {
   constructor(props) {
     super(props);
+    this.deleteMovie = this.deleteMovie.bind(this);
     this.state = {
       selectedMovie: {
         sid: 0,
@@ -38,6 +39,9 @@ class MovieDetails extends Component {
       },
       });
     });
+  }
+  deleteMovie(selectedMovie) {
+    movieAPI.deleteMovie(selectedMovie);
   }
   render() {
     // Change the condition to check the state
@@ -79,6 +83,11 @@ class MovieDetails extends Component {
         <Link to="/">
           VOLTAR
         </Link>
+        <button
+          onClick={this.deleteMovie(sid)}
+        >
+          DELETAR
+        </button>
       </div>
     );
   }
