@@ -40,8 +40,14 @@ class MovieDetails extends Component {
       });
     });
   }
-  deleteMovie(selectedMovie) {
-    movieAPI.deleteMovie(selectedMovie);
+  deleteMovie() {
+    const { selectedMovie } = this.state;
+    const { sid } = selectedMovie;
+    const id = sid;
+
+    if (id > 0) {
+      movieAPI.deleteMovie(id);
+    }
   }
   render() {
     // Change the condition to check the state
@@ -80,14 +86,12 @@ class MovieDetails extends Component {
         >
           EDITAR
         </Link>
-        <Link to="/">
+        <Link to="/" onClick={this.deleteMovie()}>
           VOLTAR
         </Link>
-        <button
-          onClick={this.deleteMovie(sid)}
-        >
+        <Link to="/">
           DELETAR
-        </button>
+        </Link>
       </div>
     );
   }
