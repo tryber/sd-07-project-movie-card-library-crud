@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router';
 import PropTypes from 'prop-types';
 import { MovieForm } from '../components';
 import * as movieAPI from '../services/movieAPI';
@@ -18,6 +19,7 @@ class EditMovie extends Component {
         simagePath: '',
         sbookmarked: false,
       },
+      shouldRedirect: false,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -42,6 +44,7 @@ class EditMovie extends Component {
   handleSubmit(updatedMovie) {
     console.log(updatedMovie);
     movieAPI.updateMovie(updatedMovie);
+    this.setState({ shouldRedirect: true });
   }
 
   render() {
@@ -51,7 +54,7 @@ class EditMovie extends Component {
     }
     const { status, shouldRedirect } = this.state;
     if (shouldRedirect) {
-      // Redirect
+      return <Redirect to="/" />;
     }
 
     if (status === 'loading') {
