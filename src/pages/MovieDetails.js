@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -10,10 +10,12 @@ class MovieDetails extends Component {
 
     this.fetchDetails = this.fetchDetails.bind(this);
     this.returnMovieDetails = this.returnMovieDetails.bind(this);
+    this.removeMovie = this.removeMovie.bind(this);
 
     this.state = {
       loadingMensage: true,
       movie: {},
+      removeMovie: false,
     };
   }
 
@@ -35,6 +37,11 @@ class MovieDetails extends Component {
     });
   }
 
+  removeMovie(id) {
+    movieAPI.deleteMovie(id);
+    this.setState({removeMovie: true})
+  }
+
   returnMovieDetails(movie) {
     const { imagePath, subtitle, storyline, genre, rating, title, id } = movie;
     return (
@@ -51,12 +58,19 @@ class MovieDetails extends Component {
         <button type="button">
           <Link to="/">VOLTAR</Link>
         </button>
+        <button>
+          <Link onClick={() => this.removeMovie(id)}>DELETAR</Link>
+        </button>
       </div>
     );
   }
 
   render() {
     // Change the condition to check the state
+    const { removeMovie } = this.state;
+    if (removeMovie) {
+      return <Redirect to="/" />;
+    }
     const { loadingMensage, movie } = this.state;
     return (
       <div data-testid="movie-details">
