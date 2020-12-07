@@ -86,10 +86,10 @@ class MovieDetails extends Component {
         >
           EDITAR
         </Link>
-        <Link to="/" onClick={this.deleteMovie()}>
+        <Link to="/">
           VOLTAR
         </Link>
-        <Link to="/">
+        <Link to="/" onClick={this.deleteMovie}>
           DELETAR
         </Link>
       </div>
