@@ -39,7 +39,7 @@ class MovieDetails extends Component {
 
   removeMovie(id) {
     movieAPI.deleteMovie(id);
-    this.setState({removeMovie: true})
+    this.setState({ removeMovie: true });
   }
 
   returnMovieDetails(movie) {
