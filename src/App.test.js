@@ -316,7 +316,7 @@ describe('6 - NewMovie: Na página inicial, deve haver um link para criar novos 
 })
 
 describe('Bônus: Adicione um link para deletar um cartão em MovieDetails', () => {
-  it.skip('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
+  it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
       await waitFor(() => movieAPI.getMovie(movie.id));
@@ -326,7 +326,7 @@ describe('Bônus: Adicione um link para deletar um cartão em MovieDetails', () 
     }
   })
 
-  it.skip('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
+  it('o botão "DELETAR" deverá fazer uma requisição para a API para excluir o filme em questão', async () => {
     resetStorage();
     const deletedMovie = readMovies()[2];
     renderPath('/movies/3');
