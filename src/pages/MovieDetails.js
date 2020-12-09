@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
     this.state = {
       movie: {},
-      loading: false,
+      loading: true,
     };
-    this.HandleDelete = this.HandleDelete.bind(this);
+    this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -19,54 +20,52 @@ class MovieDetails extends Component {
   }
 
   fetchMovie() {
-    this.setState({ loading: true }, async () => {
-      const data = await movieAPI.getMovie(this.props.match.params.id);
-      this.setState({ movie: data, loading: false });
+    const { id } = this.props.match.params;
+    this.setState({ loading: true }, () => {
+      movieAPI.getMovie(id)
+        .then((movie) => {
+          this.setState({
+            loading: false,
+            movie,
+          });
+        });
     });
   }
 
- async HandleDelete() {
-    // this.setState({ loading: true }, async () => {
-      const result  = await movieAPI.deleteMovie(this.props.match.params.id);
-      // if (result.status === 'OK' ) {
-      //   this.setState({ loading: false });
+  handleClick() {
+    const { movie: { id } } = this.state;
+    movieAPI.deleteMovie(id);
   }
-
-  // handleClick() {
-  //   const movieId  = this.props.match.params.id;
-  //   movieAPI.deleteMovie(movieId)
-  // }
-
-  // async clickRemoveMovie() {
-  //   const { id } = this.props.match.params;
-  //   await movieAPI.deleteMovie(id);
-  // }
-
   render() {
-    // Change the condition to check the state
-    // if (true) return <Loading />;
-    //console.log(movies);
-    const { loading } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-
+    const { loading, movie } = this.state;
+    if (loading) {
+      return (
+        <Loading message="Carregando..." />
+      );
+    }
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
-        {loading ? <Loading /> : (
-          <div>
-          <h2>{title}</h2>
-          <img alt="Movie Cover" src={`../${imagePath}`} />
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
-          <Link to={`/movies/${this.props.match.params.id}/edit`}>       EDITAR</Link>
-            <Link to="/" >VOLTAR</Link>
-            <Link onClick={this.HandleDelete} to="/">DELETAR</Link>
-        </div>
-        )
-        }
+        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p>{`Title: ${title}`}</p>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/">VOLTAR</Link>
+        <Link to="/" onClick={this.handleClick}>DELETAR</Link>
       </div>
-    )
-}}
+    );
+  }
+}
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
 
 export default MovieDetails;
