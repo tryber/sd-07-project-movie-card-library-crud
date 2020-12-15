@@ -15,7 +15,8 @@ class EditMovie extends Component {
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    // movie
+    const { status, shouldRedirect } = this.state;
     if (shouldRedirect) {
       // Redirect
     }
@@ -27,7 +28,7 @@ class EditMovie extends Component {
     return (
       <div data-testid="edit-movie">
         <p>This is EditMovie</p>
-        <MovieForm movie={movie} onSubmit={this.handleSubmit} />
+        <MovieForm onSubmit={this.handleSubmit} />
       </div>
     );
   }
