@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/trybe-react-project-movie-card-library-crud/static/css/main.34de6062.chunk.css",
+    "main.js": "/trybe-react-project-movie-card-library-crud/static/js/main.3e0f7bed.chunk.js",
+    "main.js.map": "/trybe-react-project-movie-card-library-crud/static/js/main.3e0f7bed.chunk.js.map",
+    "runtime-main.js": "/trybe-react-project-movie-card-library-crud/static/js/runtime-main.0337d94b.js",
+    "runtime-main.js.map": "/trybe-react-project-movie-card-library-crud/static/js/runtime-main.0337d94b.js.map",
+    "static/js/2.61ebad88.chunk.js": "/trybe-react-project-movie-card-library-crud/static/js/2.61ebad88.chunk.js",
+    "static/js/2.61ebad88.chunk.js.map": "/trybe-react-project-movie-card-library-crud/static/js/2.61ebad88.chunk.js.map",
+    "index.html": "/trybe-react-project-movie-card-library-crud/index.html",
+    "precache-manifest.202947c3586c32ef4b9aa6068635a515.js": "/trybe-react-project-movie-card-library-crud/precache-manifest.202947c3586c32ef4b9aa6068635a515.js",
+    "service-worker.js": "/trybe-react-project-movie-card-library-crud/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/trybe-react-project-movie-card-library-crud/static/css/main.34de6062.chunk.css.map",
+    "static/js/2.61ebad88.chunk.js.LICENSE.txt": "/trybe-react-project-movie-card-library-crud/static/js/2.61ebad88.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0337d94b.js",
+    "static/js/2.61ebad88.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.3e0f7bed.chunk.js"
+  ]
+}
