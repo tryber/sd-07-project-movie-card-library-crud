@@ -10,9 +10,9 @@ function App() {
         <Route exact path="/" ><MovieList /></Route>
         <Route exact path="/movies/:id"><MovieDetails /></Route>
         <Route exact path="/movies/new"><NewMovie /></Route >
-        <Route exact  path="/movies/:id/edit"><EditMovie /></Route>
+        <Route exact path="/movies/:id/edit"><EditMovie /></Route>
         <Route ><NotFound /></Route>
-      <div>Movie Card Library CRUD</div>
+        <div>Movie Card Library CRUD</div>
       </switch>
     </BrowserRouter>
   );

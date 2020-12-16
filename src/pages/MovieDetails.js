@@ -1,32 +1,28 @@
 import React, { Component } from 'react';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link }  from 'react-router-dom';
+
 
 class MovieDetails extends Component {
-  constructor(){
-super()
-
-this.state = {
-carregando: true,
-movies: [],
- }
-
+  constructor() {
+    super();
+    this.state = {
+  carregando: true,
+  movies: [],
 }
+  }
 
-async componentDidMount() {
-   const movie =  await movieAPI.getMovie(this.props.match.params.id)
- 
-  this.setState ( {
-    movies: movie,
-   carregando : false
-  })
- }
-  
-  render()    {
-    const {  carregando  } = this.state;
+  async componentDidMount() {
+  const movie = await movieAPI.getMovie(this.props.match.params.id);
+   this.setState ({
+   movies: movie,
+   carregando: false,
+  });
+}
+  render() {
+    const { carregando } = this.state;
     const { title, storyline, imagePath, 
-      genre, rating, subtitle} = this.state.movies;
+      genre, rating, subtitle } = this.state.movies;
 
     return carregando ? <Loading /> : (
       <div data-testid="movie-details">
@@ -41,4 +37,11 @@ async componentDidMount() {
   }
 }
 
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 export default MovieDetails;
