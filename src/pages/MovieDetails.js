@@ -14,8 +14,8 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-     this.fetchs();
-   }
+    this.fetchs();
+  }
 
   async fetchs() {
     const movie = await movieAPI.getMovie(this.props.match.params.id);

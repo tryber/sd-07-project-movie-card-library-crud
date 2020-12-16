@@ -11,10 +11,10 @@ class NewMovie extends Component {
     this.state = {
 
       created: false,
-    }
+    };
   }
 
-  handleSubmit(newMovie) { 
+  handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie).then(() => this.setState({ created: true }));
   }
   render() {
