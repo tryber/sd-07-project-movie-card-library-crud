@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 class MovieCard extends React.Component {
   render() {
     return (
-    <div data-testid="movie-card">
+      <div data-testid="movie-card">
         Movie Card
         <div>
           <img src={this.props.movie.imagePath} alt="Movie" />
@@ -15,9 +15,9 @@ class MovieCard extends React.Component {
 
 
         </div>
-        <Link to={`/movies/${this.props.movie.id}`} >VER DETALHES</Link>
-     </div>
-  );
+      <Link to={`/movies/${this.props.movie.id}`} >VER DETALHES</Link>
+    </div>
+    );
   }
 }
 
