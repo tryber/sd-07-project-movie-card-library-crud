@@ -1,24 +1,32 @@
 import React, { Component } from 'react';
-import * as movieAPI from '../services/movieAPI';
 import PropTypes from 'prop-types';
+import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
     super();
+    this.fetchs = this.fetchs.bind(this);
+    
     this.state = {
       carregando: true,
       movies: [],
     };
   }
 
-  async componentDidMount() {
+   componentDidMount() {
+    this.fetchs();
+   }
+
+  async fetchs() {
+
     const movie = await movieAPI.getMovie(this.props.match.params.id);
     this.setState({
       movies: movie,
       carregando: false,
     });
   }
+  
   render() {
     const { carregando } = this.state;
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movies;
