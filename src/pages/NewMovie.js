@@ -18,8 +18,8 @@ class NewMovie extends Component {
   }
 
   render() 
-   const { created } = this.state;
-  if (created) {
+  le = this.created.setState
+  if (le) {
     return <Redirect to="/" />;
   } else {
     return (
