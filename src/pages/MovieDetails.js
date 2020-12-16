@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import PropTypes from 'prop-types';
 
 
 class MovieDetails extends Component {
   constructor() {
     super();
     this.state = {
-  carregando: true,
-  movies: [],
-}
+      carregando: true,
+      movies: [],
+    };
   }
 
   async componentDidMount() {
-  const movie = await movieAPI.getMovie(this.props.match.params.id);
-   this.setState ({
-   movies: movie,
-   carregando: false,
-  });
-}
+    const movie = await movieAPI.getMovie(this.props.match.params.id);
+    this.setState({
+     movies: movie,
+     carregando: false,
+   });
+  }
   render() {
     const { carregando } = this.state;
     const { title, storyline, imagePath, 
       genre, rating, subtitle } = this.state.movies;
-
     return carregando ? <Loading /> : (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />

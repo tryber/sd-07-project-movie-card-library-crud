@@ -13,21 +13,18 @@ class MovieList extends Component {
     }
   }
 
- async componentDidMount() {
- const movie =  await movieAPI.getMovies()
+  async componentDidMount() {
+ const movie = await movieAPI.getMovies()
 
- this.setState ( {
-  movies: movie,
-  carregando : false
+   this.setState({
+   movies: movie,
+   carregando: false,
  })
-}
+ }
 
   render() {
     const { movies, carregando } = this.state;
-
-    
-
-    return carregando ? <Loading /> :  (
+    return carregando ? <Loading /> : (
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>

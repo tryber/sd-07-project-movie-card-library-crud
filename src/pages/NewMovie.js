@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Redirect } from 'react-router-dom';
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -9,17 +9,19 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-
-
-      
+   created: false,
     }
   }
 
   handleSubmit(newMovie) { 
-    //escrever a função que será o formulário?
+    movieAPI.createMovie(newMovie).then(() => this.setState({ created: true }));
   }
 
-  render() {
+  render() 
+   const { created } = this.state;
+  if (created) {
+    return <Redirect to="/" />;
+  } else {
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={this.handleSubmit} />
@@ -28,3 +30,4 @@ class NewMovie extends Component {
   }
 }
 export default NewMovie;
+
