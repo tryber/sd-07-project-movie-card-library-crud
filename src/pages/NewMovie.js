@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
 
@@ -9,19 +9,15 @@ class NewMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-   created: false,
+
+      created: false,
     }
   }
 
   handleSubmit(newMovie) { 
     movieAPI.createMovie(newMovie).then(() => this.setState({ created: true }));
   }
-
-  render() 
-  le = this.created.setState
-  if (le) {
-    return <Redirect to="/" />;
-  } else {
+  render() {
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={this.handleSubmit} />
