@@ -4,25 +4,25 @@ import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
 
 class MovieList extends Component {
-  constructor() {
+  constructor() { // 1
     super();
     this.state = {
       movies: [],
     };
   }
 
-componentDidMount() {
+  componentDidMount() { // 3
   // faz a requisição (API local não precisa do JSON) e muda o valor do estado
   movieAPI.getMovies().then((movies) => this.setState({
     movies,
-  }))
+  }));
 }
 
   render() {
     const { movies } = this.state;
-    if (movies.length === 0) return <Loading />;
+    if (movies.length === 0) return <Loading />; // 2
     // se o movies.length === 0 Loading else movies.map
-    return (
+    return ( // 4
       <div data-testid="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
