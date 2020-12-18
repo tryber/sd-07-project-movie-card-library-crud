@@ -13,10 +13,10 @@ class MovieList extends Component {
 
   componentDidMount() { // 3
   // faz a requisição (API local não precisa do JSON) e muda o valor do estado
-  movieAPI.getMovies().then((movies) => this.setState({
-    movies,
-  }));
-}
+    movieAPI.getMovies().then((movies) => this.setState({
+      movies,
+    }));
+  }
 
   render() {
     const { movies } = this.state;
