@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
 
@@ -11,6 +11,7 @@ class MovieDetails extends Component {
       movie: {},
       loading: true,
     };
+    this.deleteCard = this.deleteCard.bind(this);
   }
 
   componentDidMount() {
@@ -21,9 +22,17 @@ class MovieDetails extends Component {
     }));
   }
 
+  async deleteCard() { // referência: Vanessa Bidinotto
+    return await movieAPI.deleteMovie(this.props.match.params.id);
+  }
+
   render() {
-    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
-    if (this.state.loading) return <Loading />;
+    const { movie, loading } = this.state;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
+    const { id } = this.props.match.params;
+    
+    if (loading) return <Loading />;
+
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -33,6 +42,7 @@ class MovieDetails extends Component {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link to="/" onClick={this.deleteCard}>DELETAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
