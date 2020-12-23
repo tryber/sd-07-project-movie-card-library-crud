@@ -20,7 +20,7 @@ class MovieList extends Component {
     movieAPI.getMovies()
     .then((response) => this.setState({ movies: response, loading: false }));
   }
-  
+
   render() {
     const { loading, movies } = this.state;
     if (loading === true) { return <Loading />; }
