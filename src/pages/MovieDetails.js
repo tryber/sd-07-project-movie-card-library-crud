@@ -17,6 +17,9 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        {console.log(movieAPI)}
+        {console.log(Loading)}
+        {console.log(title)}
       </div>
     );
   }
