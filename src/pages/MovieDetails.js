@@ -11,8 +11,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: [],
       loading: true,
-    }
-
+    };
   }
 
   componentDidMount() {
@@ -21,19 +20,16 @@ class MovieDetails extends Component {
 
   async fetchMovieList() {
     const { id } = this.props.match.params;
-    const movie = await movieAPI.getMovie(id);
-    this.setState({
-      movie: movie,
-      loading: false,
-    });
+    const movieData = await movieAPI.getMovie(id);
+    this.setState({ movie: movieData, loading: false });
   }
 
   render() {
     const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
     const { loading } = this.state;
     const { id } = this.props.match.params;
-    
-    if (loading) return <Loading />
+
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
