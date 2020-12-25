@@ -7,7 +7,7 @@ class MovieDetails extends Component {
   constructor(){
     super();
 
-    this.fachMovie = this.fachMovie.bind(this);
+    this.fechMovie = this.fechMovie.bind(this);
     
     this.state = {
       loaded: false,
@@ -15,11 +15,11 @@ class MovieDetails extends Component {
     };
   };
       componentDidMount() {
-        this.fachMovie();
+        this.fechMovie();
       }
 
    async fechMovie() {
-    const movie = await movieAPI.getMovie(this.props.match.params.movie.id);
+    const movie = await movieAPI.getMovie(this.props.match.params.id);
     this.setState({
       loaded: true,
       movie: movie,
