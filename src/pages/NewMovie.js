@@ -17,6 +17,7 @@ class NewMovie extends Component {
   handleSubmit(newMovie) {
     movieAPI.createMovie(newMovie).then(() => this.setState({ created: true }));
   }
+
   render() {
     return (
       <div data-testid="new-movie">
@@ -26,4 +27,3 @@ class NewMovie extends Component {
   }
 }
 export default NewMovie;
-

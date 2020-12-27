@@ -14,22 +14,22 @@ class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    console.log("chamou",this.props )
     this.fetchs();
-
   }
 
   async fetchs() {
-   
     const movie = await movieAPI.getMovie(this.props.match.params.id);
     this.setState({
       movies: movie,
       carregando: false,
     });
   }
+
   render() {
     const { carregando } = this.state;
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movies;
+    const {
+      title, storyline, imagePath, genre, rating, subtitle,
+    } = this.state.movies;
     return carregando ? <Loading /> : (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -43,11 +43,11 @@ class MovieDetails extends Component {
   }
 }
 
- MovieDetails.propTypes = {
+MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-       id: PropTypes.number,
-     }),
-   }).isRequired,
- };
+      id: PropTypes.number,
+    }),
+  }).isRequired,
+};
 export default MovieDetails;
