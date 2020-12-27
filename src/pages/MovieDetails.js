@@ -29,9 +29,9 @@ class MovieDetails extends Component {
 
   async HandleDelete(id) {
     const deleteMovie = await movieAPI.deleteMovie(id);
-    if (deleteMovie.status === "OK") {
+    if (deleteMovie.status === 'OK') {
       this.setState({ redirect: true });
-      console.log(deleteMovie)
+      console.log(deleteMovie);
     }
   }
   render() {

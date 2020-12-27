@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { MovieForm } from '../components';
 import { Redirect } from 'react-router-dom';
+import { MovieForm } from '../components';
 import Loading from '../components/Loading';
+import PropTypes from 'prop-types';
 import * as movieAPI from '../services/movieAPI';
- 
+
 class EditMovie extends Component {
   constructor(props) {
     super(props);
@@ -17,23 +18,23 @@ class EditMovie extends Component {
   }
 
   componentDidMount() {
-      this.handleFetchMovie();
-    }
-    
-  async handleSubmit(updatedMovie) {
-      movieAPI.updateMovie(updatedMovie);
-      this.setState({
-        shouldRedirect: true,
-        });
-    }
+    this.handleFetchMovie();
+  }
 
-    async handleFetchMovie() {
-      const mv = await movieAPI.getMovie(this.props.match.params.id);
-      this.setState({
+  async handleSubmit(updatedMovie) {
+    movieAPI.updateMovie(updatedMovie);
+    this.setState({
+        shouldRedirect: true,
+      });
+  }
+
+  async handleFetchMovie() {
+    const mv = await movieAPI.getMovie(this.props.match.params.id);
+    this.setState({
       movie: mv,
       status: 'loaded',
     });
-  } 
+  }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
@@ -51,6 +52,14 @@ class EditMovie extends Component {
       </div>
     );
   }
+}
+
+EditMovie.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    })
+  }),
 }
 
 export default EditMovie;
