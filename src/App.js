@@ -7,15 +7,17 @@ import {
 
 function App() {
   return (
+
     <BrowserRouter>
       <Switch>
-        <Route exact path="/"><MovieList /></Route>
+        <Route exact path="/" component={MovieList} />
+        <Route exact path="/movies/new" component={NewMovie} />
+        <Route exact path="/movies/:id/edit" component={EditMovie} />
         <Route exact path="/movies/:id" component={MovieDetails} />
-        <Route exact path="/movies/new"><NewMovie /></Route>
-        <Route exact path="/movies/:id/edit"><EditMovie /></Route>
         <Route><NotFound /></Route>
       </Switch>
     </BrowserRouter>
+
   );
 }
 
