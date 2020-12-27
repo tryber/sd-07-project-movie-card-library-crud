@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-
 import { MovieForm } from '../components';
-import Loading from '../components/Loading'
+import { Redirect } from 'react-router-dom';
+import Loading from '../components/Loading';
 import * as movieAPI from '../services/movieAPI';
-import { Redirect } from 'react-router-dom';  
-
+ 
 class EditMovie extends Component {
   constructor(props) {
     super(props);
@@ -13,29 +12,28 @@ class EditMovie extends Component {
       shouldRedirect: false,
       movie: {},
     };
-    this.handleFachMovie = this.handleFetchMovie.bind(this)
+    this.handleFachMovie = this.handleFetchMovie.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
- 
-    componentDidMount() {
+  componentDidMount() {
       this.handleFetchMovie();
     }
     
-    async handleSubmit(updatedMovie) {
-        movieAPI.updateMovie(updatedMovie);
-        this.setState({
-          shouldRedirect: true,
+  async handleSubmit(updatedMovie) {
+      movieAPI.updateMovie(updatedMovie);
+      this.setState({
+        shouldRedirect: true,
         });
     }
 
-     async handleFetchMovie() {
+    async handleFetchMovie() {
       const mv = await movieAPI.getMovie(this.props.match.params.id);
       this.setState({
-        movie: mv,
-        status: 'loaded',
-      });
-    } 
+      movie: mv,
+      status: 'loaded',
+    });
+  } 
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
@@ -54,7 +52,5 @@ class EditMovie extends Component {
     );
   }
 }
-
-
 
 export default EditMovie;

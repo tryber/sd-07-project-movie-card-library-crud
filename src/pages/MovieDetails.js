@@ -23,14 +23,14 @@ class MovieDetails extends Component {
     const movie = await movieAPI.getMovie(this.props.match.params.id);
     this.setState({
       loaded: true,
-      movie: movie,
+      movie,
     });
   }
 
   async HandleDelete(id) {
     const deleteMovie = await movieAPI.deleteMovie(id);
-    if(deleteMovie.status === "OK"){
-      this.setState({redirect: true})
+    if (deleteMovie.status === "OK") {
+      this.setState({ redirect: true });
       console.log(deleteMovie)
     }
   }
