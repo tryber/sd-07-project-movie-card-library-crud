@@ -1,38 +1,56 @@
 import React, { Component } from 'react';
-
+import { Link, Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends Component {
-  constructor(){
+  constructor() {
     super();
 
     this.fechMovie = this.fechMovie.bind(this);
-    
+
     this.state = {
       loaded: false,
       movie: {},
+      redirect: false,
     };
-  };
-      componentDidMount() {
-        this.fechMovie();
-      }
+  }
+  componentDidMount() {
+    this.fechMovie();
+  }
 
-   async fechMovie() {
+  async fechMovie() {
     const movie = await movieAPI.getMovie(this.props.match.params.id);
     this.setState({
       loaded: true,
       movie: movie,
     });
-  };
+  }
 
-  async HandleDelete(){
-    await movieAPI.deleteMovie(this.props.match.params.movie);
+  async HandleDelete(id) {
+    const deleteMovie = await movieAPI.deleteMovie(id);
+    if(deleteMovie.status === "OK"){
+      this.setState({redirect: true})
+      console.log(deleteMovie)
+    }
   }
   render() {
     if (!this.state.loaded) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const {
+      title,
+      storyline,
+      imagePath,
+      genre,
+      rating,
+      subtitle,
+      id,
+    } = this.state.movie;
+
+    const { redirect } = this.state;
+    if (redirect) {
+      return <Redirect to="/" />;
+    }
 
     return (
       <div data-testid="movie-details">
@@ -42,6 +60,16 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
+        <Link to="/">VOLTAR</Link>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
+        <Link
+          to="/"
+          onclick={() => {
+            this.HandleDelete(id);
+          }}
+        >
+          DELETAR
+        </Link>
       </div>
     );
   }
