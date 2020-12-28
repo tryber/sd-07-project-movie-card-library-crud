@@ -18,7 +18,7 @@ class MovieList extends React.Component {
   }
 
   componentDidMount() {
-   this.fetchAPI();
+    this.fetchAPI();
   }
 
   fetchAPI() {
