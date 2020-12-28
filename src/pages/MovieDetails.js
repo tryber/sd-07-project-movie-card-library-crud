@@ -8,42 +8,43 @@ class MovieDetails extends React.Component {
   constructor() {
     super();
 
+    this.fetchMovie = this.fetchMovie.bind(this);
+    this.deleteMovie = this.deleteMovie.bind(this);
+
     this.state = {
       movie: {},
-      isLoading: true,
+      loading: true,
     };
-    this.fetchMovie = this.fetchMovie.bind(this);
-    this.deleteTheMovie = this.deleteTheMovie.bind(this);
   }
 
   componentDidMount() {
     this.fetchMovie();
   }
 
+  async deleteMovie() {
+    const { id } = this.state.movie;
+    await movieAPI.deleteMovie(id);
+  }
+
   fetchMovie() {
     const { id } = this.props.match.params;
-    this.setState({ isLoading: true }, async () => {
+    this.setState({ loading: true }, async () => {
       const movie = await movieAPI.getMovie(id);
       this.setState({
+        loading: false,
         movie,
-        isLoading: false,
       });
     });
   }
 
-  deleteTheMovie() {
-    movieAPI.deleteMovie(this.props.match.params.id);
-  }
-
-
   render() {
-    const { isLoading } = this.state;
+    const { loading } = this.state;
     const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+
+    if (loading) return <Loading />;
 
     return (
       <div data-testid="movie-details">
-        { isLoading ? <Loading /> :
-        <div className="movie-detail">
           <img alt="Movie Cover" src={`../${imagePath}`} />
           <p><strong>{`Title: ${title}`}</strong></p>
           <p>{`Subtitle: ${subtitle}`}</p>
@@ -55,8 +56,7 @@ class MovieDetails extends React.Component {
             <Link to="/" className="linkDown">VOLTAR</Link>
             <Link to="/" className="linkDown" onClick={this.deleteTheMovie}>DELETAR</Link>
           </div>
-        </div>}
-      </div>
+        </div>
     );
   }
 }

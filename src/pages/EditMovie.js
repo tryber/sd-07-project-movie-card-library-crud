@@ -12,8 +12,8 @@ class EditMovie extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
     this.state = {
-      movie: [],
-      status: true,
+      movie: {},
+      loading: true,
       shouldRedirect: false,
     };
   }
@@ -23,25 +23,29 @@ class EditMovie extends React.Component {
   }
 
   async fetchMovie() {
-    const movie = await movieAPI.getMovie(this.props.match.params.id);
-    this.setState({
-      movie,
-      status: false,
+    const { id } = this.props.match.params;
+    this.setState({ loading: true }, async () => {
+      const movie = await movieAPI.getMovie(id);
+
+      this.setState({
+        loading: false,
+        movie,
+      });
     });
   }
 
-  handleSubmit(updatedMovie) {
-    movieAPI.updateMovie(updatedMovie);
+  async handleSubmit(updatedMovie) {
+    await movieAPI.updateMovie(updatedMovie);
     this.setState({
       shouldRedirect: true,
     });
   }
 
   render() {
-    const { status, shouldRedirect, movie } = this.state;
+    const { loading, shouldRedirect, movie } = this.state;
     if (shouldRedirect) return (<Redirect to="/" />);
 
-    if (status === 'loading') return (<Loading />);
+    if (loading) return (<Loading />);
 
     return (
       <div data-testid="edit-movie">
