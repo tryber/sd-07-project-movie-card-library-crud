@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { getMovie, deleteMovie } from '../services/movieAPI';
+import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
 class MovieDetails extends React.Component {
@@ -9,7 +9,7 @@ class MovieDetails extends React.Component {
     super();
 
     this.state = {
-      movie: [],
+      movie: {},
       isLoading: true,
     };
     this.fetchMovie = this.fetchMovie.bind(this);
@@ -20,26 +20,29 @@ class MovieDetails extends React.Component {
     this.fetchMovie();
   }
 
-  async fetchMovie() {
-    const numberId = this.props.match.params.id;
-    const movie = await getMovie(numberId);
-    this.setState({
-      movie,
-      isLoading: false,
+  fetchMovie() {
+    const { id } = this.props.match.params;
+    this.setState({ isLoading: true }, async () => {
+      const movie = await movieAPI.getMovie(id);
+      this.setState({
+        movie,
+        isLoading: false,
+      });
     });
   }
 
   deleteTheMovie() {
-    deleteMovie(this.props.match.params.id);
+    movieAPI.deleteMovie(this.props.match.params.id);
   }
 
 
   render() {
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
+    const { isLoading } = this.state;
+    const { id, title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
 
     return (
       <div data-testid="movie-details">
-        {this.state.isLoading ? <Loading /> :
+        { isLoading ? <Loading /> :
         <div className="movie-detail">
           <img alt="Movie Cover" src={`../${imagePath}`} />
           <p><strong>{`Title: ${title}`}</strong></p>
@@ -59,7 +62,11 @@ class MovieDetails extends React.Component {
 }
 
 MovieDetails.propTypes = {
-  match: PropTypes.objectOf.isRequired,
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string.isRequired,
+    }).isRequired,
+  }).isRequired,
 };
 
 export default MovieDetails;

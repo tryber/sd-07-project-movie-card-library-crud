@@ -4,15 +4,16 @@ import { Loading } from '../components';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
-import movies from '../services/movieData';
 
 class NewMovie extends Component {
   constructor(props) {
     super(props);
+
     this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
       shouldRedirect: false,
-      status: true,
+      loading: true,
     };
   }
 

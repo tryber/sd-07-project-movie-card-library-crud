@@ -8,23 +8,27 @@ class EditMovie extends React.Component {
   constructor(props) {
     super(props);
 
+    this.fetchMovie = this.fetchMovie.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+
     this.state = {
-      movie: {},
-      status: 'loading',
+      movie: [],
+      status: true,
       shouldRedirect: false,
     };
 
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    movieAPI.getMovie(this.props.match.params.id)
-      .then((movie) => {
-        this.setState({
-          movie,
-          status: '',
-        });
-      });
+   this.fetchMovie();
+  }
+
+  async fetchMovie() {
+    const movie = await movieAPI.getMovie(this.props.match.params.id);
+    this.setState({
+      movie,
+      status: false,
+    });
   }
 
   handleSubmit(updatedMovie) {

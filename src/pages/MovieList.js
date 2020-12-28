@@ -9,6 +9,8 @@ class MovieList extends React.Component {
   constructor() {
     super();
 
+    this.fetchAPI = this.fetchAPI.bind(this);
+
     this.state = {
       movies: [],
       loading: true,
@@ -16,11 +18,17 @@ class MovieList extends React.Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies()
-      .then((movies) => this.setState({
+   this.fetchAPI();
+  }
+
+  fetchAPI() {
+    this.setState({ loading: true }, async () => {
+      const movies = await movieAPI.getMovies();
+      this.setState((previousState) => ({
         loading: false,
-        movies,
+        movies: [...previousState.movies, ...movies],
       }));
+    });
   }
 
   render() {
@@ -31,9 +39,7 @@ class MovieList extends React.Component {
           { loading ? <Loading /> :
           movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
         </div>
-        <button>
-          <Link to="/movies/new">ADICIONAR CARTÃO</Link>
-        </button>
+        <Link to="/movies/new">ADICIONAR CARTÃO</Link>
       </div>
     );
   }
