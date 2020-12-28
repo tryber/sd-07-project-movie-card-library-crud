@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+
 
 class MovieDetails extends Component {
   constructor() {
@@ -32,7 +34,7 @@ class MovieDetails extends Component {
         <p>{`Subtitle: ${subtitle}`}</p>
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
-        <p>{`Rating: ${rating}`}</p>
+        <p>{rating}</p>
         <Link to="/">VOLTAR </Link>
         <Link to={`/movies/${id}/edit`}>EDITAR </Link>
         <Link to="/" onClick={() => movieAPI.deleteMovie(id)}>DELETAR</Link>
