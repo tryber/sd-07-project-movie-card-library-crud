@@ -16,11 +16,10 @@ class EditMovie extends React.Component {
       status: true,
       shouldRedirect: false,
     };
-
   }
 
   componentDidMount() {
-   this.fetchMovie();
+    this.fetchMovie();
   }
 
   async fetchMovie() {
