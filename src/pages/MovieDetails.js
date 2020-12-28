@@ -45,18 +45,18 @@ class MovieDetails extends React.Component {
 
     return (
       <div data-testid="movie-details">
-          <img alt="Movie Cover" src={`../${imagePath}`} />
-          <p><strong>{`Title: ${title}`}</strong></p>
-          <p>{`Subtitle: ${subtitle}`}</p>
-          <p>{`Storyline: ${storyline}`}</p>
-          <p>{`Genre: ${genre}`}</p>
-          <p>{`Rating: ${rating}`}</p>
-          <div className="link-detail">
-            <Link to={`/movies/${id}/edit`} className="linkDown">EDITAR</Link>
-            <Link to="/" className="linkDown">VOLTAR</Link>
-            <Link to="/" className="linkDown" onClick={this.deleteTheMovie}>DELETAR</Link>
-          </div>
+        <img alt="Movie Cover" src={`../${imagePath}`} />
+        <p><strong>{`Title: ${title}`}</strong></p>
+        <p>{`Subtitle: ${subtitle}`}</p>
+        <p>{`Storyline: ${storyline}`}</p>
+        <p>{`Genre: ${genre}`}</p>
+        <p>{`Rating: ${rating}`}</p>
+        <div className="link-detail">
+          <Link to={`/movies/${id}/edit`} className="linkDown">EDITAR</Link>
+          <Link to="/" className="linkDown">VOLTAR</Link>
+          <Link to="/" className="linkDown" onClick={this.deleteTheMovie}>DELETAR</Link>
         </div>
+      </div>
     );
   }
 }
