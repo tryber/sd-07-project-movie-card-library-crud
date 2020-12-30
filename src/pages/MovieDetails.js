@@ -54,7 +54,7 @@ class MovieDetails extends React.Component {
         <div className="link-detail">
           <Link to={`/movies/${id}/edit`} className="linkDown">EDITAR</Link>
           <Link to="/" className="linkDown">VOLTAR</Link>
-          <Link to="/" className="linkDown" onClick={this.deleteTheMovie}>DELETAR</Link>
+          <Link to="/" className="linkDown" onClick={this.deleteMovie}>DELETAR</Link>
         </div>
       </div>
     );
