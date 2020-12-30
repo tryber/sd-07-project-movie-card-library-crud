@@ -1,6 +1,5 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
-import { Loading } from '../components';
 
 import MovieForm from '../components/MovieForm';
 import * as movieAPI from '../services/movieAPI';
@@ -11,12 +10,12 @@ class NewMovie extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
 
-    this.state = { redirect: false, };
+    this.state = { redirect: false };
   }
 
   async handleSubmit(newMovie) {
     await movieAPI.createMovie(newMovie);
-    this.setState({ redirect: true, });
+    this.setState({ redirect: true });
   }
 
   render() {
