@@ -4,8 +4,6 @@ import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
 import movies from '../services/movieData';
 
-
-
 class MovieList extends Component {
   constructor() {
     super();
@@ -16,7 +14,7 @@ class MovieList extends Component {
   }
 
   componentDidMount() {
-    movieAPI.getMovies().then((movies) => (this.setState({ movies })))
+    movieAPI.getMovies().then((moviesData) => (this.setState({ movies })))
   }
 
 
