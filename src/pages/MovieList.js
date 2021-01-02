@@ -8,8 +8,7 @@ class MovieList extends Component {
     super();
 
     this.state = {
-      movies: [
-      ]
+      movies: [],
     };
   }
 
@@ -17,7 +16,7 @@ class MovieList extends Component {
     movieAPI.getMovies()
       .then((moviesData) =>
         (this.setState({ movies: moviesData })))
-  };
+  }
 
 
   render() {
