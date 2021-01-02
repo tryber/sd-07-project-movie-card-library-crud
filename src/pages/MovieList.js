@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Loading } from '../components';
 import MovieCard from '../components/MovieCard';
 import * as movieAPI from '../services/movieAPI';
-import Movies from '../services/movieData';
 
 class MovieList extends Component {
   constructor() {
@@ -10,12 +9,12 @@ class MovieList extends Component {
 
     this.state = {
       movies: []
-    }
+    };
   }
 
   componentDidMount() {
     movieAPI.getMovies().then((moviesData) => (this.setState({ movies: moviesData }))
-    )
+    );
   }
 
 
