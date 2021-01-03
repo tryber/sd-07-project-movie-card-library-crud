@@ -1,8 +1,13 @@
 import React from 'react';
+import { BrowserRouter, BrowserRouter as router } from 'react-router-dom';
 
 function App() {
   return (
-    <div>Movie Card Library CRUD</div>
+    <BrowserRouter>
+      <router>
+        <div>Movie Card Library CRUD</div>
+      </router>
+    </BrowserRouter>
   );
 }
 
