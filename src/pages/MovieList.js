@@ -22,7 +22,7 @@ class MovieList extends Component {
   fechMovie() {
     movieAPI
       .getMovies()
-      .then((movies) => this.setState({ movies: movies, loading: false }));
+      .then((movies) => this.setState({ movies, loading: false }));
   }
 
   render() {
