@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
