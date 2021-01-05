@@ -31,4 +31,4 @@ class NewMovie extends Component {
     );
   }
 }
-export default NewMovie;  
+export default NewMovie;

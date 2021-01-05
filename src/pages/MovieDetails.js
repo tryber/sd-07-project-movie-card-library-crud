@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
 
@@ -29,22 +29,12 @@ class MovieDetails extends Component {
 
   async HandleDelete(id) {
     const deleteMovie = await movieAPI.deleteMovie(id);
-    console.log(deleteMovie);
-    /* if (deleteMovie.status === 'OK') {
-      this.setState({ redirect: true });
-    } */
   }
   render() {
     if (!this.state.loaded) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
-    const { redirect } = this.state;
-    /* if (redirect) {
-      this.props.history.push("/");
-     /*  return <Redirect to="/" />; 
-    }
- */
     return (
       <div data-testid="movie-details">
         <h1>{title}</h1>
@@ -55,7 +45,7 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        <button 
+        <button
           onClick={() => {
             this.HandleDelete(id);
           }}
