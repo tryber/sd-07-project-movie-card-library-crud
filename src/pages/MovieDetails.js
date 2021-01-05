@@ -28,7 +28,7 @@ class MovieDetails extends Component {
   }
 
   async HandleDelete(id) {
-    const deleteMovie = await movieAPI.deleteMovie(id);
+    await movieAPI.deleteMovie(id);
   }
   render() {
     if (!this.state.loaded) return <Loading />;
