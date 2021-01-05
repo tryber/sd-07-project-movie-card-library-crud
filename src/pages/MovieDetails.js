@@ -29,29 +29,22 @@ class MovieDetails extends Component {
 
   async HandleDelete(id) {
     const deleteMovie = await movieAPI.deleteMovie(id);
-    if (deleteMovie.status === 'OK') {
+    console.log(deleteMovie);
+    /* if (deleteMovie.status === 'OK') {
       this.setState({ redirect: true });
-      console.log(deleteMovie);
-    }
+    } */
   }
   render() {
     if (!this.state.loaded) return <Loading />;
 
-    const {
-      title,
-      storyline,
-      imagePath,
-      genre,
-      rating,
-      subtitle,
-      id,
-    } = this.state.movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
     const { redirect } = this.state;
-    if (redirect) {
-      return <Redirect to="/" />;
+    /* if (redirect) {
+      this.props.history.push("/");
+     /*  return <Redirect to="/" />; 
     }
-
+ */
     return (
       <div data-testid="movie-details">
         <h1>{title}</h1>
@@ -62,14 +55,13 @@ class MovieDetails extends Component {
         <p>{`Rating: ${rating}`}</p>
         <Link to="/">VOLTAR</Link>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
-        <Link
-          to="/"
-          onclick={() => {
+        <button 
+          onClick={() => {
             this.HandleDelete(id);
           }}
         >
-          DELETAR
-        </Link>
+          <Link to="/">DELETAR </Link>
+        </button>
       </div>
     );
   }
