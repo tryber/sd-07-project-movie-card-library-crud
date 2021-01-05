@@ -25,15 +25,15 @@ class EditMovie extends Component {
   handleSubmit(updatedMovie) {
     movieAPI.updateMovie(updatedMovie).then(() => this.setState({
       shouldRedirect: true,
-    }))
+    }));
   }
 
   render() {
     const { status, shouldRedirect, movie } = this.state;
-    
-    if (shouldRedirect) return <Redirect to="/" />
 
-    if (status === 'loading') return <Loading />
+    if (shouldRedirect) return <Redirect to="/" />;
+
+    if (status === 'loading') return <Loading />;
 
     return (
       <div data-testid="edit-movie">
