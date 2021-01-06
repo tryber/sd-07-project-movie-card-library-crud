@@ -11,6 +11,9 @@ class MovieList extends Component {
     };
   }
 
+  /*
+    
+  */
   componentDidMount() {
     movieAPI.getMovies()
       .then((moviesData) =>

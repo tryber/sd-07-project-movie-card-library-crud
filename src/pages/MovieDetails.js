@@ -13,8 +13,11 @@ class MovieDetails extends React.Component {
     };
   }
 
+  /* se o caminho for usado com browserRouter ele vai gerar history, location, match (params(id)) */
+
   componentDidMount() {
     movieAPI.getMovie(this.props.match.params.id).then((movie) => this.setState({ movie }));
+    console.log(this.props);
   }
 
   render() {
