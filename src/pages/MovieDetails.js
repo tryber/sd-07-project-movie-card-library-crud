@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import {Link} from 'react-router-dom';
 
 class MovieDetails extends Component {
   constructor() {
     super();
-    
     this.state = {
       movie: {},
       loading: true,
@@ -18,7 +18,7 @@ class MovieDetails extends Component {
   }
 
   async fetchMovei() {
-    const { id } = this.props.match.params; 
+    const { id } = this.props.match.params;
     const endpoint = await movieAPI.getMovie(id);
     this.setState({
       movie: endpoint,
@@ -28,7 +28,7 @@ class MovieDetails extends Component {
 
   render() {
     // Change the condition to check the state
-    const { loading }  = this.state;
+    const { loading } = this.state;
 
     if (loading) {
       return <Loading />;
@@ -38,7 +38,7 @@ class MovieDetails extends Component {
 
     return (
       <div data-testid="movie-details">
-        
+
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <h3>{`Title: ${title}`}</h3>
         <p>{`Subtitle: ${subtitle}`}</p>
@@ -46,7 +46,7 @@ class MovieDetails extends Component {
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
         <p>movei details</p>
-        <Link to={"/"}>VOLTAR</Link>
+        <Link to={'/'}>VOLTAR</Link>
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
       </div>
     );
@@ -54,3 +54,11 @@ class MovieDetails extends Component {
 }
 
 export default MovieDetails;
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number,
+    }),
+  }),
+}.isRequired;
