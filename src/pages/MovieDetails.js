@@ -44,11 +44,11 @@ class MovieDetails extends React.Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to={`/`}>VOLTAR</Link>
+        <Link to={'/'}>VOLTAR</Link>
         <br />
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <br />
-        <Link onClick={this.HandleDelete} to={`/`}>DELETAR</Link>
+        <Link onClick={this.HandleDelete} to={'/'}>DELETAR</Link>
       </div>
     );
   }
