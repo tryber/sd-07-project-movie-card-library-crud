@@ -10,7 +10,7 @@ class MovieDetails extends React.Component {
     this.state = {
       movie: [],
     };
-    this.HandleDelete = this.HandleDelete.bind(this)
+    this.HandleDelete = this.HandleDelete.bind(this);
   }
 
   /* se o caminho for usado com browserRouter ele vai gerar history, location, match (params(id)) */
@@ -48,7 +48,7 @@ class MovieDetails extends React.Component {
         <br />
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <br />
-        <Link onClick={this.HandleDelete} to="/">DELETAR</Link>
+        <Link onClick={this.HandleDelete} to='/'>DELETAR</Link>
       </div>
     );
   }
