@@ -93,8 +93,9 @@ const renderPath = (path) => {
 
 describe('1 - Rotas: O componente App deve renderizar BrowserRouter', () => {
   test('a rota "/" deve renderizar MovieList', async () => {
-    const { unmount, getByTestId } = renderPath('/');
+    const { unmount, getByTestId, debug } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
+    debug()
     expect.anything(getByTestId('movie-list'));
     unmount();
   })
@@ -126,7 +127,7 @@ describe('1 - Rotas: O componente App deve renderizar BrowserRouter', () => {
   })
 });
 
-describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição para buscar a lista de filmes a ser renderizada', () => {
+describe.only('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição para buscar a lista de filmes a ser renderizada', () => {
   test('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', async () => {
     const { container, unmount, getByText } = renderPath('/');
     expect(getByText('Carregando...'));
