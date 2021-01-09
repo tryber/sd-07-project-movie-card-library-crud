@@ -9,7 +9,7 @@ class MovieDetails extends Component {
     super();
 
     this.state = {
-      movie: [],
+      movie: {},
       loading: false,
     };
 
@@ -33,9 +33,9 @@ class MovieDetails extends Component {
   render() {
     const { loading } = this.state;
     
-    if (loading) return <Loading />;
+    if (!loading) return <Loading />;
 
-    const { title, storyline, imagePath, genre, rating, subtitle } = this.state.movie;
+    const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;
 
     return (
       <div data-testid="movie-details">
@@ -45,7 +45,7 @@ class MovieDetails extends Component {
         <p>{`Storyline: ${storyline}`}</p>
         <p>{`Genre: ${genre}`}</p>
         <p>{`Rating: ${rating}`}</p>
-        <Link to="/movies/:id/edit">EDITAR</Link>
+        <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
       </div>
     );
