@@ -3,7 +3,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MovieList from './pages/MovieList';
 import MovieDetails from './pages/MovieDetails';
 import NewMovie from './pages/NewMovie';
-import EditMovie from './components/EditMovie';
+import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
 function App() {
