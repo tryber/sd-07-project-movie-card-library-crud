@@ -41,7 +41,7 @@ class EditMovie extends Component {
             shouldRedirect: true,
           });
         });
-      }
+      },
     );
   }
 
