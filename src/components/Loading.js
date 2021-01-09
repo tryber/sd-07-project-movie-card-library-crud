@@ -2,9 +2,8 @@ import React, { Component } from 'react';
 
 class Loading extends Component {
   render() {
-    return (
-      <div>Loading message</div>
-    );
+    const { message } = this.props;
+    return <div>{message}</div>;
   }
 }
 
