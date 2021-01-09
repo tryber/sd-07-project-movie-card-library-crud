@@ -1,7 +1,6 @@
-import React, { Component } from 'react';
-
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
@@ -16,6 +15,10 @@ class MovieDetails extends Component {
     this.fetchMovie = this.fetchMovie.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   fetchMovie() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id).then(((movie) => {
@@ -24,10 +27,6 @@ class MovieDetails extends Component {
         loading: true,
       })
     }))
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
   }
 
   render() {

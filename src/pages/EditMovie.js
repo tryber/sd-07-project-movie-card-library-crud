@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
 import { MovieForm } from '../components';
 import { Loading } from '../components';
-import * as movieAPI from '../services/movieAPI';
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -18,18 +18,18 @@ class EditMovie extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount() {
+    this.fetchMovie();
+  }
+
   fetchMovie() {
     const { id } = this.props.match.params;
     movieAPI.getMovie(id).then(((movie) => {
       this.setState({
         movie,
         loading: true,
-      })
-    }))
-  }
-
-  componentDidMount() {
-    this.fetchMovie();
+      });
+    }));
   }
 
   handleSubmit(updatedMovie) {
@@ -41,15 +41,15 @@ class EditMovie extends Component {
         this.setState({
           status: '',
           shouldRedirect: true,
-        })
-      })
-    })
+        });
+      });
+    });
   }
 
   render() {
     const { loading, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
-      return <Redirect to="/" />
+      return <Redirect to="/" />;
     }
 
     if (!loading) {
