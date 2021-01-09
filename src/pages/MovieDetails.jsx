@@ -20,15 +20,16 @@ class MovieDetails extends Component {
     this.getMovie();
   }
 
-  handleClick() {
-    const { id } = this.props.match.params;
-    movieAPI.deleteMovie(id);
-  }
-
+  
   async getMovie() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
     this.setState({ movie, loaded: true });
+  }
+  
+  handleClick() {
+    const { id } = this.props.match.params;
+    movieAPI.deleteMovie(id);
   }
 
   render() {
@@ -69,4 +70,13 @@ MovieDetails.propTypes = {
     id: PropTypes.number.isRequired,
   }).isRequired,
 };
+
+MovieDetails.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+    }).isRequired,
+  }).isRequired,
+};
+
 export default MovieDetails;
