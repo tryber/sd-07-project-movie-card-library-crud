@@ -20,13 +20,12 @@ class MovieDetails extends Component {
     this.getMovie();
   }
 
-  
   async getMovie() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
     this.setState({ movie, loaded: true });
   }
-  
+
   handleClick() {
     const { id } = this.props.match.params;
     movieAPI.deleteMovie(id);
