@@ -1,7 +1,7 @@
-import * as movieAPI from '../services/movieAPI';
-import { Loading } from '../components';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as movieAPI from '../services/movieAPI';
+import { Loading } from '../components';
 
 class MovieDetails extends Component {
   constructor() {
@@ -25,13 +25,13 @@ class MovieDetails extends Component {
       this.setState({
         movie,
         loading: true,
-      })
-    }))
+      });
+    }));
   }
 
   render() {
     const { loading } = this.state;
-    
+
     if (!loading) return <Loading />;
 
     const { title, storyline, imagePath, genre, rating, subtitle, id } = this.state.movie;

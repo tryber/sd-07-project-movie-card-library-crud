@@ -1,8 +1,8 @@
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { MovieForm } from '../components';
 import { Loading } from '../components';
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 
 class EditMovie extends Component {
   constructor(props) {
@@ -53,7 +53,7 @@ class EditMovie extends Component {
     }
 
     if (!loading) {
-      return <Loading />
+      return <Loading />;
     }
 
     return (
