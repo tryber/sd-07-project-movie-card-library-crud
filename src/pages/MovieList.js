@@ -18,20 +18,25 @@ class MovieList extends Component {
   }
 
   fetchMovies() {
-    this.setState({ loadig: true });
-    movieAPI.getMovie().then((movies) => {
-      this.setState({
-        loading: false,
-        movies,
-      });
+    this.setState({ loading: true }, () => {
+      movieAPI.getMovies().then((movies) => {
+        this.setState({
+          loading: false,
+          movies,
+        })
+      })
     });
   }
 
+
   render() {
-    const { movies } = this.state;
+    const { movies, loading } = this.state;
 
     // Render Loading here if the request is still happening
-
+    if (loading) {
+      return <p>Carregando...</p>
+    }
+    
     return (
       <div data-testid="movie-list">
         {movies.map((movie) => (
