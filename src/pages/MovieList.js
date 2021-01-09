@@ -11,7 +11,7 @@ class MovieList extends Component {
       movies: [],
       loading: false,
     };
-  
+
     this.fetchMovies = this.fetchMovies.bind(this);
   }
 
