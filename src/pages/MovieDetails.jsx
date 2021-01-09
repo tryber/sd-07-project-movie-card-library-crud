@@ -9,6 +9,7 @@ class MovieDetails extends Component {
   constructor() {
     super();
     this.getMovie = this.getMovie.bind(this);
+    this.handleClick = this.handleClick.bind(this);
     this.state = {
       movie: {},
       loaded: false,
@@ -17,6 +18,11 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     this.getMovie();
+  }
+
+  handleClick() {
+    const { id } = this.props.match.params;
+    movieAPI.deleteMovie(id);
   }
 
   async getMovie() {
@@ -44,6 +50,10 @@ class MovieDetails extends Component {
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <br />
         <Link to={'/'}>VOLTAR</Link>
+        <br />
+        <Link to="/" onClick={this.handleClick}>
+          DELETAR
+        </Link>
       </div>
     );
   }
