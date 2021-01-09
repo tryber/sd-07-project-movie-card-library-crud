@@ -9,6 +9,6 @@ class Loading extends Component {
 }
 
 Loading.propTypes = {
-  message: PropTypes.string.isRequired
-}
+  message: PropTypes.string.isRequired,
+};
 export default Loading;
