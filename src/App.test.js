@@ -162,7 +162,7 @@ describe('3 - MovieCard: deve possuir um link para a página de detalhes de um f
   })
 })
 
-describe.skip('4 - MovieDetails: deve fazer uma requisição para buscar o filme que deverá ser renderizado', () => {
+describe('4 - MovieDetails: deve fazer uma requisição para buscar o filme que deverá ser renderizado', () => {
 
   it('deverá exibir o texto "Carregando..." enquanto estiver fazendo a requisição', () => {
     readMovies().forEach(async (movie) => {
