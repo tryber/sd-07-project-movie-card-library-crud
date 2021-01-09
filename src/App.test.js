@@ -141,7 +141,7 @@ describe('2 - Movie list: Ao ser montado, MovieList deve fazer uma requisição 
   })
 });
 
-describe('3 - MovieCard: deve possuir um link para a página de detalhes de um filme', () => {
+describe.only('3 - MovieCard: deve possuir um link para a página de detalhes de um filme', () => {
   test('deve exibir pelo menos o título e a sinopse de seu respectivo filme', async () => {
     const { unmount, getAllByText } = renderPath('/');
     await waitFor(() => movieAPI.getMovies());
