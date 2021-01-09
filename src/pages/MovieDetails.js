@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, propTypes } from 'react';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -49,6 +49,19 @@ class MovieDetails extends Component {
       </div>
     );
   }
+}
+
+MovieDetails.protoTypes = {
+  match: propTypes.object,
+  params: propTypes.object,
+  movie: propTypes.string,
+  title: propTypes.string,
+  storyline: propTypes.string,
+  imagePath: propTypes.string,
+  genre: propTypes.string,
+  rating: propTypes.string,
+  subtitle: propTypes.string,
+  id: propTypes.number,
 }
 
 export default MovieDetails;
