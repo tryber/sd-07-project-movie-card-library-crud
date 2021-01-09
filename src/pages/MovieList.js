@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import MovieCard from '../components/MovieCard';
-import * as movieAPI from '../services/movieAPI';
-import Loading from '../components/Loading';
+import React, { Component } from "react";
+import MovieCard from "../components/MovieCard";
+import * as movieAPI from "../services/movieAPI";
+import Loading from "../components/Loading";
 // import getMovies from '../services/movieAPI';
 
 class MovieList extends Component {
@@ -12,7 +12,17 @@ class MovieList extends Component {
       movies: [],
       // getMovies: getMovies(),
       loaded: false,
-    }
+    };
+  }
+
+  componentDidMount() {
+    console.log('Did mount');
+    this.getMovies();
+  }
+  // como isso veio parar aqui desde o movieAPI? porque funciona?
+  async getMovies() {
+    const moviesAPI = await movieAPI.getMovies();
+    this.setState({ movies: moviesAPI, loaded: true });
   }
 
   render() {
@@ -22,23 +32,15 @@ class MovieList extends Component {
     if (loaded) {
       return (
         <div data-testid="movie-list">
-          <div >Movie Card Library CRUD teste</div>
-          {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
+          <div>Movie Card Library CRUD teste</div>
+          {movies.map((movie) => (
+            <MovieCard key={movie.title} movie={movie} />
+          ))}
         </div>
       );
-      } return <Loading />;
+    }
+    return <Loading />;
   }
-
-  componentDidMount() {
-    console.log("Did mount");
-    this.getMovies();
-  }
- // como isso veio parar aqui desde o movieAPI? porque funciona?
-  async getMovies() {
-    const moviesAPI = await movieAPI.getMovies();
-    this.setState({ movies: moviesAPI, loaded: true });
-  }
-
 }
 
 export default MovieList;
