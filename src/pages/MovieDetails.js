@@ -55,14 +55,14 @@ class MovieDetails extends Component {
 MovieDetails.protoTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
-      movie: propTypes.string.isRequired,
-      title: propTypes.string.isRequired,
-      storyline: propTypes.string.isRequired,
-      imagePath: propTypes.string.isRequired,
-      genre: propTypes.string.isRequired,
-      rating: propTypes.string.isRequired,
-      subtitle: propTypes.string.isRequired,
-      id: propTypes.number.isRequired,
+      movie: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      storyline: PropTypes.string.isRequired,
+      imagePath: PropTypes.string.isRequired,
+      genre: PropTypes.string.isRequired,
+      rating: PropTypes.string.isRequired,
+      subtitle: PropTypes.string.isRequired,
+      id: PropTypes.number.isRequired,
     }).isRequired,
   }).isRequired,
 };
