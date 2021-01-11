@@ -34,7 +34,6 @@ class MovieDetails extends Component {
   deleteMovie() {
     const { id } = this.props.match.params;
     movieAPI.deleteMovie(id);
-    return <Redirect to="/" />
   }
 
   render() {
