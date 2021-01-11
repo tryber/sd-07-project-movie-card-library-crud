@@ -22,12 +22,12 @@ class MovieDetails extends Component {
 
   fetchMovie() {
     const { id } = this.props.match.params;
-    movieAPI.getMovie(id).then(((movie) => {
+    movieAPI.getMovie(id).then((movie) => {
       this.setState({
         movie,
         loading: true,
       });
-    }));
+    });
   }
 
   render() {
