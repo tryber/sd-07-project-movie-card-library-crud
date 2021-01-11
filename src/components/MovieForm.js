@@ -128,12 +128,12 @@ class MovieForm extends React.Component {
   renderSubmitButton() {
     return (
       <div>
-          <button
-            type="button"
-            onClick={this.handleSubmit}
-          >
-            Submit
-          </button>
+        <button
+          type="button"
+          onClick={this.handleSubmit}
+        >
+          Submit
+        </button>
       </div>
     );
   }

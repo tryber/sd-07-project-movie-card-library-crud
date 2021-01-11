@@ -9,7 +9,8 @@ class NewMovie extends Component {
 
     this.state = {
       save: null,
-    }
+    };
+
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
@@ -24,7 +25,8 @@ class NewMovie extends Component {
 
   render() {
     const { save } = this.state;
-    if (save === 'OK') return <Redirect to="/" />
+    if (save === 'OK') return <Redirect to="/" />;
+
     return (
       <div data-testid="new-movie">
         <MovieForm onSubmit={this.handleSubmit} />
