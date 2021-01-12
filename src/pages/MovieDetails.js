@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import PropTypes from 'prop-types';
 
 class MovieDetails extends Component {
   constructor() {
     super();
 
-    this.state = { 
+    this.state = {
       movie: {},
       loading: true,
     };
@@ -19,7 +19,7 @@ class MovieDetails extends Component {
   componentDidMount() {
     this.fetchMovie();
   }
-  
+
   async fetchMovie() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
@@ -32,7 +32,7 @@ class MovieDetails extends Component {
   }
 
   render() {
-    const { movie, loading} = this.state
+    const { movie, loading } = this.state;
     if (loading) {
       return (<div><Loading /></div>);
     }
