@@ -11,7 +11,6 @@ class MovieList extends Component {
 
     this.state = {
       movies: [],
-      loading: false,
     };
     this.fetchMovies = this.fetchMovies.bind(this);
   }
@@ -21,13 +20,9 @@ class MovieList extends Component {
   }
 
   fetchMovies() {
-    this.setState({ loading: true }, () => {
-      movieAPI.getMovies().then((movies) => {
-        this.setState({
-          loading: false,
-          movies,
-        });
-      });
+    this.setState({ loading: true }, async () => {
+      const movies = await movieAPI.getMovies();
+      this.setState({ movies, loading: false });
     });
   }
 

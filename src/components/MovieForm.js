@@ -30,7 +30,7 @@ class MovieForm extends React.Component {
           value={title}
           onChange={(event) => this.updateMovie('title', event.target.value)}
         />
-        <label htmlFor="movie_title">Título</label>
+        <label htmlFor="movie_title">Titulo</label>
       </div>
     );
   }
@@ -153,5 +153,17 @@ class MovieForm extends React.Component {
     );
   }
 }
+
+MovieForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  movie: PropTypes.shape({
+    title: PropTypes.string,
+    subtitle: PropTypes.string,
+    imagePath: PropTypes.string,
+    storyline: PropTypes.string,
+    genre: PropTypes.number,
+    rating: PropTypes.number,
+  }).isRequired,
+};
 
 export default MovieForm;

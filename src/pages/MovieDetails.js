@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+
 import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
@@ -23,21 +23,20 @@ class MovieDetails extends Component {
   async fetchMovie() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
-    this.setState({ movie, loading: false });
+    this.setState({ movie, loading: false, id });
   }
 
-  deleteMovie() {
-    const { id } = this.props.match.params;
-    movieAPI.deleteMovie(id);
+  deleteMovie(id) {
+    return movieAPI.deleteMovie(id);
   }
 
   render() {
-    const { movie, loading } = this.state;
+    const { movie, loading, id } = this.state;
     if (loading) {
       return (<div><Loading /></div>);
     }
 
-    const { title, storyline, imagePath, genre, rating, subtitle, id } = movie;
+    const { title, storyline, imagePath, genre, rating, subtitle } = movie;
     return (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
@@ -55,19 +54,5 @@ class MovieDetails extends Component {
     );
   }
 }
-
-MovieDetails.propTypes = {
-  match: PropTypes.shape({
-    title: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
-    storyline: PropTypes.string.isRequired,
-    genre: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
-    id: PropTypes.number.isRequired,
-    params: PropTypes.shape({
-      id: PropTypes.number.isRequired,
-    }).isRequired,
-  }).isRequired,
-};
 
 export default MovieDetails;
