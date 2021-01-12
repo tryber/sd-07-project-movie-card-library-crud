@@ -21,7 +21,7 @@ class EditMovie extends Component {
   }
 
   async getMovie() {
-    const { id } = this.props.match.params;
+    const { match: { params: { id } } } = this.props;
     const movie = await movieAPI.getMovie(id);
     this.setState({ movie, status: 'loaded' });
   }
