@@ -10,7 +10,7 @@ class MovieList extends Component {
     this.state = {
       movies: [],
       loading: true,
-    }
+    };
   }
 
   componentDidMount() {
@@ -25,7 +25,7 @@ class MovieList extends Component {
   }
 
   render() {
-    const { movies, loading} = this.state;
+    const { movies, loading } = this.state;
     if (loading) return <Loading />;
 
     return (
