@@ -9,6 +9,7 @@ class MovieList extends Component {
     this.fetchMovies = this.fetchMovies.bind(this);
     this.state = {
       movies: [],
+      loading: true,
     }
   }
 
@@ -19,16 +20,16 @@ class MovieList extends Component {
   fetchMovies() {
     movieAPI.getMovies().then((movies) => this.setState({
       movies,
-      
+      loading: false,
     }));
   }
 
   render() {
-    const { movies, loading } = this.state;
-    if (movies.length === 0) return <Loading />;
+    const { movies, loading} = this.state;
+    if (loading) return <Loading />;
 
     return (
-      <div data-testid="movie-list">
+      <div data-testid="movie-list" className="movie-list">
         {movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)}
       </div>
     );

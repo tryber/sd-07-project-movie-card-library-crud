@@ -1,3 +1,4 @@
+import './App.css'
 import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import MovieList from './pages/MovieList';
@@ -7,7 +8,8 @@ import EditMovie from './pages/EditMovie';
 import NotFound from './pages/NotFound';
 
 function App() {
-	return (
+	return(
+
 		<BrowserRouter>
 			<Switch>
 				<Route path="/movies/:id/edit" component={EditMovie} />
