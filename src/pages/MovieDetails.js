@@ -12,16 +12,17 @@ class MovieDetails extends Component {
 
     this.state = {
       movie: {},
-      status: '',
+      status: 'loading',
     };
   }
 
-  async componentDidMount() {
+  componentDidMount() {
     const { id } = this.props.match.params;
     const { getMovie } = movieAPI;
-    await getMovie(id).then((movie) => {
+    getMovie(id).then((movie) => {
       this.setState({
         movie,
+        status: 'loaded',
       });
     });
   }
