@@ -2,11 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types'
 class MovieCard extends React.Component {
   render() {
-    const { title, movie } = this.props;
-    console.log(title, movie);
+    const { movie } = this.props;
     return (
       <div data-testid="movie-card">
-        Movie Card
+        {movie.title};
       </div>
     );
   }
