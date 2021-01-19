@@ -23,7 +23,7 @@ class NewMovie extends Component {
     const { shoudRedirect } = this.state;
 
     if (shoudRedirect) {
-      return(
+      return (
         <Redirect />
       );
     }
