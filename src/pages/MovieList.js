@@ -8,11 +8,10 @@ import * as movieAPI from '../services/movieAPI';
 class MovieList extends Component {
   constructor() {
     super();
-
     this.state = {
       movies: [],
-      MovieList: false,
-    }
+      movieList: false,
+    };
   }
 
   componentDidMount() {
@@ -20,11 +19,11 @@ class MovieList extends Component {
   }
 
   async get() {
-    const movies = await movieAPI.getMovie();
+    const movies = await movieAPI.getMovies();
     this.setState({
       movies,
       movieList: true,
-    })
+    });
   }
 
   render() {
