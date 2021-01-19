@@ -28,9 +28,9 @@ class MovieList extends Component {
     const { movies, loading } = this.state;
     const isLoading = <p>Carregando...</p>;
     return (
-      <>
+      <div>
         <div>
-          <span><Link to={`/movies/new`}>ADICIONAR CARTÃO</Link></span>
+          <span><Link to={'/movies/new'}>ADICIONAR CARTÃO</Link></span>
         </div>
         <div data-testid="movie-list">
           {
@@ -38,7 +38,7 @@ class MovieList extends Component {
             movies.map((movie) => <MovieCard key={movie.title} movie={movie} />)
           }
         </div>
-      </>
+      </div>
     );
   }
 }

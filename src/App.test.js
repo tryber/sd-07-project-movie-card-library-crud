@@ -315,7 +315,7 @@ describe('6 - NewMovie: Na página inicial, deve haver um link para criar novos 
   })
 })
 
-describe.only('Bônus: Adicione um link para deletar um cartão em MovieDetails', () => {
+describe('Bônus: Adicione um link para deletar um cartão em MovieDetails', () => {
   it('"MovieDetails" deverá conter um botão com o texto "DELETAR"', async () => {
     for (const movie of readMovies()) {
       const { container, unmount, findByText } = renderPath('/movies/' + movie.id);
