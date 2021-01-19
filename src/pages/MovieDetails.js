@@ -40,7 +40,7 @@ class MovieDetails extends Component {
       subtitle
     } = this.state.movie;
     const loading = this.state.loading;
-    return (
+    return loading ? (
       <div data-testid="movie-details">
         <img alt="Movie Cover" src={`../${imagePath}`} />
         <p>{`Title: ${title}`}</p>
@@ -55,8 +55,8 @@ class MovieDetails extends Component {
         </button>
       </div>
     ) : (
-      <Loading />
-    );
+        <Loading />
+      );
   }
 }
 
@@ -65,7 +65,7 @@ MovieDetails.PropTypes = {
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
-  }).isRequired
+  }).isRequired,
 }
 
 export default MovieDetails;
