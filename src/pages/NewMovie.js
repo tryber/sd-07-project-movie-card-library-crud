@@ -18,11 +18,9 @@ class NewMovie extends Component {
   render() {
     return this.state.redirect ? (
       <Redirect to="/" />
-    ) : (
-        <div data-testid="new-movie">
-          <MovieForm onSubmit={this.handleSubmit} />
-        </div>
-      );
+    ) : (<div data-testid="new-movie">
+      <MovieForm onSubmit={this.handleSubmit} />
+    </div>);
   }
 }
 export default NewMovie;

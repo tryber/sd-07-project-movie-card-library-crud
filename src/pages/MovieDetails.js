@@ -16,7 +16,7 @@ class MovieDetails extends Component {
 
   componentDidMount() {
     const id = this.props.match.params.id;
-    this.getSnapshotBeforeUpdate(id);
+    this.get(id);
   }
 
   async get(id) {
@@ -53,9 +53,7 @@ class MovieDetails extends Component {
           <Link to="/">DELETAR</Link>
         </button>
       </div>
-    ) : (
-        <Loading />
-      );
+    ) : (<Loading />);
   }
 }
 
