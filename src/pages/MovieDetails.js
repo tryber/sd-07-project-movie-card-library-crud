@@ -21,7 +21,7 @@ class MovieDetails extends Component {
 
   async get(id) {
     const movie = await movieAPI.getMovie(id);
-    this.setState({ movie, Loading: true })
+    this.setState({ movie, Loading: true });
   }
 
   async deleteMovie(movieId) {
@@ -29,7 +29,6 @@ class MovieDetails extends Component {
   }
 
   render() {
-
     const {
       id,
       title,
@@ -37,7 +36,7 @@ class MovieDetails extends Component {
       imagePath,
       genre,
       rating,
-      subtitle
+      subtitle,
     } = this.state.movie;
     const loading = this.state.loading;
     return loading ? (
