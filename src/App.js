@@ -11,6 +11,7 @@ import {
 
 function App() {
   return (
+
     <Router>
       <Switch>
         <Route exact path="/" component={MovieList} />
