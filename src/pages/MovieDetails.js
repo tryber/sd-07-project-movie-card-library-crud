@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import * as movieAPI from '../services/movieAPI';
 import { Loading } from '../components';
-import { Link } from 'react-router-dom';
 
 class MovieDetails extends Component {
 
@@ -11,7 +11,7 @@ class MovieDetails extends Component {
     this.state = {
       movie: {},
       Loading: false,
-    }
+    };
   }
 
   componentDidMount() {
@@ -51,7 +51,7 @@ class MovieDetails extends Component {
         <Link to={`/movies/${id}/edit`}>EDITAR</Link>
         <Link to="/">VOLTAR</Link>
         <button onClick={() => this.deleteMovie(id)}>
-          <link to="/">DELETAR</link>
+          <Link to="/">DELETAR</Link>
         </button>
       </div>
     ) : (
@@ -60,12 +60,13 @@ class MovieDetails extends Component {
   }
 }
 
-MovieDetails.PropTypes = {
+
+MovieDetails.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
-}
+};
 
 export default MovieDetails;

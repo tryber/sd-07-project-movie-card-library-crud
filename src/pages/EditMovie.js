@@ -30,9 +30,6 @@ class EditMovie extends Component {
     this.setState({ shouldRedirect: true });
   }
 
-  handleSubmit(updatedMovie) {
-  }
-
   render() {
     const { status, shouldRedirect, movie } = this.state;
     if (shouldRedirect) {
