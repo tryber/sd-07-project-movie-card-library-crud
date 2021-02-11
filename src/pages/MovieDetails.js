@@ -21,6 +21,7 @@ class MovieDetails extends Component {
     this.fetch();
   }
 
+// function by vanessaberbidi
   async fetch() {
     const { id } = this.props.match.params;
     const movie = await movieAPI.getMovie(id);
